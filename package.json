@@ -1,0 +1,17 @@
+{
+  "name": "nemesis_flask",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css --minify",
+    "watch-css": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}

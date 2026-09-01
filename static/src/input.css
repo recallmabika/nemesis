@@ -1,0 +1,27 @@
+@tailwind base; 
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --white: #ffffff;
+    --forest-dark: #f5f5f5;
+    --gold: #C9A84C;
+    --gold-light: #F0D080;
+    --gold-dark: #8B6914;
+    --cream: #FAF8F3;
+    --cream-text: #F0EDDE;
+    --ink: #1C1C1C;
+    --muted: #6B7280;
+    --border-soft: rgba(0, 0, 0, 0.08);
+    --black: #000000;
+
+    --brand: var(--forest);
+    --brand-light: var(--forest-mid);
+    --forest: #f5f5f5;
+    --forest-mid: #f5f5f5;
+    --success: #2A5A3A;
+    --success-light: #3D7A52;
+    --danger: #8B2C2C;
+}
+
+.b {color: #6B7280;}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="120">
+  <title>Nemesis — Under Maintenance</title>
+  <link rel="icon" href="{{ url_for('static', filename='nemesis_logo.png') }}">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0d0d0d;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #f0f0f0;
+      text-align: center;
+      padding: 24px;
+    }
+    .card {
+      max-width: 480px;
+    }
+    .logo {
+      width: 160px;
+      height: 160px;
+      object-fit: contain;
+      margin-bottom: 32px;
+      filter: drop-shadow(0 10px 30px rgba(255, 170, 0, 0.15));
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+    p {
+      font-size: 1rem;
+      color: #a0a0a0;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .badge {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(255, 170, 0, 0.1);
+      border: 1px solid rgba(255, 170, 0, 0.3);
+      color: #ffaa00;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img class="logo" src="{{ url_for('static', filename='nemesis_logo.png') }}" alt="Nemesis logo">
+    <h1>We're upgrading things</h1>
+    <p>Nemesis is currently undergoing scheduled maintenance.</p>
+    <p>We'll be back online shortly — thanks for your patience.</p>
+    <span class="badge">Under Maintenance</span>
+  </div>
+</body>
+</html>
