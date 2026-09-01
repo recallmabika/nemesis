@@ -31,6 +31,9 @@
     <div class="cap"><span>What we're paid to change</span><span class="hint">hover the trace to read it</span></div>
     <div class="signal-frame" id="signalFrame">
       <svg viewBox="0 0 1100 220" preserveAspectRatio="none" id="signalSvg" role="img" aria-label="A chart showing a volatile signal settling into a steady flat line, representing an unstable system stabilized by Nemesis.">
+        <defs>
+          <linearGradient id="waveGradient" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1100" y2="0"></linearGradient>
+        </defs>
         <line x1="0" y1="110" x2="1100" y2="110" class="tick" stroke-dasharray="2 5"/>
         <g class="tick">
           <line x1="0" y1="200" x2="0" y2="208"/><line x1="110" y1="200" x2="110" y2="208"/>
@@ -67,30 +70,43 @@
 </section>
 
 <section class="disciplines reveal" id="services">
-  <div class="wrap">
-    <div class="head"><span class="sq"></span><h2>Services</h2><span class="n">what we do</span></div>
-    <div class="grid">
-      <div class="disc">
+  <div class="head"><span class="sq"></span><h2>Services</h2><span class="n">what we do</span></div>
+  <div class="disc-list">
+    <div class="disc">
+      <span class="num">01</span>
+      <div>
         <div class="tag"><span class="sq"></span>Build</div>
         <h3>Full-stack engineering</h3>
+      </div>
+      <div>
         <p>You bring the problem. We bring the full stack — architecture, implementation, and the tests that prove it holds before anyone else finds out it doesn't.</p>
         <ul>
           <li>Custom software</li>
           <li>API &amp; systems architecture</li>
         </ul>
       </div>
-      <div class="disc">
+    </div>
+    <div class="disc">
+      <span class="num">02</span>
+      <div>
         <div class="tag"><span class="sq"></span>Secure</div>
         <h3>DevSecOps</h3>
+      </div>
+      <div>
         <p>Checks run at every commit, not audited after the fact. Security is a property of the pipeline, not a phase bolted on at the end.</p>
         <ul>
           <li>CI / CD automation</li>
           <li>Vulnerability scanning</li>
         </ul>
       </div>
-      <div class="disc">
+    </div>
+    <div class="disc">
+      <span class="num">03</span>
+      <div>
         <div class="tag"><span class="sq"></span>Scale</div>
         <h3>Cloud &amp; infrastructure</h3>
+      </div>
+      <div>
         <p>Systems provisioned to carry real traffic, and automated enough that scaling doesn't mean adding more people to watch them.</p>
         <ul>
           <li>Cloud deployment</li>

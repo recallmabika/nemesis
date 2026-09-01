@@ -115,6 +115,59 @@
     }, 5000);
   })();
 
+  // wave trace: random colors (blue, red, black, white, gold) following the path
+  (function(){
+    var grad = document.getElementById('waveGradient');
+    var path = document.getElementById('tracePath');
+    if(!grad || !path) return;
+    var palette = ['#2b5fd9', '#c23b3b', '#0a0a0a', '#f5f5f3', '#a9781f'];
+    var stops = 7;
+    var used = [];
+    for(var i = 0; i <= stops; i++){
+      var color = palette[Math.floor(Math.random() * palette.length)];
+      used.push(color);
+      var stop = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+      stop.setAttribute('offset', Math.round((i / stops) * 100) + '%');
+      stop.setAttribute('stop-color', color);
+      grad.appendChild(stop);
+    }
+    path.style.stroke = 'url(#waveGradient)';
+  })();
+
+  // shrink header on scroll
+  (function(){
+    var header = document.querySelector('header');
+    if(!header) return;
+    function onScroll(){
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }
+    document.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  })();
+
+  // theme toggle — manual override persists; otherwise follows system setting
+  (function(){
+    var btn = document.getElementById('themeToggle');
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function apply(theme){
+      document.documentElement.setAttribute('data-theme', theme);
+    }
+    if(btn){
+      btn.addEventListener('click', function(){
+        var current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        var next = current === 'dark' ? 'light' : 'dark';
+        apply(next);
+        try{ localStorage.setItem('nemesis-theme', next); }catch(e){}
+      });
+    }
+    mq.addEventListener('change', function(ev){
+      var stored = null;
+      try{ stored = localStorage.getItem('nemesis-theme'); }catch(e){}
+      if(!stored){ apply(ev.matches ? 'dark' : 'light'); }
+    });
+  })();
+
   // nav active link on scroll
   (function(){
     var links = document.querySelectorAll('#siteNav a');

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +7,7 @@
   {# ---------- Core SEO ---------- #}
   <title>{% block title %}NEMESIS — Full-Stack Software & DevSecOps in Harare, Zimbabwe{% endblock %}</title>
   <meta name="description" content="{% block meta_description %}{{ default_description }}{% endblock %}">
-  <meta name="keywords"
-    content="{% block meta_keywords %}software development Zimbabwe, DevSecOps Harare, custom software Zimbabwe, web development Harare, mobile app development Zimbabwe, network security EDR, cloud infrastructure Zimbabwe, API development, software company Harare{% endblock %}">
+  <meta name="keywords" content="{% block meta_keywords %}software development Zimbabwe, DevSecOps Harare, custom software Zimbabwe, web development Harare, mobile app development Zimbabwe, network security EDR, cloud infrastructure Zimbabwe, API development, software company Harare{% endblock %}">
   <meta name="author" content="NEMESIS">
   <meta name="robots" content="{% block robots %}index, follow, max-image-preview:large{% endblock %}">
   <meta name="theme-color" content="#f3f1ea">
@@ -26,8 +24,7 @@
   <meta property="og:title" content="{% block og_title %}{{ self.title() }}{% endblock %}">
   <meta property="og:description" content="{% block og_description %}{{ self.meta_description() }}{% endblock %}">
   <meta property="og:url" content="{{ canonical_url }}">
-  <meta property="og:image"
-    content="{% block og_image %}{{ site_url }}{{ url_for('static', filename='img/nemesis_logo.png') }}{% endblock %}">
+  <meta property="og:image" content="{% block og_image %}{{ site_url }}{{ url_for('static', filename='img/nemesis_logo.png') }}{% endblock %}">
   <meta property="og:image:width" content="1024">
   <meta property="og:image:height" content="1024">
   <meta property="og:locale" content="en_ZW">
@@ -49,7 +46,7 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "NEMESIS",
-    "alternateName": "NEMESIS",
+    "alternateName": "NEMESIS Software",
     "url": "{{ site_url }}",
     "logo": "{{ site_url }}{{ url_for('static', filename='img/nemesis_logo.png') }}",
     "image": "{{ site_url }}{{ url_for('static', filename='img/nemesis_logo.png') }}",
@@ -76,42 +73,54 @@
   {% endblock %}
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <script>
+    (function(){
+      var stored = null;
+      try{ stored = localStorage.getItem('nemesis-theme'); }catch(e){}
+      var theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
   {% block extra_css %}{% endblock %}
 </head>
-
 <body>
 
-  <header>
-    <div class="wrap">
-      <a class="brand" href="{{ url_for('index') }}#top">
-        <img src="{{ url_for('static', filename='img/nemesis_logo.png') }}" alt="Nemesis mark">
-        <span class="word"><b>NEMESIS</b> <i>software</i></span>
-      </a>
+<header>
+  <div class="wrap">
+    <a class="brand" href="{{ url_for('index') }}#top">
+      <img src="{{ url_for('static', filename='img/nemesis_logo.png') }}" alt="Nemesis mark">
+      <span class="word">NEMESIS</span>
+    </a>
+    <div class="header-right">
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">Menu</button>
       <nav id="siteNav">
-        <a href="{{ url_for('index') }}#services">Services</a>
-        <a href="{{ url_for('index') }}#devsecops">DevSecOps</a>
-        <a href="{{ url_for('index') }}#process">Process</a>
-        <a href="{{ url_for('index') }}#work">Work</a>
-        <a href="{{ url_for('index') }}#contact">Contact</a>
+        <a href="#services">Services</a>
+        <a href="#devsecops">DevSecOps</a>
+        <a href="#process">Process</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
       </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
+        <span class="tt-light">Light mode</span>
+        <span class="tt-dark">Dark mode</span>
+      </button>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main>
-    {% block content %}{% endblock %}
-  </main>
+<main>
+  {% block content %}{% endblock %}
+</main>
 
-  <footer>
-    <div class="wrap">
-      <span>Harare, Zimbabwe</span>
-      <span>Nemesis Software, {{ current_year }}</span>
-    </div>
-  </footer>
+<footer>
+  <div class="wrap">
+    <span>Harare, Zimbabwe</span>
+    <span>Nemesis Software, {{ current_year }}</span>
+  </div>
+</footer>
 
-  <script src="{{ url_for('static', filename='js/site.js') }}"></script>
-  {% block extra_js %}{% endblock %}
+<script src="{{ url_for('static', filename='js/site.js') }}"></script>
+{% block extra_js %}{% endblock %}
 </body>
-
 </html>
