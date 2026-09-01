@@ -160,6 +160,7 @@
         <div class="top"><span class="kind">Marketplace</span></div>
         <h3>FINDit</h3>
         <p>A marketplace platform connecting buyers, sellers, and service providers, built for discovery at scale.</p>
+        <div class="card-img" style="margin: 16px 0; text-align: center;"><img src="{{ url_for('static', filename='img/fiind-app.png') }}" alt="FiiND app screenshot" style="max-height: 260px; width: auto; margin: 0 auto;"></div>
         <div class="facts"><span>Smart search &amp; discovery</span><span>Seller verification</span></div>
       </div>
 
@@ -215,12 +216,14 @@
   </div>
 </section>
 
-<section class="contact reveal" id="contact">
-  <div class="wrap contact-grid">
+<section class="contact reveal" id="contact" style="position: relative; overflow: hidden;">
+  <div class="africa-map"></div>
+  <div class="wrap contact-grid" style="position: relative; z-index: 1;">
     <div>
       <h2>Ready to build?</h2>
       <p class="dek">Whether you need a full-stack product from scratch or DevSecOps automation for your existing infrastructure, we're ready to engineer the solution.</p>
       <a class="email" href="mailto:developers@nemesis.co.zw">developers@nemesis.co.zw</a>
+      <p class="phone" style="margin-top: 10px; font-size: 13px; color: var(--ink-70);">+263 78 430 7902</p>
     </div>
     <form id="contactForm">
       <div class="field"><label for="name">Name</label><input id="name" type="text" placeholder="Your name" autocomplete="name"></div>

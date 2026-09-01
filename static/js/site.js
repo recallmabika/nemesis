@@ -11,14 +11,7 @@
     });
   }
 
-  // draw the trace once it scrolls into view
-  var tracePath = document.getElementById('tracePath');
-  var traceIO = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ tracePath.classList.add('go'); traceIO.disconnect(); }
-    });
-  }, {threshold:.4});
-  traceIO.observe(tracePath);
+  // trace path is now animated continuously in the ECG block below
 
   // generic reveal-on-scroll + ring/dial triggers
   var revealEls = document.querySelectorAll('.reveal');
@@ -115,23 +108,98 @@
     }, 5000);
   })();
 
-  // wave trace: random colors (blue, red, black, white, gold) following the path
+  // wave trace: hospital monitor effect
   (function(){
     var grad = document.getElementById('waveGradient');
     var path = document.getElementById('tracePath');
-    if(!grad || !path) return;
-    var palette = ['#2b5fd9', '#c23b3b', '#0a0a0a', '#f5f5f3', '#a9781f'];
-    var stops = 7;
-    var used = [];
-    for(var i = 0; i <= stops; i++){
-      var color = palette[Math.floor(Math.random() * palette.length)];
-      used.push(color);
-      var stop = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
-      stop.setAttribute('offset', Math.round((i / stops) * 100) + '%');
-      stop.setAttribute('stop-color', color);
-      grad.appendChild(stop);
+    var frame = document.getElementById('signalSvg');
+    if(!grad || !path || !frame) return;
+
+    // Create a faint background path so the full wave is always visible
+    var bgPath = path.cloneNode(true);
+    bgPath.removeAttribute('id');
+    bgPath.style.stroke = 'var(--line-strong)';
+    bgPath.style.strokeDasharray = 'none';
+    bgPath.style.animation = 'none';
+    path.parentNode.insertBefore(bgPath, path);
+
+    // Disable CSS animation on main path
+    path.style.animation = 'none';
+
+    // Create leading dot
+    var dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    dot.setAttribute('r', '4');
+    frame.appendChild(dot);
+
+    var len = path.getTotalLength() || 2200;
+    var tailLen = 350; // length of the moving line segment
+
+    path.style.strokeDasharray = tailLen + ' ' + (len * 2);
+
+    var palette = ['#2b5fd9', '#c23b3b', '#f5f5f3', '#10b981', '#0a0a0a'];
+    
+    function updateGradient() {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      var steadyColor = isDark ? '#f5f5f3' : '#2b5fd9'; // White in dark, Blue in light
+      
+      var stopsHTML = '';
+      var numRandomStops = 6;
+      for (var i = 0; i < numRandomStops; i++) {
+        var c = palette[Math.floor(Math.random() * palette.length)];
+        var offset = (i / (numRandomStops - 1)) * 50.9;
+        stopsHTML += '<stop offset="' + offset + '%" stop-color="' + c + '"/>';
+      }
+      stopsHTML += '<stop offset="50.9%" stop-color="' + steadyColor + '"/>';
+      stopsHTML += '<stop offset="100%" stop-color="' + steadyColor + '"/>';
+      
+      grad.innerHTML = stopsHTML;
+      path.style.stroke = 'url(#waveGradient)';
+      return steadyColor;
     }
-    path.style.stroke = 'url(#waveGradient)';
+
+    var steadyColor = updateGradient();
+    
+    // Watch for theme changes to update the steady color
+    var themeObserver = new MutationObserver(function() {
+      steadyColor = updateGradient();
+    });
+    themeObserver.observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
+
+    var startTime = null;
+    var lastRandomize = 0;
+
+    function drawECG(t) {
+      if(!startTime) startTime = t;
+      var prog = ((t - startTime) % 8000) / 8000; // 8s loop
+      
+      var offset = tailLen - (prog * (len + tailLen));
+      path.style.strokeDashoffset = offset;
+      
+      var currentPos = tailLen - offset;
+      var dotPos = currentPos;
+      if(dotPos < 0) dotPos = 0;
+      if(dotPos > len) dotPos = len;
+      
+      var pt = path.getPointAtLength(dotPos);
+      dot.setAttribute('cx', pt.x);
+      dot.setAttribute('cy', pt.y);
+      
+      if (pt.x > 560) {
+        dot.setAttribute('fill', steadyColor);
+        dot.style.filter = 'drop-shadow(0 0 5px ' + steadyColor + ')';
+      } else {
+        if (t - lastRandomize > 150) {
+          var rc = palette[Math.floor(Math.random() * palette.length)];
+          dot.setAttribute('fill', rc);
+          dot.style.filter = 'drop-shadow(0 0 5px ' + rc + ')';
+          lastRandomize = t;
+        }
+      }
+      
+      requestAnimationFrame(drawECG);
+    }
+    
+    requestAnimationFrame(drawECG);
   })();
 
   // shrink header on scroll
@@ -180,6 +248,12 @@
       var pos = window.scrollY + 120;
       var current = sections[0];
       sections.forEach(function(sec){ if(sec.offsetTop <= pos) current = sec; });
+      
+      // If we are at the bottom of the page, force the last section to be active
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
+        current = sections[sections.length - 1];
+      }
+      
       links.forEach(function(a){
         a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
       });
