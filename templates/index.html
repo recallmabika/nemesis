@@ -4,15 +4,20 @@
 {% block content %}
 <section class="hero" id="top">
   <div class="hero-bg" id="heroBg">
-    <div class="hero-bg-slide is-active" style="background-image:url('{{ url_for('static', filename='img/slide.jpg') }}')"></div>
-    <div class="hero-bg-slide" style="background-image:url('{{ url_for('static', filename='img/slide-2-building.png') }}')"></div>
-    <div class="hero-bg-slide" style="background-image:url('{{ url_for('static', filename='img/slide-3-consultancy.jpg') }}')"></div>
-    <div class="hero-bg-slide" style="background-image:url('{{ url_for('static', filename='img/slide-4-ai-agents.jpg') }}')"></div>
+    <div class="hero-bg-slide is-active"
+      style="background-image:url('{{ url_for('static', filename='img/slide.jpg') }}')"></div>
+    <div class="hero-bg-slide"
+      style="background-image:url('{{ url_for('static', filename='img/slide-2-building.png') }}')"></div>
+    <div class="hero-bg-slide"
+      style="background-image:url('{{ url_for('static', filename='img/slide-3-consultancy.jpg') }}')"></div>
+    <div class="hero-bg-slide"
+      style="background-image:url('{{ url_for('static', filename='img/slide-4-ai-agents.jpg') }}')"></div>
   </div>
   <div class="wrap">
     <div>
       <h1>Software tuned to hold its <i>line</i> under real load.</h1>
-      <p class="dek">Full-stack development and DevSecOps, built and run out of Harare. We take a system from its noisiest state to a steady one — and keep it there through every deploy after.</p>
+      <p class="dek">Full-stack development and DevSecOps, built and run out of Harare. We take a system from its
+        noisiest state to a steady one — and keep it there through every deploy after.</p>
       <div class="actions">
         <a href="#contact" class="btn primary">Start a build</a>
         <a href="#process" class="btn">See the method</a>
@@ -30,18 +35,25 @@
   <div class="wrap">
     <div class="cap"><span>What we're paid to change</span><span class="hint">hover the trace to read it</span></div>
     <div class="signal-frame" id="signalFrame">
-      <svg viewBox="0 0 1100 220" preserveAspectRatio="none" id="signalSvg" role="img" aria-label="A chart showing a volatile signal settling into a steady flat line, representing an unstable system stabilized by Nemesis.">
+      <svg viewBox="0 0 1100 220" preserveAspectRatio="none" id="signalSvg" role="img"
+        aria-label="A chart showing a volatile signal settling into a steady flat line, representing an unstable system stabilized by Nemesis.">
         <defs>
-          <linearGradient id="waveGradient" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1100" y2="0"></linearGradient>
+          <linearGradient id="waveGradient" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1100" y2="0">
+          </linearGradient>
         </defs>
-        <line x1="0" y1="110" x2="1100" y2="110" class="tick" stroke-dasharray="2 5"/>
+        <line x1="0" y1="110" x2="1100" y2="110" class="tick" stroke-dasharray="2 5" />
         <g class="tick">
-          <line x1="0" y1="200" x2="0" y2="208"/><line x1="110" y1="200" x2="110" y2="208"/>
-          <line x1="220" y1="200" x2="220" y2="208"/><line x1="330" y1="200" x2="330" y2="208"/>
-          <line x1="440" y1="200" x2="440" y2="208"/><line x1="550" y1="200" x2="550" y2="208"/>
-          <line x1="660" y1="200" x2="660" y2="208"/><line x1="770" y1="200" x2="770" y2="208"/>
-          <line x1="880" y1="200" x2="880" y2="208"/><line x1="990" y1="200" x2="990" y2="208"/>
-          <line x1="1100" y1="200" x2="1100" y2="208"/>
+          <line x1="0" y1="200" x2="0" y2="208" />
+          <line x1="110" y1="200" x2="110" y2="208" />
+          <line x1="220" y1="200" x2="220" y2="208" />
+          <line x1="330" y1="200" x2="330" y2="208" />
+          <line x1="440" y1="200" x2="440" y2="208" />
+          <line x1="550" y1="200" x2="550" y2="208" />
+          <line x1="660" y1="200" x2="660" y2="208" />
+          <line x1="770" y1="200" x2="770" y2="208" />
+          <line x1="880" y1="200" x2="880" y2="208" />
+          <line x1="990" y1="200" x2="990" y2="208" />
+          <line x1="1100" y1="200" x2="1100" y2="208" />
         </g>
         <path class="trace-line trace-draw" id="tracePath" d="
           M0,110 L20,58 L40,168 L60,44 L80,178 L100,52 L120,162
@@ -50,15 +62,15 @@
           L380,94 L400,112 L420,97 L440,108 L460,100 L480,106
           L500,102 L520,105 L540,103 L560,104.5
           L580,110 L640,110 L700,110 L760,110 L820,110 L880,110 L940,110 L1000,110 L1060,110 L1100,110
-        "/>
-        <line x1="560" y1="20" x2="560" y2="200" class="mark-line" stroke-dasharray="3 4"/>
-        <circle cx="560" cy="104.5" r="3.5" class="mark-dot"/>
+        " />
+        <line x1="560" y1="20" x2="560" y2="200" class="mark-line" stroke-dasharray="3 4" />
+        <circle cx="560" cy="104.5" r="3.5" class="mark-dot" />
         <text x="568" y="34" class="axis-label gold">stabilized</text>
         <text x="6" y="30" class="axis-label">production, unmanaged</text>
         <text x="900" y="30" class="axis-label">running under Nemesis</text>
 
-        <line x1="0" y1="0" x2="0" y2="220" class="scrub-line" id="scrubLine"/>
-        <circle cx="0" cy="110" r="4" class="scrub-dot" id="scrubDot"/>
+        <line x1="0" y1="0" x2="0" y2="220" class="scrub-line" id="scrubLine" />
+        <circle cx="0" cy="110" r="4" class="scrub-dot" id="scrubDot" />
       </svg>
       <div class="scrub-readout" id="scrubReadout">—</div>
     </div>
@@ -70,7 +82,9 @@
 </section>
 
 <section class="disciplines reveal" id="services">
-  <div class="head"><span class="sq"></span><h2>Services</h2><span class="n">what we do</span></div>
+  <div class="head"><span class="sq"></span>
+    <h2>Services</h2><span class="n">what we do</span>
+  </div>
   <div class="disc-list">
     <div class="disc">
       <span class="num">01</span>
@@ -79,7 +93,8 @@
         <h3>Full-stack engineering</h3>
       </div>
       <div>
-        <p>You bring the problem. We bring the full stack — architecture, implementation, and the tests that prove it holds before anyone else finds out it doesn't.</p>
+        <p>You bring the problem. We bring the full stack — architecture, implementation, and the tests that prove it
+          holds before anyone else finds out it doesn't.</p>
         <ul>
           <li>Custom software</li>
           <li>API &amp; systems architecture</li>
@@ -93,7 +108,8 @@
         <h3>DevSecOps</h3>
       </div>
       <div>
-        <p>Checks run at every commit, not audited after the fact. Security is a property of the pipeline, not a phase bolted on at the end.</p>
+        <p>Checks run at every commit, not audited after the fact. Security is a property of the pipeline, not a phase
+          bolted on at the end.</p>
         <ul>
           <li>CI / CD automation</li>
           <li>Vulnerability scanning</li>
@@ -107,7 +123,8 @@
         <h3>Cloud &amp; infrastructure</h3>
       </div>
       <div>
-        <p>Systems provisioned to carry real traffic, and automated enough that scaling doesn't mean adding more people to watch them.</p>
+        <p>Systems provisioned to carry real traffic, and automated enough that scaling doesn't mean adding more people
+          to watch them.</p>
         <ul>
           <li>Cloud deployment</li>
           <li>Infrastructure as code</li>
@@ -119,8 +136,11 @@
 
 <section class="devsecops reveal" id="devsecops">
   <div class="wrap">
-    <div class="head"><span class="sq"></span><h2>DevSecOps</h2><span class="n">built in, not bolted on</span></div>
-    <p class="lede">Shipping isn't the finish line. We set up automated pipelines that test and scan for vulnerabilities on every change, so security keeps pace with development instead of trailing behind it.</p>
+    <div class="head"><span class="sq"></span>
+      <h2>DevSecOps</h2><span class="n">built in, not bolted on</span>
+    </div>
+    <p class="lede">Shipping isn't the finish line. We set up automated pipelines that test and scan for vulnerabilities
+      on every change, so security keeps pace with development instead of trailing behind it.</p>
     <div class="chips">
       <span class="chip">SAST / DAST</span>
       <span class="chip">Dependency scanning</span>
@@ -132,20 +152,44 @@
 
 <section class="process reveal" id="process">
   <div class="wrap">
-    <div class="head"><span class="sq"></span><h2>Process</h2><span class="n">how we work</span></div>
+    <div class="head"><span class="sq"></span>
+      <h2>Process</h2><span class="n">how we work</span>
+    </div>
     <div class="ring-area">
       <div class="ring-wrap" id="ringWrap">
         <svg viewBox="0 0 300 300">
-          <circle class="ring-track" cx="150" cy="150" r="140"/>
-          <circle class="ring-progress" id="ringProgress" cx="150" cy="150" r="140"/>
+          <circle class="ring-track" cx="150" cy="150" r="140" />
+          <circle class="ring-progress" id="ringProgress" cx="150" cy="150" r="140" />
         </svg>
-        <div class="ring-center"><p>From brief to<br>live system.</p></div>
+        <div class="ring-center">
+          <p>From brief to<br>live system.</p>
+        </div>
       </div>
       <div class="phases">
-        <div class="phase"><span class="pn">01</span><div><h4>Discover &amp; scope</h4><p>We map the problem, the constraints, and what "done" actually means before any code is written.</p></div></div>
-        <div class="phase"><span class="pn">02</span><div><h4>Design &amp; architect</h4><p>System boundaries, data flow, and infrastructure decisions get made deliberately, on paper first.</p></div></div>
-        <div class="phase"><span class="pn">03</span><div><h4>Build &amp; automate</h4><p>Product and pipeline are built together, so every change ships through the same tested path.</p></div></div>
-        <div class="phase"><span class="pn">04</span><div><h4>Deploy &amp; harden</h4><p>Live traffic, monitored. Scans and checks run continuously, not once at handover.</p></div></div>
+        <div class="phase"><span class="pn">01</span>
+          <div>
+            <h4>Discover &amp; scope</h4>
+            <p>We map the problem, the constraints, and what "done" actually means before any code is written.</p>
+          </div>
+        </div>
+        <div class="phase"><span class="pn">02</span>
+          <div>
+            <h4>Design &amp; architect</h4>
+            <p>System boundaries, data flow, and infrastructure decisions get made deliberately, on paper first.</p>
+          </div>
+        </div>
+        <div class="phase"><span class="pn">03</span>
+          <div>
+            <h4>Build &amp; automate</h4>
+            <p>Product and pipeline are built together, so every change ships through the same tested path.</p>
+          </div>
+        </div>
+        <div class="phase"><span class="pn">04</span>
+          <div>
+            <h4>Deploy &amp; harden</h4>
+            <p>Live traffic, monitored. Scans and checks run continuously, not once at handover.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -153,35 +197,42 @@
 
 <section class="work reveal" id="work">
   <div class="wrap">
-    <div class="head"><span class="sq"></span><h2>Work</h2><span class="n">what we've built</span></div>
+    <div class="head"><span class="sq"></span>
+      <h2>Work</h2><span class="n">what we've built</span>
+    </div>
     <div class="cards">
 
       <div class="card">
         <div class="top"><span class="kind">Marketplace</span></div>
         <h3>FINDit</h3>
         <p>A marketplace platform connecting buyers, sellers, and service providers, built for discovery at scale.</p>
-        <div class="card-img" style="margin: 16px 0; text-align: center;"><img src="{{ url_for('static', filename='img/fiind-app.png') }}" alt="FiiND app screenshot" style="max-height: 260px; width: auto; margin: 0 auto;"></div>
+        <div class="card-img" style="margin: 16px 0; text-align: center;"><img
+            src="{{ url_for('static', filename='img/fiind-app.png') }}" alt="FiiND app screenshot"
+            style="max-height: 260px; width: auto; margin: 0 auto;"></div>
         <div class="facts"><span>Smart search &amp; discovery</span><span>Seller verification</span></div>
       </div>
 
       <div class="card">
         <div class="top"><span class="kind">Security</span></div>
         <h3>MINOPAR EDR</h3>
-        <p>An endpoint detection and response platform for network security — real-time threat monitoring and forensic telemetry.</p>
+        <p>An endpoint detection and response platform for network security — real-time threat monitoring and forensic
+          telemetry.</p>
         <div class="facts"><span>Real-time threat detection</span><span>Behavioral anomaly detection</span></div>
       </div>
 
       <div class="card">
         <div class="top"><span class="kind">Real estate</span></div>
         <h3>MUSHA</h3>
-        <p>A property evaluation tool combining comparable sales analysis, AI-assisted due diligence, and title deed verification.</p>
+        <p>A property evaluation tool combining comparable sales analysis, AI-assisted due diligence, and title deed
+          verification.</p>
         <div class="facts"><span>Valuation engine</span><span>Title deeds integration</span></div>
       </div>
 
       <div class="card">
         <div class="top"><span class="kind">PropTech</span></div>
         <h3>PONDAE</h3>
-        <p>An accommodation management platform for off-residence student housing — tenancy, allocation, and occupancy reporting.</p>
+        <p>An accommodation management platform for off-residence student housing — tenancy, allocation, and occupancy
+          reporting.</p>
         <div class="facts"><span>Tenant lifecycle management</span><span>Allocation tracking</span></div>
       </div>
 
@@ -193,22 +244,42 @@
   <div class="wrap">
     <div class="grid">
       <div class="dial">
-        <svg viewBox="0 0 88 52"><path class="arc" d="M6,48 A38,38 0 0 1 82,48"/><path class="arc-fill" d="M6,48 A38,38 0 0 1 66,16"/><line class="needle" x1="44" y1="48" x2="68" y2="17"/><circle class="pivot" cx="44" cy="48" r="2.6"/></svg>
+        <svg viewBox="0 0 88 52">
+          <path class="arc" d="M6,48 A38,38 0 0 1 82,48" />
+          <path class="arc-fill" d="M6,48 A38,38 0 0 1 66,16" />
+          <line class="needle" x1="44" y1="48" x2="68" y2="17" />
+          <circle class="pivot" cx="44" cy="48" r="2.6" />
+        </svg>
         <div class="label">Deployment cadence</div>
         <div class="value">CI / CD <small>continuous</small></div>
       </div>
       <div class="dial">
-        <svg viewBox="0 0 88 52"><path class="arc" d="M6,48 A38,38 0 0 1 82,48"/><path class="arc-fill" d="M6,48 A38,38 0 0 1 74,30"/><line class="needle" x1="44" y1="48" x2="76" y2="29"/><circle class="pivot" cx="44" cy="48" r="2.6"/></svg>
+        <svg viewBox="0 0 88 52">
+          <path class="arc" d="M6,48 A38,38 0 0 1 82,48" />
+          <path class="arc-fill" d="M6,48 A38,38 0 0 1 74,30" />
+          <line class="needle" x1="44" y1="48" x2="76" y2="29" />
+          <circle class="pivot" cx="44" cy="48" r="2.6" />
+        </svg>
         <div class="label">Security posture</div>
         <div class="value">DevSecOps <small>by default</small></div>
       </div>
       <div class="dial">
-        <svg viewBox="0 0 88 52"><path class="arc" d="M6,48 A38,38 0 0 1 82,48"/><path class="arc-fill" d="M6,48 A38,38 0 0 1 44,10"/><line class="needle" x1="44" y1="48" x2="44" y2="10"/><circle class="pivot" cx="44" cy="48" r="2.6"/></svg>
+        <svg viewBox="0 0 88 52">
+          <path class="arc" d="M6,48 A38,38 0 0 1 82,48" />
+          <path class="arc-fill" d="M6,48 A38,38 0 0 1 44,10" />
+          <line class="needle" x1="44" y1="48" x2="44" y2="10" />
+          <circle class="pivot" cx="44" cy="48" r="2.6" />
+        </svg>
         <div class="label">Active disciplines</div>
         <div class="value">3 <small>tracked</small></div>
       </div>
       <div class="dial">
-        <svg viewBox="0 0 88 52"><path class="arc" d="M6,48 A38,38 0 0 1 82,48"/><path class="arc-fill" d="M6,48 A38,38 0 0 1 20,14"/><line class="needle" x1="44" y1="48" x2="18" y2="15"/><circle class="pivot" cx="44" cy="48" r="2.6"/></svg>
+        <svg viewBox="0 0 88 52">
+          <path class="arc" d="M6,48 A38,38 0 0 1 82,48" />
+          <path class="arc-fill" d="M6,48 A38,38 0 0 1 20,14" />
+          <line class="needle" x1="44" y1="48" x2="18" y2="15" />
+          <circle class="pivot" cx="44" cy="48" r="2.6" />
+        </svg>
         <div class="label">Base of operations</div>
         <div class="value">Harare <small>ZW</small></div>
       </div>
@@ -218,21 +289,61 @@
 
 <section class="contact reveal" id="contact" style="position: relative; overflow: hidden;">
   <div class="africa-map-wrap">
-    <img src="{{ url_for('static', filename='img/africa-dots-light.png') }}" class="africa-map-img africa-map-light" alt="Africa dotted map">
-    <img src="{{ url_for('static', filename='img/africa-dots-dark.png') }}" class="africa-map-img africa-map-dark" alt="Africa dotted map">
+    <img src="{{ url_for('static', filename='img/africa-dots-light.png') }}" class="africa-map-img africa-map-light"
+      alt="Africa dotted map">
+    <img src="{{ url_for('static', filename='img/africa-dots-dark.png') }}" class="africa-map-img africa-map-dark"
+      alt="Africa dotted map">
   </div>
   <div class="wrap contact-grid" style="position: relative; z-index: 1;">
     <div>
       <h2>Ready to build?</h2>
-      <p class="dek">Whether you need a full-stack product from scratch or DevSecOps automation for your existing infrastructure, we're ready to engineer the solution.</p>
-      <a class="email" href="mailto:developers@nemesis.co.zw">developers@nemesis.co.zw</a>
-      <p class="phone" style="margin-top: 10px; font-size: 13px; color: var(--ink-70);">+263 78 430 7902</p>
+      <p class="dek">Whether you need a full-stack product from scratch or DevSecOps automation for your existing
+        infrastructure, we're ready to engineer the solution.</p>
+
+      <div class="contact-methods">
+        <div class="contact-group">
+          <span class="contact-tag">Direct Lines</span>
+          <div class="phone-list">
+            <a href="tel:+263784307902" class="phone-item">+263 78 430 7902</a>
+            <a href="tel:+263779466786" class="phone-item">+263 77 946 6786</a>
+            <a href="tel:+263774590058" class="phone-item">+263 77 459 0058</a>
+          </div>
+        </div>
+
+        <div class="contact-group">
+          <span class="contact-tag">Email Inquiries</span>
+          <div class="email-list">
+            <a class="email" href="mailto:developers@nemesis.co.zw">developers@nemesis.co.zw</a>
+            <a class="email" href="mailto:info@nemesis.co.zw">info@nemesis.co.zw</a>
+          </div>
+        </div>
+      </div>
     </div>
     <form id="contactForm">
-      <div class="field"><label for="name">Name</label><input id="name" type="text" placeholder="Your name" autocomplete="name"></div>
-      <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="your@email.com" autocomplete="email"></div>
-      <div class="field"><label for="details">Project details</label><textarea id="details" placeholder="Tell us about your project..."></textarea></div>
-      <button type="submit" class="btn primary submit">Submit inquiry</button>
+      <h2>Send your inquiry to us...</h2>
+      <div class="field">
+        <label for="name">Name / company</label>
+        <input id="name" type="text" placeholder="Your name or company" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="your@email.com" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="category">Category</label>
+        <select id="category" name="category">
+          <option value="system-development">System Development / Full-Stack</option>
+          <option value="devsecops">DevSecOps &amp; Security Automation</option>
+          <option value="cloud-infrastructure">Cloud &amp; Infrastructure</option>
+          <option value="consulting">Architecture &amp; Technical Consulting</option>
+          <option value="general">General Inquiry</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="details">Project details</label>
+        <textarea id="details" placeholder="Tell us about your project, timeline, and requirements..." required></textarea>
+      </div>
+      <button type="submit" class="btn primary submit">Send inquiry</button>
     </form>
   </div>
 </section>

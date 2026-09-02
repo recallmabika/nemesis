@@ -35,8 +35,8 @@
   .wrap{max-width:1180px; margin:0 auto; padding:0 40px;}
   section{scroll-margin-top:80px;}
 
-  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
-    outline:2px solid var(--gold); outline-offset:4px;
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--ink); outline-offset:4px;
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -228,12 +228,19 @@
   .dial .value small{font-weight:400; color:var(--ink-45); font-size:11px;}
 
   /* ---------------- contact ---------------- */
-  .contact{padding:100px 0;}
-  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:120px;}
+  .contact{min-height:100vh; display:flex; align-items:center; padding:80px 0;}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:120px; align-items:center; width:100%;}
   .contact h2{font-family:'Instrument Serif', serif; font-weight:400; font-size:clamp(36px,5vw,52px); white-space:nowrap; line-height:1.1;}
-  .contact .dek{margin-top:20px; max-width:40ch; font-size:16px;}
-  .contact .email{margin-top:26px; display:inline-block; font-size:16px; border-bottom:1px solid var(--gold); padding-bottom:2px; text-decoration:none; transition:color .2s linear;}
-  .contact .email:hover{color:var(--ink); border-bottom-color:var(--ink);}
+  .contact .dek{margin-top:20px; max-width:42ch; font-size:15px; line-height:1.8;}
+  
+  .contact-methods{margin-top:36px; display:flex; flex-direction:column; gap:26px;}
+  .contact-group{display:flex; flex-direction:column; gap:8px;}
+  .contact-tag{font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold); font-weight:600;}
+  .phone-list, .email-list{display:flex; flex-direction:column; gap:6px;}
+  .phone-item{font-size:14.5px; color:var(--ink); text-decoration:none; transition:color .2s linear;}
+  .phone-item:hover{color:var(--gold);}
+  .email-list .email{font-size:14.5px; color:var(--ink); border-bottom:1px solid var(--gold); padding-bottom:2px; text-decoration:none; align-self:flex-start; transition:color .2s linear, border-color .2s linear;}
+  .email-list .email:hover{color:var(--gold); border-bottom-color:var(--gold);}
   
   .africa-map-wrap {
     position: absolute;
@@ -259,13 +266,25 @@
   [data-theme="dark"] .africa-map-light { display: none; }
   [data-theme="dark"] .africa-map-wrap { opacity: 0.28; }
 
-  form{display:flex; flex-direction:column; gap:24px;}
+  form{display:flex; flex-direction:column; gap:22px;}
+  form h2{font-size:clamp(26px,3.5vw,36px); margin-bottom:4px;}
   .field label{display:block; font-size:13px; color:var(--ink-45); margin-bottom:8px;}
-  .field input, .field textarea{width:100%; background:transparent; border:1px solid var(--line-strong); padding:16px 18px; font-family:'JetBrains Mono', monospace; font-size:15px; color:var(--ink); transition:border-color .2s linear;}
-  .field input:hover, .field textarea:hover{border-color:var(--ink-30);}
-  .field input:focus, .field textarea:focus{border-color:var(--gold); outline:none;}
-  .field textarea{min-height:140px; resize:vertical;}
-  .submit{align-self:flex-start; margin-top:8px;}
+  .field input, .field textarea, .field select{width:100%; background:transparent; border:1px solid var(--line-strong); padding:16px 18px; font-family:'JetBrains Mono', monospace; font-size:14.5px; color:var(--ink); transition:border-color .2s linear; outline:none;}
+  .field select{
+    cursor:pointer;
+    background-color:var(--paper);
+    -webkit-appearance:none;
+    appearance:none;
+    background-image:url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat:no-repeat;
+    background-position:right 18px center;
+    background-size:16px;
+    padding-right:44px;
+  }
+  .field input:hover, .field textarea:hover, .field select:hover{border-color:var(--ink-70);}
+  .field input:focus, .field textarea:focus, .field select:focus{border-color:var(--ink);}
+  .field textarea{min-height:130px; resize:vertical;}
+  .submit{align-self:flex-start; margin-top:6px;}
 
   /* ---------------- footer ---------------- */
   footer{border-top:none;}
