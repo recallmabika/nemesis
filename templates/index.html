@@ -142,84 +142,88 @@
       <span class="n">security &amp; reliability protocols</span>
     </div>
 
-    <div class="devsecops-lead-block">
-      <h3 class="devsecops-headline">Security is an engineering property, not a compliance footnote.</h3>
-      <p class="devsecops-subtext">Every codebase we deliver ships with automated guardrails embedded directly into the continuous delivery pipeline. If a change introduces an architectural vulnerability, an untrusted package, or credential leakage, it never reaches production.</p>
-    </div>
+    <div class="devsec-body">
 
-    <!-- 4 Core Invariant Pillars -->
-    <div class="sec-pillars-grid">
-      <div class="sec-pillar">
-        <span class="sec-pillar-num">01</span>
-        <h4 class="sec-pillar-title">Hermetic Builds</h4>
-        <p class="sec-pillar-desc">Deterministic build pipelines with locked dependency trees and cryptographic hash verification. No ambient environment leaks.</p>
-      </div>
-
-      <div class="sec-pillar">
-        <span class="sec-pillar-num">02</span>
-        <h4 class="sec-pillar-title">Static &amp; Dynamic AST Auditing</h4>
-        <p class="sec-pillar-desc">Automated abstract syntax tree inspection, taint tracking, and endpoint fuzzing executed on every branch prior to merge.</p>
-      </div>
-
-      <div class="sec-pillar">
-        <span class="sec-pillar-num">03</span>
-        <h4 class="sec-pillar-title">Ephemeral Secrets &amp; IAM</h4>
-        <p class="sec-pillar-desc">High-entropy secret detection with zero hardcoded credentials. Dynamic cloud workload identity federation with auto-rotation.</p>
-      </div>
-
-      <div class="sec-pillar">
-        <span class="sec-pillar-num">04</span>
-        <h4 class="sec-pillar-title">Runtime Kernel Telemetry</h4>
-        <p class="sec-pillar-desc">Kernel-level eBPF probes monitoring anomalous network calls, memory access boundaries, and non-root container sandboxes.</p>
-      </div>
-    </div>
-
-    <!-- Engineering Security Ledger Table -->
-    <div class="sec-ledger-wrap">
-      <div class="sec-ledger-header">
-        <span class="ledger-label">Engineering Verification Ledger</span>
-        <span class="ledger-meta">ENFORCED AT REPOSITORY ROOT</span>
-      </div>
-
-      <div class="sec-ledger-table" role="table" aria-label="DevSecOps Specification Ledger">
-        <div class="ledger-row ledger-head" role="row">
-          <span class="l-cell col-scope" role="columnheader">Verification Scope</span>
-          <span class="l-cell col-tech" role="columnheader">Tooling / Method</span>
-          <span class="l-cell col-stage" role="columnheader">Enforcement Layer</span>
-          <span class="l-cell col-cadence" role="columnheader">SLA / Cadence</span>
-        </div>
-
-        <div class="ledger-row" role="row">
-          <span class="l-cell col-scope" role="cell">Source Code Integrity</span>
-          <span class="l-cell col-tech" role="cell">Semgrep · SonarQube · AST Parsers</span>
-          <span class="l-cell col-stage" role="cell">Pre-Commit &amp; PR Gate</span>
-          <span class="l-cell col-cadence" role="cell">100% PR Coverage</span>
-        </div>
-
-        <div class="ledger-row" role="row">
-          <span class="l-cell col-scope" role="cell">Supply Chain Dependencies</span>
-          <span class="l-cell col-tech" role="cell">Syft SBOM · Trivy · OSV Database</span>
-          <span class="l-cell col-stage" role="cell">Container Build Hook</span>
-          <span class="l-cell col-cadence" role="cell">Continuous CVE Sync</span>
-        </div>
-
-        <div class="ledger-row" role="row">
-          <span class="l-cell col-scope" role="cell">Secret &amp; Key Governance</span>
-          <span class="l-cell col-tech" role="cell">TruffleHog · Vault · OIDC Workload</span>
-          <span class="l-cell col-stage" role="cell">Push &amp; Runtime IAM</span>
-          <span class="l-cell col-cadence" role="cell">Zero-Trust / Ephemeral</span>
-        </div>
-
-        <div class="ledger-row" role="row">
-          <span class="l-cell col-scope" role="cell">Runtime Threat Isolation</span>
-          <span class="l-cell col-tech" role="cell">Linux eBPF · Falco · Distroless OCI</span>
-          <span class="l-cell col-stage" role="cell">Production Kernel Daemon</span>
-          <span class="l-cell col-cadence" role="cell">Real-time Telemetry</span>
+      <!-- Left: Image with hover panels -->
+      <div class="devsec-visual">
+        <div class="devsec-image-wrap">
+          <img src="{{ url_for('static', filename='img/slide-3-consultancy.jpg') }}" alt="Engineering environment" class="devsec-img" />
+          <div class="devsec-panel active" data-index="01">
+            <span class="panel-index">01</span>
+            <h4 class="panel-title">Hermetic Builds</h4>
+            <p class="panel-desc">Deterministic pipelines with locked dependency trees and cryptographic hash verification. No ambient environment leaks.</p>
+          </div>
+          <div class="devsec-panel" data-index="02">
+            <span class="panel-index">02</span>
+            <h4 class="panel-title">AST Auditing</h4>
+            <p class="panel-desc">Automated syntax tree inspection, taint tracking, and endpoint fuzzing on every branch prior to merge.</p>
+          </div>
+          <div class="devsec-panel" data-index="03">
+            <span class="panel-index">03</span>
+            <h4 class="panel-title">Ephemeral Secrets</h4>
+            <p class="panel-desc">Zero hardcoded credentials. Dynamic workload identity federation with vault-backed auto-rotation.</p>
+          </div>
+          <div class="devsec-panel" data-index="04">
+            <span class="panel-index">04</span>
+            <h4 class="panel-title">Kernel Telemetry</h4>
+            <p class="panel-desc">eBPF probes monitoring anomalous network calls, memory boundaries, and non-root container sandboxes in real time.</p>
+          </div>
+          <div class="devsec-panel-strip">
+            <button class="strip-tab active" data-panel="01">01</button>
+            <button class="strip-tab" data-panel="02">02</button>
+            <button class="strip-tab" data-panel="03">03</button>
+            <button class="strip-tab" data-panel="04">04</button>
+          </div>
         </div>
       </div>
+
+      <!-- Right: Manifesto + Ledger -->
+      <div class="devsec-editorial">
+        <div class="devsecops-lead-block">
+          <h3 class="devsecops-headline">Security is an engineering property, not a compliance footnote.</h3>
+          <p class="devsecops-subtext">Every codebase we deliver ships with automated guardrails embedded directly into the continuous delivery pipeline. If a change introduces an architectural vulnerability, an untrusted package, or credential leakage, it never reaches production.</p>
+        </div>
+
+        <div class="sec-ledger-wrap">
+          <div class="sec-ledger-header">
+            <span class="ledger-label">Verification Ledger</span>
+            <span class="ledger-meta">Enforced at repository root</span>
+          </div>
+          <div class="sec-ledger-table" role="table" aria-label="DevSecOps Specification Ledger">
+            <div class="ledger-row ledger-head" role="row">
+              <span class="l-cell col-scope" role="columnheader">Scope</span>
+              <span class="l-cell col-tech" role="columnheader">Tooling</span>
+              <span class="l-cell col-cadence" role="columnheader">Cadence</span>
+            </div>
+            <div class="ledger-row" role="row">
+              <span class="l-cell col-scope" role="cell">Source Integrity</span>
+              <span class="l-cell col-tech" role="cell">Semgrep · SonarQube</span>
+              <span class="l-cell col-cadence" role="cell">100% PR</span>
+            </div>
+            <div class="ledger-row" role="row">
+              <span class="l-cell col-scope" role="cell">Supply Chain</span>
+              <span class="l-cell col-tech" role="cell">Syft SBOM · Trivy</span>
+              <span class="l-cell col-cadence" role="cell">Continuous CVE</span>
+            </div>
+            <div class="ledger-row" role="row">
+              <span class="l-cell col-scope" role="cell">Secrets &amp; IAM</span>
+              <span class="l-cell col-tech" role="cell">TruffleHog · Vault</span>
+              <span class="l-cell col-cadence" role="cell">Zero-Trust</span>
+            </div>
+            <div class="ledger-row" role="row">
+              <span class="l-cell col-scope" role="cell">Runtime Isolation</span>
+              <span class="l-cell col-tech" role="cell">eBPF · Falco · OCI</span>
+              <span class="l-cell col-cadence" role="cell">Real-time</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
+
 
 <section class="process-section" id="process">
   <div class="process-bg-image" aria-hidden="true"></div>

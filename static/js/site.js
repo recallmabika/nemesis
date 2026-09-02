@@ -22,6 +22,28 @@
   }, {threshold:.15});
   revealEls.forEach(function(el){ revealIO.observe(el); });
 
+  // DevSecOps image panel switcher
+  (function() {
+    var tabs = document.querySelectorAll('.strip-tab');
+    var panels = document.querySelectorAll('.devsec-panel');
+    if (!tabs.length) return;
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var target = tab.getAttribute('data-panel');
+
+        tabs.forEach(function(t) { t.classList.remove('active'); });
+        panels.forEach(function(p) { p.classList.remove('active'); });
+
+        tab.classList.add('active');
+        var activePanel = document.querySelector('.devsec-panel[data-index="' + target + '"]');
+        if (activePanel) activePanel.classList.add('active');
+      });
+    });
+  })();
+
+
+
   // 4-stage scroll-driven process tracker
   (function(){
     var processTrack = document.getElementById('processTrack');
