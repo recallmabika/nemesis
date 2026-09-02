@@ -541,3 +541,30 @@
       }
     });
   })();
+
+  // DevSecOps gate highlight interaction
+  (function(){
+    var gates = document.querySelectorAll('.sec-gate');
+    var logEntries = document.querySelectorAll('.sec-console .log-entry[data-for]');
+    if(!gates.length) return;
+
+    gates.forEach(function(gate){
+      gate.addEventListener('mouseenter', function(){
+        var target = gate.getAttribute('data-gate');
+        gates.forEach(function(g){ g.classList.remove('is-active'); });
+        gate.classList.add('is-active');
+
+        logEntries.forEach(function(entry){
+          if(entry.getAttribute('data-for') === target){
+            entry.classList.add('highlight');
+          } else {
+            entry.classList.remove('highlight');
+          }
+        });
+      });
+
+      gate.addEventListener('mouseleave', function(){
+        logEntries.forEach(function(entry){ entry.classList.remove('highlight'); });
+      });
+    });
+  })();

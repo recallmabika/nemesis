@@ -136,16 +136,113 @@
 
 <section class="devsecops reveal" id="devsecops">
   <div class="wrap">
-    <div class="head"><span class="sq"></span>
-      <h2>DevSecOps</h2><span class="n">built in, not bolted on</span>
+    <div class="head">
+      <span class="sq"></span>
+      <h2>DevSecOps</h2>
+      <span class="n">automated verification pipeline</span>
     </div>
-    <p class="lede">Shipping isn't the finish line. We set up automated pipelines that test and scan for vulnerabilities
-      on every change, so security keeps pace with development instead of trailing behind it.</p>
-    <div class="chips">
-      <span class="chip">SAST / DAST</span>
-      <span class="chip">Dependency scanning</span>
-      <span class="chip">Secrets detection</span>
-      <span class="chip">Penetration testing</span>
+
+    <div class="devsecops-grid">
+      <!-- Left Column: Manifesto & Verification Gates -->
+      <div class="devsecops-manifesto">
+        <h3 class="devsecops-headline">Security as a pipeline primitive, not a post-launch audit.</h3>
+        <p class="lede">Shipping isn't the finish line. We engineer automated verification gates that test, audit, and scan for vulnerabilities on every commit, so system security moves at development speed instead of lagging behind it.</p>
+
+        <div class="sec-gates-list">
+          <div class="sec-gate is-active" data-gate="sast">
+            <div class="gate-marker">01</div>
+            <div class="gate-info">
+              <h4>Static AST Analysis (SAST / DAST)</h4>
+              <p>Abstract syntax tree parsing, taint analysis, and runtime fuzzing executed before merge.</p>
+            </div>
+          </div>
+
+          <div class="sec-gate" data-gate="supply-chain">
+            <div class="gate-marker">02</div>
+            <div class="gate-info">
+              <h4>Supply Chain &amp; Dependency SBOM</h4>
+              <p>Automated software bill of materials, CVE vulnerability mapping, and package checksums.</p>
+            </div>
+          </div>
+
+          <div class="sec-gate" data-gate="secrets">
+            <div class="gate-marker">03</div>
+            <div class="gate-info">
+              <h4>Secrets Entropy &amp; Token Quarantine</h4>
+              <p>High-entropy regex scanners preventing credential leakage, API keys, and certificates.</p>
+            </div>
+          </div>
+
+          <div class="sec-gate" data-gate="runtime">
+            <div class="gate-marker">04</div>
+            <div class="gate-info">
+              <h4>Runtime Telemetry &amp; Container Hardening</h4>
+              <p>Kernel-level eBPF probes, non-root container sandboxing, and continuous compliance checks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Live Pipeline Telemetry Console -->
+      <div class="sec-console-wrapper">
+        <div class="sec-console">
+          <div class="console-topbar">
+            <div class="console-pills">
+              <span class="p-dot"></span>
+              <span class="p-dot"></span>
+              <span class="p-dot"></span>
+            </div>
+            <span class="console-title">pipeline.security.gate // NMS-SEC-9402</span>
+            <span class="console-status"><span class="led-pulse"></span>ENFORCED</span>
+          </div>
+
+          <div class="console-body" id="secConsoleBody">
+            <div class="log-entry pass" data-for="sast">
+              <span class="log-tag">[PASS]</span>
+              <span class="log-scope">AST-STATIC-SCAN</span>
+              <span class="log-val">0 high / 0 critical vulnerabilities</span>
+              <span class="log-time">12ms</span>
+            </div>
+            <div class="log-entry pass" data-for="supply-chain">
+              <span class="log-tag">[PASS]</span>
+              <span class="log-scope">SBOM-DEPENDENCIES</span>
+              <span class="log-val">412 packages validated against CVE database</span>
+              <span class="log-time">184ms</span>
+            </div>
+            <div class="log-entry pass" data-for="secrets">
+              <span class="log-tag">[PASS]</span>
+              <span class="log-scope">ENTROPY-SECRETS</span>
+              <span class="log-val">100% clean · 0 credential patterns matched</span>
+              <span class="log-time">28ms</span>
+            </div>
+            <div class="log-entry pass" data-for="runtime">
+              <span class="log-tag">[PASS]</span>
+              <span class="log-scope">CONTAINER-HARDEN</span>
+              <span class="log-val">Distroless non-root sandbox verified</span>
+              <span class="log-time">45ms</span>
+            </div>
+            <div class="log-entry active-feed">
+              <span class="log-cursor">&gt;</span>
+              <span class="log-feed-txt">Pipeline verification passed: Build cleared for zero-downtime deployment.</span>
+            </div>
+          </div>
+
+          <div class="console-metrics">
+            <div class="c-metric">
+              <span class="cm-label">Mean Patch Window</span>
+              <span class="cm-val">&lt; 24h</span>
+            </div>
+            <div class="c-metric">
+              <span class="cm-label">Verification Speed</span>
+              <span class="cm-val">&lt; 45s</span>
+            </div>
+            <div class="c-metric">
+              <span class="cm-label">Zero False Blockers</span>
+              <span class="cm-val">99.8%</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
