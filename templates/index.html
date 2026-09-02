@@ -171,49 +171,52 @@
                 </filter>
               </defs>
 
-              <!-- Outer Orbit Channel -->
-              <circle cx="175" cy="175" r="130" class="orbit-track" />
-              <circle cx="175" cy="175" r="130" class="orbit-progress" id="orbitProgress" />
-              <circle cx="175" cy="175" r="130" class="orbit-tracer" id="orbitTracer" />
+              <!-- Rotating Orbital Wheel (Points active stage to the description card) -->
+              <g class="orbital-wheel" id="orbitalWheel">
+                <!-- Outer Orbit Channel -->
+                <circle cx="175" cy="175" r="130" class="orbit-track" />
+                <circle cx="175" cy="175" r="130" class="orbit-progress" id="orbitProgress" />
+                <circle cx="175" cy="175" r="130" class="orbit-tracer" id="orbitTracer" />
 
-              <!-- Interconnecting Energy Stems -->
-              <line x1="175" y1="120" x2="175" y2="45" class="node-stem stem-1" />
-              <line x1="230" y1="175" x2="305" y2="175" class="node-stem stem-2" />
-              <line x1="175" y1="230" x2="175" y2="305" class="node-stem stem-3" />
-              <line x1="120" y1="175" x2="45" y2="175" class="node-stem stem-4" />
+                <!-- Interconnecting Energy Stems -->
+                <line x1="175" y1="120" x2="175" y2="45" class="node-stem stem-1" />
+                <line x1="230" y1="175" x2="305" y2="175" class="node-stem stem-2" />
+                <line x1="175" y1="230" x2="175" y2="305" class="node-stem stem-3" />
+                <line x1="120" y1="175" x2="45" y2="175" class="node-stem stem-4" />
 
-              <!-- Center Hub -->
+                <!-- 4 Orbital Nodes -->
+                <!-- Node 1: (01 Discover) -->
+                <g class="orbital-node node-1 active" data-step="1" id="node1">
+                  <circle cx="175" cy="45" r="24" class="node-bg" />
+                  <circle cx="175" cy="45" r="24" class="node-outline" />
+                  <text x="175" y="50" class="node-label">01</text>
+                </g>
+
+                <!-- Node 2: (02 Architect) -->
+                <g class="orbital-node node-2" data-step="2" id="node2">
+                  <circle cx="305" cy="175" r="24" class="node-bg" />
+                  <circle cx="305" cy="175" r="24" class="node-outline" />
+                  <text x="305" y="180" class="node-label">02</text>
+                </g>
+
+                <!-- Node 3: (03 Build) -->
+                <g class="orbital-node node-3" data-step="3" id="node3">
+                  <circle cx="175" cy="305" r="24" class="node-bg" />
+                  <circle cx="175" cy="305" r="24" class="node-outline" />
+                  <text x="175" y="310" class="node-label">03</text>
+                </g>
+
+                <!-- Node 4: (04 Deploy) -->
+                <g class="orbital-node node-4" data-step="4" id="node4">
+                  <circle cx="45" cy="175" r="24" class="node-bg" />
+                  <circle cx="45" cy="175" r="24" class="node-outline" />
+                  <text x="45" y="180" class="node-label">04</text>
+                </g>
+              </g>
+
+              <!-- Center Hub (Stationary) -->
               <circle cx="175" cy="175" r="54" class="hub-base" />
               <circle cx="175" cy="175" r="54" class="hub-ring" />
-              
-              <!-- 4 Orbital Nodes -->
-              <!-- Node 1: Top (01 Discover) -->
-              <g class="orbital-node node-1 active" data-step="1" id="node1">
-                <circle cx="175" cy="45" r="24" class="node-bg" />
-                <circle cx="175" cy="45" r="24" class="node-outline" />
-                <text x="175" y="50" class="node-label">01</text>
-              </g>
-
-              <!-- Node 2: Right (02 Architect) -->
-              <g class="orbital-node node-2" data-step="2" id="node2">
-                <circle cx="305" cy="175" r="24" class="node-bg" />
-                <circle cx="305" cy="175" r="24" class="node-outline" />
-                <text x="305" y="180" class="node-label">02</text>
-              </g>
-
-              <!-- Node 3: Bottom (03 Build) -->
-              <g class="orbital-node node-3" data-step="3" id="node3">
-                <circle cx="175" cy="305" r="24" class="node-bg" />
-                <circle cx="175" cy="305" r="24" class="node-outline" />
-                <text x="175" y="310" class="node-label">03</text>
-              </g>
-
-              <!-- Node 4: Left (04 Deploy) -->
-              <g class="orbital-node node-4" data-step="4" id="node4">
-                <circle cx="45" cy="175" r="24" class="node-bg" />
-                <circle cx="45" cy="175" r="24" class="node-outline" />
-                <text x="45" y="180" class="node-label">04</text>
-              </g>
             </svg>
 
             <!-- Center Text Overlay -->

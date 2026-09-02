@@ -59,7 +59,8 @@
       document.getElementById('phaseCard4')
     ];
 
-    var pills = document.querySelectorAll('.scroll-pills .pill-dot');
+    var orbitalWheel = document.getElementById('orbitalWheel');
+    var rotationAngles = [90, 0, -90, -180];
     var totalLength = 816; // 2 * PI * 130
     var currentStep = 1;
 
@@ -71,6 +72,24 @@
       // Update Hub Text
       if(hubStageNum) hubStageNum.textContent = 'STAGE 0' + step;
       if(hubStageTitle) hubStageTitle.textContent = stageTitles[step - 1];
+
+      // Rotate orbital wheel to point active node towards the description card
+      var rot = rotationAngles[step - 1];
+      if(orbitalWheel){
+        orbitalWheel.style.transform = 'rotate(' + rot + 'deg)';
+      }
+
+      // Counter-rotate node text so numbers always remain upright
+      nodes.forEach(function(n){
+        if(!n) return;
+        var txt = n.querySelector('.node-label');
+        var circle = n.querySelector('circle');
+        if(txt && circle){
+          var cx = circle.getAttribute('cx');
+          var cy = circle.getAttribute('cy');
+          txt.setAttribute('transform', 'rotate(' + (-rot) + ' ' + cx + ' ' + cy + ')');
+        }
+      });
 
       // Update Orbit progress arc
       var targetOffset = totalLength - ((step - 1) / 3) * (totalLength * 0.75);
