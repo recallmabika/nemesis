@@ -171,6 +171,20 @@
                 </filter>
               </defs>
 
+              <!-- Precision Technical Background Calibration -->
+              <circle cx="175" cy="175" r="145" class="orbit-outer-guide" />
+              <g class="orbit-ticks">
+                <line x1="175" y1="20" x2="175" y2="28" />
+                <line x1="330" y1="175" x2="322" y2="175" />
+                <line x1="175" y1="330" x2="175" y2="322" />
+                <line x1="20" y1="175" x2="28" y2="175" />
+                <!-- 45-degree corner ticks -->
+                <line x1="68" y1="68" x2="74" y2="74" />
+                <line x1="282" y1="68" x2="276" y2="74" />
+                <line x1="282" y1="282" x2="276" y2="276" />
+                <line x1="68" y1="282" x2="74" y2="276" />
+              </g>
+
               <!-- Rotating Orbital Wheel (Points active stage to the description card) -->
               <g class="orbital-wheel" id="orbitalWheel">
                 <!-- Outer Orbit Channel -->
@@ -187,29 +201,29 @@
                 <!-- 4 Orbital Nodes -->
                 <!-- Node 1: (01 Discover) -->
                 <g class="orbital-node node-1 active" data-step="1" id="node1">
-                  <circle cx="175" cy="45" r="24" class="node-bg" />
-                  <circle cx="175" cy="45" r="24" class="node-outline" />
+                  <circle cx="175" cy="45" r="23" class="node-bg" />
+                  <circle cx="175" cy="45" r="23" class="node-outline" />
                   <text x="175" y="50" class="node-label">01</text>
                 </g>
 
                 <!-- Node 2: (02 Architect) -->
                 <g class="orbital-node node-2" data-step="2" id="node2">
-                  <circle cx="305" cy="175" r="24" class="node-bg" />
-                  <circle cx="305" cy="175" r="24" class="node-outline" />
+                  <circle cx="305" cy="175" r="23" class="node-bg" />
+                  <circle cx="305" cy="175" r="23" class="node-outline" />
                   <text x="305" y="180" class="node-label">02</text>
                 </g>
 
                 <!-- Node 3: (03 Build) -->
                 <g class="orbital-node node-3" data-step="3" id="node3">
-                  <circle cx="175" cy="305" r="24" class="node-bg" />
-                  <circle cx="175" cy="305" r="24" class="node-outline" />
+                  <circle cx="175" cy="305" r="23" class="node-bg" />
+                  <circle cx="175" cy="305" r="23" class="node-outline" />
                   <text x="175" y="310" class="node-label">03</text>
                 </g>
 
                 <!-- Node 4: (04 Deploy) -->
                 <g class="orbital-node node-4" data-step="4" id="node4">
-                  <circle cx="45" cy="175" r="24" class="node-bg" />
-                  <circle cx="45" cy="175" r="24" class="node-outline" />
+                  <circle cx="45" cy="175" r="23" class="node-bg" />
+                  <circle cx="45" cy="175" r="23" class="node-outline" />
                   <text x="45" y="180" class="node-label">04</text>
                 </g>
               </g>
@@ -217,83 +231,123 @@
               <!-- Center Hub (Stationary) -->
               <circle cx="175" cy="175" r="54" class="hub-base" />
               <circle cx="175" cy="175" r="54" class="hub-ring" />
+              <circle cx="175" cy="175" r="48" class="hub-inner-ring" />
             </svg>
 
             <!-- Center Text Overlay -->
             <div class="hub-text-overlay">
-              <span class="hub-badge" id="hubStageNum">STAGE 01</span>
+              <span class="hub-badge" id="hubStageNum">PHASE 01</span>
               <p class="hub-title" id="hubStageTitle">Discover &amp; Scope</p>
             </div>
           </div>
 
-          <!-- Right: Detailed Scroll-Reactive Phases -->
-          <div class="process-phases-track">
-            <div class="process-phase-card is-active" data-phase="1" id="phaseCard1">
-              <div class="phase-card-top">
-                <span class="phase-number">01</span>
-                <span class="phase-status">Phase 1 of 4</span>
-              </div>
-              <h3>Discover &amp; scope</h3>
-              <p class="phase-lead">We map the problem, the operational constraints, and what "done" actually means before any code is written.</p>
-              <ul class="phase-deliverables">
-                <li>System requirements &amp; bottleneck audit</li>
-                <li>Threat &amp; failure mode analysis</li>
-                <li>Scope, SLA targets &amp; delivery roadmap</li>
-              </ul>
+          <!-- Right: Bespoke Editorial Phase Display -->
+          <div class="process-editorial-display">
+            <!-- Stage Header Navigation Bar -->
+            <div class="stage-nav-tabs">
+              <button type="button" class="stage-tab is-active" data-tab="1"><span class="tab-num">01</span><span class="tab-txt">Discover</span></button>
+              <button type="button" class="stage-tab" data-tab="2"><span class="tab-num">02</span><span class="tab-txt">Architect</span></button>
+              <button type="button" class="stage-tab" data-tab="3"><span class="tab-num">03</span><span class="tab-txt">Build</span></button>
+              <button type="button" class="stage-tab" data-tab="4"><span class="tab-num">04</span><span class="tab-txt">Harden</span></button>
             </div>
 
-            <div class="process-phase-card" data-phase="2" id="phaseCard2">
-              <div class="phase-card-top">
-                <span class="phase-number">02</span>
-                <span class="phase-status">Phase 2 of 4</span>
+            <div class="process-phases-track">
+              <!-- Phase 1 -->
+              <div class="process-phase-card is-active" data-phase="1" id="phaseCard1">
+                <div class="phase-meta-line">
+                  <span class="phase-badge">Phase 01 // Discovery</span>
+                  <span class="phase-cadence">Weeks 1 – 2</span>
+                </div>
+                <h3>Discover &amp; scope the problem.</h3>
+                <p class="phase-lead">We map the system boundary, operational constraints, and clear acceptance criteria before a single line of production code is written.</p>
+                <div class="phase-grid-deliverables">
+                  <div class="deliv-col">
+                    <span class="deliv-heading">Key Deliverables</span>
+                    <ul>
+                      <li>Requirements &amp; bottleneck audit</li>
+                      <li>Threat modeling &amp; risk matrix</li>
+                      <li>Sprint roadmap &amp; SLA targets</li>
+                    </ul>
+                  </div>
+                  <div class="deliv-col">
+                    <span class="deliv-heading">Milestone Output</span>
+                    <p class="deliv-note">Technical scope document and system architecture specification signed off.</p>
+                  </div>
+                </div>
               </div>
-              <h3>Design &amp; architect</h3>
-              <p class="phase-lead">System boundaries, data flow, scale thresholds, and infrastructure decisions get made deliberately, on paper first.</p>
-              <ul class="phase-deliverables">
-                <li>Microservices &amp; database schemas</li>
-                <li>Infrastructure as Code (IaC) blueprints</li>
-                <li>Security governance &amp; access architecture</li>
-              </ul>
-            </div>
 
-            <div class="process-phase-card" data-phase="3" id="phaseCard3">
-              <div class="phase-card-top">
-                <span class="phase-number">03</span>
-                <span class="phase-status">Phase 3 of 4</span>
+              <!-- Phase 2 -->
+              <div class="process-phase-card" data-phase="2" id="phaseCard2">
+                <div class="phase-meta-line">
+                  <span class="phase-badge">Phase 02 // Architecture</span>
+                  <span class="phase-cadence">Weeks 2 – 4</span>
+                </div>
+                <h3>Design &amp; architect deliberately.</h3>
+                <p class="phase-lead">Data schemas, API boundaries, infrastructure blueprints, and security policies get modeled and validated on paper first.</p>
+                <div class="phase-grid-deliverables">
+                  <div class="deliv-col">
+                    <span class="deliv-heading">Key Deliverables</span>
+                    <ul>
+                      <li>Microservice &amp; database schemas</li>
+                      <li>Infrastructure as Code (IaC) blueprints</li>
+                      <li>IAM &amp; zero-trust access control</li>
+                    </ul>
+                  </div>
+                  <div class="deliv-col">
+                    <span class="deliv-heading">Milestone Output</span>
+                    <p class="deliv-note">Reviewed architecture diagrams and staging infrastructure provisioned.</p>
+                  </div>
+                </div>
               </div>
-              <h3>Build &amp; automate</h3>
-              <p class="phase-lead">Product and CI/CD pipelines are engineered concurrently, so every change ships through the same tested, validated path.</p>
-              <ul class="phase-deliverables">
-                <li>Full-stack core implementation</li>
-                <li>Automated SAST/DAST security scanning</li>
-                <li>End-to-end integration &amp; load testing</li>
-              </ul>
-            </div>
 
-            <div class="process-phase-card" data-phase="4" id="phaseCard4">
-              <div class="phase-card-top">
-                <span class="phase-number">04</span>
-                <span class="phase-status">Phase 4 of 4</span>
+              <!-- Phase 3 -->
+              <div class="process-phase-card" data-phase="3" id="phaseCard3">
+                <div class="phase-meta-line">
+                  <span class="phase-badge">Phase 03 // Implementation</span>
+                  <span class="phase-cadence">Weeks 4 – 8</span>
+                </div>
+                <h3>Build &amp; automate concurrently.</h3>
+                <p class="phase-lead">Product codebase and CI/CD pipelines are engineered together, ensuring every commit moves through automated security gates and rigorous testing.</p>
+                <div class="phase-grid-deliverables">
+                  <div class="deliv-col">
+                    <span class="deliv-heading">Key Deliverables</span>
+                    <ul>
+                      <li>Full-stack core implementation</li>
+                      <li>Automated SAST &amp; DAST scanning</li>
+                      <li>Integration, stress &amp; unit test suites</li>
+                    </ul>
+                  </div>
+                  <div class="deliv-col">
+                    <span class="deliv-heading">Milestone Output</span>
+                    <p class="deliv-note">Feature-complete build verified against automated regression pipelines.</p>
+                  </div>
+                </div>
               </div>
-              <h3>Deploy &amp; harden</h3>
-              <p class="phase-lead">Live traffic, monitored 24/7. Telemetry, vulnerability scans, and health checks run continuously, not just once at handover.</p>
-              <ul class="phase-deliverables">
-                <li>Zero-downtime production deployment</li>
-                <li>Real-time telemetry, monitoring &amp; alerting</li>
-                <li>Automated backups &amp; failover recovery</li>
-              </ul>
-            </div>
-          </div>
-        </div>
 
-        <!-- Scroll Indicator Hint -->
-        <div class="process-scroll-indicator">
-          <span>Scroll to advance stages</span>
-          <div class="scroll-pills">
-            <span class="pill-dot active" data-pill="1"></span>
-            <span class="pill-dot" data-pill="2"></span>
-            <span class="pill-dot" data-pill="3"></span>
-            <span class="pill-dot" data-pill="4"></span>
+              <!-- Phase 4 -->
+              <div class="process-phase-card" data-phase="4" id="phaseCard4">
+                <div class="phase-meta-line">
+                  <span class="phase-badge">Phase 04 // Production</span>
+                  <span class="phase-cadence">Continuous</span>
+                </div>
+                <h3>Deploy, monitor &amp; harden.</h3>
+                <p class="phase-lead">Live traffic carrying real workloads. Telemetry, vulnerability checks, and uptime health scans run continuously to preserve steady-state reliability.</p>
+                <div class="phase-grid-deliverables">
+                  <div class="deliv-col">
+                    <span class="deliv-heading">Key Deliverables</span>
+                    <ul>
+                      <li>Zero-downtime blue/green rollout</li>
+                      <li>Real-time telemetry, logs &amp; alarms</li>
+                      <li>Automated backup &amp; failover plans</li>
+                    </ul>
+                  </div>
+                  <div class="deliv-col">
+                    <span class="deliv-heading">Milestone Output</span>
+                    <p class="deliv-note">Hardened production environment running under continuous active surveillance.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

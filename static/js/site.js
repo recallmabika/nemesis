@@ -59,6 +59,7 @@
       document.getElementById('phaseCard4')
     ];
 
+    var tabs = document.querySelectorAll('.stage-nav-tabs .stage-tab');
     var orbitalWheel = document.getElementById('orbitalWheel');
     var rotationAngles = [90, 0, -90, -180];
     var totalLength = 816; // 2 * PI * 130
@@ -70,7 +71,7 @@
       currentStep = step;
 
       // Update Hub Text
-      if(hubStageNum) hubStageNum.textContent = 'STAGE 0' + step;
+      if(hubStageNum) hubStageNum.textContent = 'PHASE 0' + step;
       if(hubStageTitle) hubStageTitle.textContent = stageTitles[step - 1];
 
       // Rotate orbital wheel to point active node towards the description card
@@ -123,10 +124,10 @@
         }
       });
 
-      // Update Pills
-      pills.forEach(function(p, idx){
-        if(idx + 1 === step) p.classList.add('active');
-        else p.classList.remove('active');
+      // Update Stage Navigation Tabs
+      tabs.forEach(function(t, idx){
+        if(idx + 1 === step) t.classList.add('is-active');
+        else t.classList.remove('is-active');
       });
     }
 
@@ -184,7 +185,7 @@
     onScroll();
     startAutoTimer();
 
-    // Click to jump to stage directly
+    // Click to jump to stage directly via nodes
     nodes.forEach(function(n, idx){
       if(!n) return;
       n.addEventListener('click', function(){
@@ -193,8 +194,9 @@
       });
     });
 
-    pills.forEach(function(p, idx){
-      p.addEventListener('click', function(){
+    // Click to jump to stage directly via tabs
+    tabs.forEach(function(t, idx){
+      t.addEventListener('click', function(){
         setStep(idx + 1);
         startAutoTimer();
       });
