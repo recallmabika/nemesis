@@ -150,44 +150,146 @@
   </div>
 </section>
 
-<section class="process reveal" id="process">
-  <div class="wrap">
-    <div class="head"><span class="sq"></span>
-      <h2>Process</h2><span class="n">how we work</span>
-    </div>
-    <div class="ring-area">
-      <div class="ring-wrap" id="ringWrap">
-        <svg viewBox="0 0 300 300">
-          <circle class="ring-track" cx="150" cy="150" r="140" />
-          <circle class="ring-progress" id="ringProgress" cx="150" cy="150" r="140" />
-        </svg>
-        <div class="ring-center">
-          <p>From brief to<br>live system.</p>
+<section class="process-section" id="process">
+  <div class="process-scroll-track" id="processTrack">
+    <div class="process-sticky-viewport">
+      <div class="wrap">
+        <div class="head">
+          <span class="sq"></span>
+          <h2>Process</h2>
+          <span class="n">4-stage engineering delivery</span>
         </div>
-      </div>
-      <div class="phases">
-        <div class="phase"><span class="pn">01</span>
-          <div>
-            <h4>Discover &amp; scope</h4>
-            <p>We map the problem, the constraints, and what "done" actually means before any code is written.</p>
+
+        <div class="process-interactive-grid">
+          <!-- Left: 4-Node Nemesis Orbital Graphic -->
+          <div class="process-diagram-wrap">
+            <svg class="process-orbital-svg" viewBox="0 0 350 350" id="orbitalSvg">
+              <defs>
+                <filter id="glowGold" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="5" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+
+              <!-- Outer Orbit Channel -->
+              <circle cx="175" cy="175" r="130" class="orbit-track" />
+              <circle cx="175" cy="175" r="130" class="orbit-progress" id="orbitProgress" />
+
+              <!-- Interconnecting Energy Stems -->
+              <line x1="175" y1="120" x2="175" y2="45" class="node-stem stem-1" />
+              <line x1="230" y1="175" x2="305" y2="175" class="node-stem stem-2" />
+              <line x1="175" y1="230" x2="175" y2="305" class="node-stem stem-3" />
+              <line x1="120" y1="175" x2="45" y2="175" class="node-stem stem-4" />
+
+              <!-- Center Hub -->
+              <circle cx="175" cy="175" r="54" class="hub-base" />
+              <circle cx="175" cy="175" r="54" class="hub-ring" />
+              
+              <!-- 4 Orbital Nodes -->
+              <!-- Node 1: Top (01 Discover) -->
+              <g class="orbital-node node-1 active" data-step="1" id="node1">
+                <circle cx="175" cy="45" r="24" class="node-bg" />
+                <circle cx="175" cy="45" r="24" class="node-outline" />
+                <text x="175" y="50" class="node-label">01</text>
+              </g>
+
+              <!-- Node 2: Right (02 Architect) -->
+              <g class="orbital-node node-2" data-step="2" id="node2">
+                <circle cx="305" cy="175" r="24" class="node-bg" />
+                <circle cx="305" cy="175" r="24" class="node-outline" />
+                <text x="305" y="180" class="node-label">02</text>
+              </g>
+
+              <!-- Node 3: Bottom (03 Build) -->
+              <g class="orbital-node node-3" data-step="3" id="node3">
+                <circle cx="175" cy="305" r="24" class="node-bg" />
+                <circle cx="175" cy="305" r="24" class="node-outline" />
+                <text x="175" y="310" class="node-label">03</text>
+              </g>
+
+              <!-- Node 4: Left (04 Deploy) -->
+              <g class="orbital-node node-4" data-step="4" id="node4">
+                <circle cx="45" cy="175" r="24" class="node-bg" />
+                <circle cx="45" cy="175" r="24" class="node-outline" />
+                <text x="45" y="180" class="node-label">04</text>
+              </g>
+            </svg>
+
+            <!-- Center Text Overlay -->
+            <div class="hub-text-overlay">
+              <span class="hub-badge" id="hubStageNum">STAGE 01</span>
+              <p class="hub-title" id="hubStageTitle">Discover &amp; Scope</p>
+            </div>
+          </div>
+
+          <!-- Right: Detailed Scroll-Reactive Phases -->
+          <div class="process-phases-track">
+            <div class="process-phase-card is-active" data-phase="1" id="phaseCard1">
+              <div class="phase-card-top">
+                <span class="phase-number">01</span>
+                <span class="phase-status">Phase 1 of 4</span>
+              </div>
+              <h3>Discover &amp; scope</h3>
+              <p class="phase-lead">We map the problem, the operational constraints, and what "done" actually means before any code is written.</p>
+              <ul class="phase-deliverables">
+                <li>System requirements &amp; bottleneck audit</li>
+                <li>Threat &amp; failure mode analysis</li>
+                <li>Scope, SLA targets &amp; delivery roadmap</li>
+              </ul>
+            </div>
+
+            <div class="process-phase-card" data-phase="2" id="phaseCard2">
+              <div class="phase-card-top">
+                <span class="phase-number">02</span>
+                <span class="phase-status">Phase 2 of 4</span>
+              </div>
+              <h3>Design &amp; architect</h3>
+              <p class="phase-lead">System boundaries, data flow, scale thresholds, and infrastructure decisions get made deliberately, on paper first.</p>
+              <ul class="phase-deliverables">
+                <li>Microservices &amp; database schemas</li>
+                <li>Infrastructure as Code (IaC) blueprints</li>
+                <li>Security governance &amp; access architecture</li>
+              </ul>
+            </div>
+
+            <div class="process-phase-card" data-phase="3" id="phaseCard3">
+              <div class="phase-card-top">
+                <span class="phase-number">03</span>
+                <span class="phase-status">Phase 3 of 4</span>
+              </div>
+              <h3>Build &amp; automate</h3>
+              <p class="phase-lead">Product and CI/CD pipelines are engineered concurrently, so every change ships through the same tested, validated path.</p>
+              <ul class="phase-deliverables">
+                <li>Full-stack core implementation</li>
+                <li>Automated SAST/DAST security scanning</li>
+                <li>End-to-end integration &amp; load testing</li>
+              </ul>
+            </div>
+
+            <div class="process-phase-card" data-phase="4" id="phaseCard4">
+              <div class="phase-card-top">
+                <span class="phase-number">04</span>
+                <span class="phase-status">Phase 4 of 4</span>
+              </div>
+              <h3>Deploy &amp; harden</h3>
+              <p class="phase-lead">Live traffic, monitored 24/7. Telemetry, vulnerability scans, and health checks run continuously, not just once at handover.</p>
+              <ul class="phase-deliverables">
+                <li>Zero-downtime production deployment</li>
+                <li>Real-time telemetry, monitoring &amp; alerting</li>
+                <li>Automated backups &amp; failover recovery</li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="phase"><span class="pn">02</span>
-          <div>
-            <h4>Design &amp; architect</h4>
-            <p>System boundaries, data flow, and infrastructure decisions get made deliberately, on paper first.</p>
-          </div>
-        </div>
-        <div class="phase"><span class="pn">03</span>
-          <div>
-            <h4>Build &amp; automate</h4>
-            <p>Product and pipeline are built together, so every change ships through the same tested path.</p>
-          </div>
-        </div>
-        <div class="phase"><span class="pn">04</span>
-          <div>
-            <h4>Deploy &amp; harden</h4>
-            <p>Live traffic, monitored. Scans and checks run continuously, not once at handover.</p>
+
+        <!-- Scroll Indicator Hint -->
+        <div class="process-scroll-indicator">
+          <span>Scroll to advance stages</span>
+          <div class="scroll-pills">
+            <span class="pill-dot active" data-pill="1"></span>
+            <span class="pill-dot" data-pill="2"></span>
+            <span class="pill-dot" data-pill="3"></span>
+            <span class="pill-dot" data-pill="4"></span>
           </div>
         </div>
       </div>

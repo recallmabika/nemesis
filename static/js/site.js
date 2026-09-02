@@ -22,11 +22,148 @@
   }, {threshold:.15});
   revealEls.forEach(function(el){ revealIO.observe(el); });
 
-  var ringWrap = document.getElementById('ringWrap');
-  var ringIO = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting){ ringWrap.classList.add('in'); ringIO.disconnect(); } });
-  }, {threshold:.4});
-  ringIO.observe(ringWrap);
+  // 4-stage scroll-driven process tracker
+  (function(){
+    var processTrack = document.getElementById('processTrack');
+    if(!processTrack) return;
+
+    var orbitProgress = document.getElementById('orbitProgress');
+    var hubStageNum = document.getElementById('hubStageNum');
+    var hubStageTitle = document.getElementById('hubStageTitle');
+
+    var stageTitles = [
+      'Discover & Scope',
+      'Design & Architect',
+      'Build & Automate',
+      'Deploy & Harden'
+    ];
+
+    var nodes = [
+      document.getElementById('node1'),
+      document.getElementById('node2'),
+      document.getElementById('node3'),
+      document.getElementById('node4')
+    ];
+
+    var stems = [
+      document.querySelector('.stem-1'),
+      document.querySelector('.stem-2'),
+      document.querySelector('.stem-3'),
+      document.querySelector('.stem-4')
+    ];
+
+    var cards = [
+      document.getElementById('phaseCard1'),
+      document.getElementById('phaseCard2'),
+      document.getElementById('phaseCard3'),
+      document.getElementById('phaseCard4')
+    ];
+
+    var pills = document.querySelectorAll('.scroll-pills .pill-dot');
+    var totalLength = 816; // 2 * PI * 130
+    var currentStep = 1;
+
+    function setStep(step){
+      if(step < 1) step = 1;
+      if(step > 4) step = 4;
+      currentStep = step;
+
+      // Update Hub Text
+      if(hubStageNum) hubStageNum.textContent = 'STAGE 0' + step;
+      if(hubStageTitle) hubStageTitle.textContent = stageTitles[step - 1];
+
+      // Update Orbit progress arc
+      var targetOffset = totalLength - ((step - 1) / 3) * (totalLength * 0.75);
+      if(orbitProgress) orbitProgress.style.strokeDashoffset = targetOffset;
+
+      // Update Nodes
+      nodes.forEach(function(n, idx){
+        if(!n) return;
+        n.classList.remove('active', 'passed');
+        if(idx + 1 === step){
+          n.classList.add('active');
+        } else if(idx + 1 < step){
+          n.classList.add('passed');
+        }
+      });
+
+      // Update Stems
+      stems.forEach(function(s, idx){
+        if(!s) return;
+        if(idx + 1 === step) s.classList.add('active');
+        else s.classList.remove('active');
+      });
+
+      // Update Phase Cards
+      cards.forEach(function(c, idx){
+        if(!c) return;
+        if(idx + 1 === step){
+          c.classList.add('is-active');
+        } else {
+          c.classList.remove('is-active');
+        }
+      });
+
+      // Update Pills
+      pills.forEach(function(p, idx){
+        if(idx + 1 === step) p.classList.add('active');
+        else p.classList.remove('active');
+      });
+    }
+
+    function onScroll(){
+      var rect = processTrack.getBoundingClientRect();
+      var trackH = processTrack.offsetHeight - window.innerHeight;
+      if(trackH <= 0) return;
+
+      var progress = -rect.top / trackH;
+      progress = Math.max(0, Math.min(1, progress));
+
+      var step = 1;
+      if(progress > 0.75){
+        step = 4;
+      } else if(progress > 0.48){
+        step = 3;
+      } else if(progress > 0.20){
+        step = 2;
+      } else {
+        step = 1;
+      }
+
+      if(step !== currentStep){
+        setStep(step);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    onScroll();
+
+    // Click to jump to stage directly
+    nodes.forEach(function(n, idx){
+      if(!n) return;
+      n.addEventListener('click', function(){
+        var trackTop = processTrack.offsetTop;
+        var trackH = processTrack.offsetHeight - window.innerHeight;
+        var targetProgress = idx / 3;
+        window.scrollTo({
+          top: trackTop + (targetProgress * trackH) + 5,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    pills.forEach(function(p, idx){
+      p.addEventListener('click', function(){
+        var trackTop = processTrack.offsetTop;
+        var trackH = processTrack.offsetHeight - window.innerHeight;
+        var targetProgress = idx / 3;
+        window.scrollTo({
+          top: trackTop + (targetProgress * trackH) + 5,
+          behavior: 'smooth'
+        });
+      });
+    });
+  })();
 
   document.querySelectorAll('.dial').forEach(function(d){
     var dIO = new IntersectionObserver(function(entries){
