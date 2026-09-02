@@ -235,28 +235,29 @@
   .contact .email{margin-top:26px; display:inline-block; font-size:16px; border-bottom:1px solid var(--gold); padding-bottom:2px; text-decoration:none; transition:color .2s linear;}
   .contact .email:hover{color:var(--ink); border-bottom-color:var(--ink);}
   
-  .africa-map {
+  .africa-map-wrap {
     position: absolute;
-    right: 2%;
+    right: 3%;
     top: 50%;
     transform: translateY(-50%);
-    width: 600px;
-    height: 600px;
-    background-image: radial-gradient(var(--ink-45) 1.5px, transparent 2px);
-    background-size: 14px 14px;
-    background-position: 0 0;
-    -webkit-mask-image: url('../img/africa.svg');
-    mask-image: url('../img/africa.svg');
-    -webkit-mask-size: contain;
-    mask-size: contain;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-position: center;
-    z-index: 0;
-    opacity: 0.6;
+    width: 520px;
+    max-width: 45vw;
+    height: auto;
     pointer-events: none;
+    z-index: 0;
+    opacity: 0.35;
+    transition: opacity .25s linear;
   }
+  .africa-map-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .africa-map-dark { display: none; }
+  .africa-map-light { display: block; }
+  [data-theme="dark"] .africa-map-dark { display: block; }
+  [data-theme="dark"] .africa-map-light { display: none; }
+  [data-theme="dark"] .africa-map-wrap { opacity: 0.28; }
 
   form{display:flex; flex-direction:column; gap:24px;}
   .field label{display:block; font-size:13px; color:var(--ink-45); margin-bottom:8px;}

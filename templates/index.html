@@ -217,7 +217,10 @@
 </section>
 
 <section class="contact reveal" id="contact" style="position: relative; overflow: hidden;">
-  <div class="africa-map"></div>
+  <div class="africa-map-wrap">
+    <img src="{{ url_for('static', filename='img/africa-dots-light.png') }}" class="africa-map-img africa-map-light" alt="Africa dotted map">
+    <img src="{{ url_for('static', filename='img/africa-dots-dark.png') }}" class="africa-map-img africa-map-dark" alt="Africa dotted map">
+  </div>
   <div class="wrap contact-grid" style="position: relative; z-index: 1;">
     <div>
       <h2>Ready to build?</h2>
