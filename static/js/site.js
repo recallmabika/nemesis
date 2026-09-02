@@ -11,14 +11,7 @@
     });
   }
 
-  // draw the trace once it scrolls into view
-  var tracePath = document.getElementById('tracePath');
-  var traceIO = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ tracePath.classList.add('go'); traceIO.disconnect(); }
-    });
-  }, {threshold:.4});
-  traceIO.observe(tracePath);
+  // trace path is now animated continuously in the ECG block below
 
   // generic reveal-on-scroll + ring/dial triggers
   var revealEls = document.querySelectorAll('.reveal');
@@ -29,11 +22,186 @@
   }, {threshold:.15});
   revealEls.forEach(function(el){ revealIO.observe(el); });
 
-  var ringWrap = document.getElementById('ringWrap');
-  var ringIO = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting){ ringWrap.classList.add('in'); ringIO.disconnect(); } });
-  }, {threshold:.4});
-  ringIO.observe(ringWrap);
+  // 4-stage scroll-driven process tracker
+  (function(){
+    var processTrack = document.getElementById('processTrack');
+    if(!processTrack) return;
+
+    var orbitProgress = document.getElementById('orbitProgress');
+    var hubStageNum = document.getElementById('hubStageNum');
+    var hubStageTitle = document.getElementById('hubStageTitle');
+
+    var stageTitles = [
+      'Discover & Scope',
+      'Design & Architect',
+      'Build & Automate',
+      'Deploy & Harden'
+    ];
+
+    var nodes = [
+      document.getElementById('node1'),
+      document.getElementById('node2'),
+      document.getElementById('node3'),
+      document.getElementById('node4')
+    ];
+
+    var stems = [
+      document.querySelector('.stem-1'),
+      document.querySelector('.stem-2'),
+      document.querySelector('.stem-3'),
+      document.querySelector('.stem-4')
+    ];
+
+    var cards = [
+      document.getElementById('phaseCard1'),
+      document.getElementById('phaseCard2'),
+      document.getElementById('phaseCard3'),
+      document.getElementById('phaseCard4')
+    ];
+
+    var tabs = document.querySelectorAll('.stage-nav-tabs .stage-tab');
+    var orbitalWheel = document.getElementById('orbitalWheel');
+    var rotationAngles = [90, 0, -90, -180];
+    var totalLength = 816; // 2 * PI * 130
+    var currentStep = 1;
+
+    function setStep(step){
+      if(step < 1) step = 1;
+      if(step > 4) step = 4;
+      currentStep = step;
+
+      // Update Hub Text
+      if(hubStageNum) hubStageNum.textContent = 'PHASE 0' + step;
+      if(hubStageTitle) hubStageTitle.textContent = stageTitles[step - 1];
+
+      // Rotate orbital wheel to point active node towards the description card
+      var rot = rotationAngles[step - 1];
+      if(orbitalWheel){
+        orbitalWheel.style.transform = 'rotate(' + rot + 'deg)';
+      }
+
+      // Counter-rotate node text so numbers always remain upright
+      nodes.forEach(function(n){
+        if(!n) return;
+        var txt = n.querySelector('.node-label');
+        var circle = n.querySelector('circle');
+        if(txt && circle){
+          var cx = circle.getAttribute('cx');
+          var cy = circle.getAttribute('cy');
+          txt.setAttribute('transform', 'rotate(' + (-rot) + ' ' + cx + ' ' + cy + ')');
+        }
+      });
+
+      // Update Orbit progress arc
+      var targetOffset = totalLength - ((step - 1) / 3) * (totalLength * 0.75);
+      if(orbitProgress) orbitProgress.style.strokeDashoffset = targetOffset;
+
+      // Update Nodes
+      nodes.forEach(function(n, idx){
+        if(!n) return;
+        n.classList.remove('active', 'passed');
+        if(idx + 1 === step){
+          n.classList.add('active');
+        } else if(idx + 1 < step){
+          n.classList.add('passed');
+        }
+      });
+
+      // Update Stems
+      stems.forEach(function(s, idx){
+        if(!s) return;
+        if(idx + 1 === step) s.classList.add('active');
+        else s.classList.remove('active');
+      });
+
+      // Update Phase Cards
+      cards.forEach(function(c, idx){
+        if(!c) return;
+        if(idx + 1 === step){
+          c.classList.add('is-active');
+        } else {
+          c.classList.remove('is-active');
+        }
+      });
+
+      // Update Stage Navigation Tabs
+      tabs.forEach(function(t, idx){
+        if(idx + 1 === step) t.classList.add('is-active');
+        else t.classList.remove('is-active');
+      });
+    }
+
+    // 5-second automatic sliding timer
+    var autoTimer = null;
+    var isHovered = false;
+
+    function startAutoTimer(){
+      stopAutoTimer();
+      autoTimer = setInterval(function(){
+        if(isHovered) return;
+        var nextStep = (currentStep % 4) + 1;
+        setStep(nextStep);
+      }, 5000);
+    }
+
+    function stopAutoTimer(){
+      if(autoTimer){
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    }
+
+    processTrack.addEventListener('mouseenter', function(){ isHovered = true; });
+    processTrack.addEventListener('mouseleave', function(){ isHovered = false; });
+
+    function onScroll(){
+      var rect = processTrack.getBoundingClientRect();
+      var trackH = processTrack.offsetHeight - window.innerHeight;
+      if(trackH <= 0) return;
+
+      var progress = -rect.top / trackH;
+      progress = Math.max(0, Math.min(1, progress));
+
+      var step = 1;
+      if(progress > 0.75){
+        step = 4;
+      } else if(progress > 0.48){
+        step = 3;
+      } else if(progress > 0.20){
+        step = 2;
+      } else {
+        step = 1;
+      }
+
+      if(step !== currentStep){
+        setStep(step);
+      }
+    }
+
+    window.addEventListener('scroll', function(){
+      onScroll();
+      startAutoTimer();
+    }, {passive: true});
+    onScroll();
+    startAutoTimer();
+
+    // Click to jump to stage directly via nodes
+    nodes.forEach(function(n, idx){
+      if(!n) return;
+      n.addEventListener('click', function(){
+        setStep(idx + 1);
+        startAutoTimer();
+      });
+    });
+
+    // Click to jump to stage directly via tabs
+    tabs.forEach(function(t, idx){
+      t.addEventListener('click', function(){
+        setStep(idx + 1);
+        startAutoTimer();
+      });
+    });
+  })();
 
   document.querySelectorAll('.dial').forEach(function(d){
     var dIO = new IntersectionObserver(function(entries){
@@ -84,15 +252,72 @@
     frame.addEventListener('touchend', function(){ frame.classList.remove('active'); });
   })();
 
-  // contact form — no backend wired up in this concept, confirm locally
+  // contact form with custom JS validation
   var form = document.getElementById('contactForm');
-  form.addEventListener('submit', function(ev){
-    ev.preventDefault();
-    var btn = form.querySelector('.submit');
-    var original = btn.textContent;
-    btn.textContent = 'Logged — we\'ll reply by email';
-    setTimeout(function(){ btn.textContent = original; }, 2600);
-  });
+  if(form){
+    var nameInput = document.getElementById('name');
+    var emailInput = document.getElementById('email');
+    var detailsInput = document.getElementById('details');
+
+    // Remove error as soon as person starts typing
+    [nameInput, emailInput, detailsInput].forEach(function(input){
+      if(!input) return;
+      input.addEventListener('input', function(){
+        var field = input.closest('.field');
+        if(field) field.classList.remove('has-error');
+      });
+    });
+
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var isValid = true;
+      var firstInvalid = null;
+
+      // Validate Name
+      if(!nameInput.value.trim()){
+        nameInput.closest('.field').classList.add('has-error');
+        isValid = false;
+        if(!firstInvalid) firstInvalid = nameInput;
+      } else {
+        nameInput.closest('.field').classList.remove('has-error');
+      }
+
+      // Validate Email
+      var emailVal = emailInput.value.trim();
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!emailVal || !emailRegex.test(emailVal)){
+        emailInput.closest('.field').classList.add('has-error');
+        isValid = false;
+        if(!firstInvalid) firstInvalid = emailInput;
+      } else {
+        emailInput.closest('.field').classList.remove('has-error');
+      }
+
+      // Validate Project Details
+      if(!detailsInput.value.trim()){
+        detailsInput.closest('.field').classList.add('has-error');
+        isValid = false;
+        if(!firstInvalid) firstInvalid = detailsInput;
+      } else {
+        detailsInput.closest('.field').classList.remove('has-error');
+      }
+
+      if(!isValid){
+        if(firstInvalid) firstInvalid.focus();
+        return;
+      }
+
+      var btn = form.querySelector('.submit');
+      var original = btn.textContent;
+      btn.textContent = 'Inquiry sent — we\'ll reply by email';
+      btn.disabled = true;
+      form.reset();
+      setTimeout(function(){
+        btn.textContent = original;
+        btn.disabled = false;
+      }, 3500);
+    });
+  }
 
   // keep hero height in sync with actual header height
   (function(){
@@ -115,23 +340,98 @@
     }, 5000);
   })();
 
-  // wave trace: random colors (blue, red, black, white, gold) following the path
+  // wave trace: hospital monitor effect
   (function(){
     var grad = document.getElementById('waveGradient');
     var path = document.getElementById('tracePath');
-    if(!grad || !path) return;
-    var palette = ['#2b5fd9', '#c23b3b', '#0a0a0a', '#f5f5f3', '#a9781f'];
-    var stops = 7;
-    var used = [];
-    for(var i = 0; i <= stops; i++){
-      var color = palette[Math.floor(Math.random() * palette.length)];
-      used.push(color);
-      var stop = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
-      stop.setAttribute('offset', Math.round((i / stops) * 100) + '%');
-      stop.setAttribute('stop-color', color);
-      grad.appendChild(stop);
+    var frame = document.getElementById('signalSvg');
+    if(!grad || !path || !frame) return;
+
+    // Create a faint background path so the full wave is always visible
+    var bgPath = path.cloneNode(true);
+    bgPath.removeAttribute('id');
+    bgPath.style.stroke = 'var(--line-strong)';
+    bgPath.style.strokeDasharray = 'none';
+    bgPath.style.animation = 'none';
+    path.parentNode.insertBefore(bgPath, path);
+
+    // Disable CSS animation on main path
+    path.style.animation = 'none';
+
+    // Create leading dot
+    var dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    dot.setAttribute('r', '4');
+    frame.appendChild(dot);
+
+    var len = path.getTotalLength() || 2200;
+    var tailLen = 350; // length of the moving line segment
+
+    path.style.strokeDasharray = tailLen + ' ' + (len * 2);
+
+    var palette = ['#2b5fd9', '#c23b3b', '#f5f5f3', '#10b981', '#0a0a0a'];
+    
+    function updateGradient() {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      var steadyColor = isDark ? '#f5f5f3' : '#2b5fd9'; // White in dark, Blue in light
+      
+      var stopsHTML = '';
+      var numRandomStops = 6;
+      for (var i = 0; i < numRandomStops; i++) {
+        var c = palette[Math.floor(Math.random() * palette.length)];
+        var offset = (i / (numRandomStops - 1)) * 50.9;
+        stopsHTML += '<stop offset="' + offset + '%" stop-color="' + c + '"/>';
+      }
+      stopsHTML += '<stop offset="50.9%" stop-color="' + steadyColor + '"/>';
+      stopsHTML += '<stop offset="100%" stop-color="' + steadyColor + '"/>';
+      
+      grad.innerHTML = stopsHTML;
+      path.style.stroke = 'url(#waveGradient)';
+      return steadyColor;
     }
-    path.style.stroke = 'url(#waveGradient)';
+
+    var steadyColor = updateGradient();
+    
+    // Watch for theme changes to update the steady color
+    var themeObserver = new MutationObserver(function() {
+      steadyColor = updateGradient();
+    });
+    themeObserver.observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
+
+    var startTime = null;
+    var lastRandomize = 0;
+
+    function drawECG(t) {
+      if(!startTime) startTime = t;
+      var prog = ((t - startTime) % 8000) / 8000; // 8s loop
+      
+      var offset = tailLen - (prog * (len + tailLen));
+      path.style.strokeDashoffset = offset;
+      
+      var currentPos = tailLen - offset;
+      var dotPos = currentPos;
+      if(dotPos < 0) dotPos = 0;
+      if(dotPos > len) dotPos = len;
+      
+      var pt = path.getPointAtLength(dotPos);
+      dot.setAttribute('cx', pt.x);
+      dot.setAttribute('cy', pt.y);
+      
+      if (pt.x > 560) {
+        dot.setAttribute('fill', steadyColor);
+        dot.style.filter = 'drop-shadow(0 0 5px ' + steadyColor + ')';
+      } else {
+        if (t - lastRandomize > 150) {
+          var rc = palette[Math.floor(Math.random() * palette.length)];
+          dot.setAttribute('fill', rc);
+          dot.style.filter = 'drop-shadow(0 0 5px ' + rc + ')';
+          lastRandomize = t;
+        }
+      }
+      
+      requestAnimationFrame(drawECG);
+    }
+    
+    requestAnimationFrame(drawECG);
   })();
 
   // shrink header on scroll
@@ -180,10 +480,64 @@
       var pos = window.scrollY + 120;
       var current = sections[0];
       sections.forEach(function(sec){ if(sec.offsetTop <= pos) current = sec; });
+      
+      // If we are at the bottom of the page, force the last section to be active
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
+        current = sections[sections.length - 1];
+      }
+      
       links.forEach(function(a){
         a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
       });
     }
     document.addEventListener('scroll', setActive, {passive:true});
     setActive();
+  })();
+  // custom select dropdown
+  (function(){
+    var customSelect = document.getElementById('categorySelect');
+    if(!customSelect) return;
+    var trigger = customSelect.querySelector('.select-trigger');
+    var valSpan = customSelect.querySelector('.select-val');
+    var hiddenInput = customSelect.querySelector('#categoryInput');
+    var options = customSelect.querySelectorAll('.select-option');
+
+    function closeSelect(){
+      customSelect.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    trigger.addEventListener('click', function(e){
+      e.stopPropagation();
+      var isOpen = customSelect.classList.toggle('is-open');
+      trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    options.forEach(function(opt){
+      opt.addEventListener('click', function(e){
+        e.stopPropagation();
+        options.forEach(function(o){
+          o.classList.remove('is-selected');
+          o.setAttribute('aria-selected', 'false');
+        });
+        opt.classList.add('is-selected');
+        opt.setAttribute('aria-selected', 'true');
+        valSpan.textContent = opt.textContent;
+        hiddenInput.value = opt.getAttribute('data-value');
+        closeSelect();
+      });
+    });
+
+    document.addEventListener('click', function(e){
+      if(!customSelect.contains(e.target)){
+        closeSelect();
+      }
+    });
+
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && customSelect.classList.contains('is-open')){
+        closeSelect();
+        trigger.focus();
+      }
+    });
   })();
