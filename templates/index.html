@@ -226,8 +226,8 @@
   <div class="process-scroll-track" id="processTrack">
     <div class="process-sticky-viewport">
       <div class="wrap">
-        <div class="head">
-          <span class="sq"></span>
+        <div class="head process-head">
+          <span class="process-head-marker">—</span>
           <h2>Process</h2>
           <span class="n">4-stage engineering delivery</span>
         </div>
@@ -282,10 +282,11 @@
                 </g>
               </g>
 
-              <!-- Center Hub (Stationary clean core — no text labels) -->
+              <!-- Center Hub (Stationary clean core — logo inside) -->
               <circle cx="175" cy="175" r="54" class="hub-base" />
               <circle cx="175" cy="175" r="54" class="hub-ring" />
               <circle cx="175" cy="175" r="48" class="hub-inner-ring" />
+              <image href="{{ url_for('static', filename='img/nemesis_logo.png') }}" x="121" y="121" width="108" height="108" preserveAspectRatio="xMidYMid meet" class="hub-logo" />
             </svg>
           </div>
 
