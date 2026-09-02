@@ -139,108 +139,82 @@
     <div class="head">
       <span class="sq"></span>
       <h2>DevSecOps</h2>
-      <span class="n">automated verification pipeline</span>
+      <span class="n">security &amp; reliability protocols</span>
     </div>
 
-    <div class="devsecops-grid">
-      <!-- Left Column: Manifesto & Verification Gates -->
-      <div class="devsecops-manifesto">
-        <h3 class="devsecops-headline">Security as a pipeline primitive, not a post-launch audit.</h3>
-        <p class="lede">Shipping isn't the finish line. We engineer automated verification gates that test, audit, and scan for vulnerabilities on every commit, so system security moves at development speed instead of lagging behind it.</p>
+    <div class="devsecops-lead-block">
+      <h3 class="devsecops-headline">Security is an engineering property, not a compliance footnote.</h3>
+      <p class="devsecops-subtext">Every codebase we deliver ships with automated guardrails embedded directly into the continuous delivery pipeline. If a change introduces an architectural vulnerability, an untrusted package, or credential leakage, it never reaches production.</p>
+    </div>
 
-        <div class="sec-gates-list">
-          <div class="sec-gate is-active" data-gate="sast">
-            <div class="gate-marker">01</div>
-            <div class="gate-info">
-              <h4>Static AST Analysis (SAST / DAST)</h4>
-              <p>Abstract syntax tree parsing, taint analysis, and runtime fuzzing executed before merge.</p>
-            </div>
-          </div>
-
-          <div class="sec-gate" data-gate="supply-chain">
-            <div class="gate-marker">02</div>
-            <div class="gate-info">
-              <h4>Supply Chain &amp; Dependency SBOM</h4>
-              <p>Automated software bill of materials, CVE vulnerability mapping, and package checksums.</p>
-            </div>
-          </div>
-
-          <div class="sec-gate" data-gate="secrets">
-            <div class="gate-marker">03</div>
-            <div class="gate-info">
-              <h4>Secrets Entropy &amp; Token Quarantine</h4>
-              <p>High-entropy regex scanners preventing credential leakage, API keys, and certificates.</p>
-            </div>
-          </div>
-
-          <div class="sec-gate" data-gate="runtime">
-            <div class="gate-marker">04</div>
-            <div class="gate-info">
-              <h4>Runtime Telemetry &amp; Container Hardening</h4>
-              <p>Kernel-level eBPF probes, non-root container sandboxing, and continuous compliance checks.</p>
-            </div>
-          </div>
-        </div>
+    <!-- 4 Core Invariant Pillars -->
+    <div class="sec-pillars-grid">
+      <div class="sec-pillar">
+        <span class="sec-pillar-num">01</span>
+        <h4 class="sec-pillar-title">Hermetic Builds</h4>
+        <p class="sec-pillar-desc">Deterministic build pipelines with locked dependency trees and cryptographic hash verification. No ambient environment leaks.</p>
       </div>
 
-      <!-- Right Column: Live Pipeline Telemetry Console -->
-      <div class="sec-console-wrapper">
-        <div class="sec-console">
-          <div class="console-topbar">
-            <div class="console-pills">
-              <span class="p-dot"></span>
-              <span class="p-dot"></span>
-              <span class="p-dot"></span>
-            </div>
-            <span class="console-title">pipeline.security.gate // NMS-SEC-9402</span>
-            <span class="console-status"><span class="led-pulse"></span>ENFORCED</span>
-          </div>
+      <div class="sec-pillar">
+        <span class="sec-pillar-num">02</span>
+        <h4 class="sec-pillar-title">Static &amp; Dynamic AST Auditing</h4>
+        <p class="sec-pillar-desc">Automated abstract syntax tree inspection, taint tracking, and endpoint fuzzing executed on every branch prior to merge.</p>
+      </div>
 
-          <div class="console-body" id="secConsoleBody">
-            <div class="log-entry pass" data-for="sast">
-              <span class="log-tag">[PASS]</span>
-              <span class="log-scope">AST-STATIC-SCAN</span>
-              <span class="log-val">0 high / 0 critical vulnerabilities</span>
-              <span class="log-time">12ms</span>
-            </div>
-            <div class="log-entry pass" data-for="supply-chain">
-              <span class="log-tag">[PASS]</span>
-              <span class="log-scope">SBOM-DEPENDENCIES</span>
-              <span class="log-val">412 packages validated against CVE database</span>
-              <span class="log-time">184ms</span>
-            </div>
-            <div class="log-entry pass" data-for="secrets">
-              <span class="log-tag">[PASS]</span>
-              <span class="log-scope">ENTROPY-SECRETS</span>
-              <span class="log-val">100% clean · 0 credential patterns matched</span>
-              <span class="log-time">28ms</span>
-            </div>
-            <div class="log-entry pass" data-for="runtime">
-              <span class="log-tag">[PASS]</span>
-              <span class="log-scope">CONTAINER-HARDEN</span>
-              <span class="log-val">Distroless non-root sandbox verified</span>
-              <span class="log-time">45ms</span>
-            </div>
-            <div class="log-entry active-feed">
-              <span class="log-cursor">&gt;</span>
-              <span class="log-feed-txt">Pipeline verification passed: Build cleared for zero-downtime deployment.</span>
-            </div>
-          </div>
+      <div class="sec-pillar">
+        <span class="sec-pillar-num">03</span>
+        <h4 class="sec-pillar-title">Ephemeral Secrets &amp; IAM</h4>
+        <p class="sec-pillar-desc">High-entropy secret detection with zero hardcoded credentials. Dynamic cloud workload identity federation with auto-rotation.</p>
+      </div>
 
-          <div class="console-metrics">
-            <div class="c-metric">
-              <span class="cm-label">Mean Patch Window</span>
-              <span class="cm-val">&lt; 24h</span>
-            </div>
-            <div class="c-metric">
-              <span class="cm-label">Verification Speed</span>
-              <span class="cm-val">&lt; 45s</span>
-            </div>
-            <div class="c-metric">
-              <span class="cm-label">Zero False Blockers</span>
-              <span class="cm-val">99.8%</span>
-            </div>
-          </div>
+      <div class="sec-pillar">
+        <span class="sec-pillar-num">04</span>
+        <h4 class="sec-pillar-title">Runtime Kernel Telemetry</h4>
+        <p class="sec-pillar-desc">Kernel-level eBPF probes monitoring anomalous network calls, memory access boundaries, and non-root container sandboxes.</p>
+      </div>
+    </div>
+
+    <!-- Engineering Security Ledger Table -->
+    <div class="sec-ledger-wrap">
+      <div class="sec-ledger-header">
+        <span class="ledger-label">Engineering Verification Ledger</span>
+        <span class="ledger-meta">ENFORCED AT REPOSITORY ROOT</span>
+      </div>
+
+      <div class="sec-ledger-table" role="table" aria-label="DevSecOps Specification Ledger">
+        <div class="ledger-row ledger-head" role="row">
+          <span class="l-cell col-scope" role="columnheader">Verification Scope</span>
+          <span class="l-cell col-tech" role="columnheader">Tooling / Method</span>
+          <span class="l-cell col-stage" role="columnheader">Enforcement Layer</span>
+          <span class="l-cell col-cadence" role="columnheader">SLA / Cadence</span>
+        </div>
+
+        <div class="ledger-row" role="row">
+          <span class="l-cell col-scope" role="cell">Source Code Integrity</span>
+          <span class="l-cell col-tech" role="cell">Semgrep · SonarQube · AST Parsers</span>
+          <span class="l-cell col-stage" role="cell">Pre-Commit &amp; PR Gate</span>
+          <span class="l-cell col-cadence" role="cell">100% PR Coverage</span>
+        </div>
+
+        <div class="ledger-row" role="row">
+          <span class="l-cell col-scope" role="cell">Supply Chain Dependencies</span>
+          <span class="l-cell col-tech" role="cell">Syft SBOM · Trivy · OSV Database</span>
+          <span class="l-cell col-stage" role="cell">Container Build Hook</span>
+          <span class="l-cell col-cadence" role="cell">Continuous CVE Sync</span>
+        </div>
+
+        <div class="ledger-row" role="row">
+          <span class="l-cell col-scope" role="cell">Secret &amp; Key Governance</span>
+          <span class="l-cell col-tech" role="cell">TruffleHog · Vault · OIDC Workload</span>
+          <span class="l-cell col-stage" role="cell">Push &amp; Runtime IAM</span>
+          <span class="l-cell col-cadence" role="cell">Zero-Trust / Ephemeral</span>
+        </div>
+
+        <div class="ledger-row" role="row">
+          <span class="l-cell col-scope" role="cell">Runtime Threat Isolation</span>
+          <span class="l-cell col-tech" role="cell">Linux eBPF · Falco · Distroless OCI</span>
+          <span class="l-cell col-stage" role="cell">Production Kernel Daemon</span>
+          <span class="l-cell col-cadence" role="cell">Real-time Telemetry</span>
         </div>
       </div>
     </div>
