@@ -329,45 +329,148 @@
 
 <section class="work reveal" id="work">
   <div class="wrap">
-    <div class="head"><span class="sq"></span>
-      <h2>Work</h2><span class="n">what we've built</span>
+    <div class="head">
+      <span class="sq"></span>
+      <h2>Work</h2>
+      <span class="n">what we've built</span>
     </div>
-    <div class="cards">
 
-      <div class="card">
-        <div class="card-cover"
-          style="margin: -34px -34px 24px -34px; height: 180px; overflow: hidden; border-bottom: 1px solid var(--line-strong);">
-          <img src="{{ url_for('static', filename='img/fiind-banner.png') }}" alt="FINDit Marketplace"
-            style="width: 100%; height: 100%; object-fit: cover; object-position: center 35%; transition: transform .4s cubic-bezier(.2,.7,.2,1);">
+    <div class="work-cards-grid">
+
+      <!-- Card 01: FINDit -->
+      <div class="work-card">
+        <div class="card-bg">
+          <img src="{{ url_for('static', filename='img/fiind-banner.png') }}" alt="FINDit Platform" class="card-bg-img">
+          <div class="card-scrim"></div>
         </div>
-        <div class="top"><span class="kind">Marketplace</span></div>
-        <h3>FINDit</h3>
-        <p>A marketplace platform connecting buyers, sellers, and service providers, built for discovery at scale.</p>
-        <div class="facts"><span>Smart search &amp; discovery</span><span>Seller verification</span></div>
+        <div class="card-drawer">
+          <div class="drawer-peek">
+            <div class="drawer-header">
+              <span class="card-tag">Marketplace</span>
+              <span class="card-index">01</span>
+            </div>
+            <h3 class="card-title">FINDit</h3>
+            <p class="card-summary">Multi-vendor discovery platform built for resilient commerce at scale.</p>
+          </div>
+
+          <div class="drawer-expanded">
+            <p class="card-description">Engineered high-concurrency merchant onboarding, structured geo-indexed catalog queries, and automated escrow settlement pipelines for high-volume transactions.</p>
+            <div class="card-specs">
+              <span class="specs-label">Key Capabilities</span>
+              <ul class="specs-list">
+                <li>Smart search &amp; geo-indexed discovery</li>
+                <li>Automated merchant KYC &amp; verification</li>
+                <li>Sub-50ms query response latency</li>
+              </ul>
+            </div>
+            <div class="card-meta-foot">
+              <span class="card-tech">Python · FastAPI · PostgreSQL · Redis</span>
+              <span class="card-action">Explore Platform <span class="arr">&rarr;</span></span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="card">
-        <div class="top"><span class="kind">Security</span></div>
-        <h3>MINOPAR EDR</h3>
-        <p>An endpoint detection and response platform for network security — real-time threat monitoring and forensic
-          telemetry.</p>
-        <div class="facts"><span>Real-time threat detection</span><span>Behavioral anomaly detection</span></div>
+      <!-- Card 02: MINOPAR EDR -->
+      <div class="work-card">
+        <div class="card-bg">
+          <img src="{{ url_for('static', filename='img/slide-4-ai-agents.jpg') }}" alt="MINOPAR EDR" class="card-bg-img">
+          <div class="card-scrim"></div>
+        </div>
+        <div class="card-drawer">
+          <div class="drawer-peek">
+            <div class="drawer-header">
+              <span class="card-tag">Security / EDR</span>
+              <span class="card-index">02</span>
+            </div>
+            <h3 class="card-title">MINOPAR EDR</h3>
+            <p class="card-summary">Endpoint detection &amp; response platform with real-time threat telemetry.</p>
+          </div>
+
+          <div class="drawer-expanded">
+            <p class="card-description">Autonomous telemetry collectors and behavioral anomaly engines designed to detect, quarantine, and forensic-trace network intrusion vectors in real time.</p>
+            <div class="card-specs">
+              <span class="specs-label">Key Capabilities</span>
+              <ul class="specs-list">
+                <li>Kernel-level runtime telemetry sensors</li>
+                <li>Behavioral anomaly detection engines</li>
+                <li>Automated threat isolation &amp; incident forensics</li>
+              </ul>
+            </div>
+            <div class="card-meta-foot">
+              <span class="card-tech">Linux Kernel eBPF · Rust · DevSecOps</span>
+              <span class="card-action">Explore Platform <span class="arr">&rarr;</span></span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="card">
-        <div class="top"><span class="kind">Real estate</span></div>
-        <h3>MUSHA</h3>
-        <p>A property evaluation tool combining comparable sales analysis, AI-assisted due diligence, and title deed
-          verification.</p>
-        <div class="facts"><span>Valuation engine</span><span>Title deeds integration</span></div>
+      <!-- Card 03: MUSHA -->
+      <div class="work-card">
+        <div class="card-bg">
+          <img src="{{ url_for('static', filename='img/slide-2-building.png') }}" alt="MUSHA Property Valuation" class="card-bg-img">
+          <div class="card-scrim"></div>
+        </div>
+        <div class="card-drawer">
+          <div class="drawer-peek">
+            <div class="drawer-header">
+              <span class="card-tag">Real Estate / PropTech</span>
+              <span class="card-index">03</span>
+            </div>
+            <h3 class="card-title">MUSHA</h3>
+            <p class="card-summary">Property valuation tool with deeds registry integration &amp; due diligence.</p>
+          </div>
+
+          <div class="drawer-expanded">
+            <p class="card-description">Computes precision valuation benchmarks through historical transaction registry data, geospatial comparables, and automated cadastral title deed verification.</p>
+            <div class="card-specs">
+              <span class="specs-label">Key Capabilities</span>
+              <ul class="specs-list">
+                <li>Automated comparative valuation model</li>
+                <li>Title deed &amp; cadastral registry validation</li>
+                <li>Zoning &amp; encumbrance risk auditing</li>
+              </ul>
+            </div>
+            <div class="card-meta-foot">
+              <span class="card-tech">Geospatial GIS · Python · PostgreSQL</span>
+              <span class="card-action">Explore Platform <span class="arr">&rarr;</span></span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="card">
-        <div class="top"><span class="kind">PropTech</span></div>
-        <h3>PONDAE</h3>
-        <p>An accommodation management platform for off-residence student housing — tenancy, allocation, and occupancy
-          reporting.</p>
-        <div class="facts"><span>Tenant lifecycle management</span><span>Allocation tracking</span></div>
+      <!-- Card 04: PONDAE -->
+      <div class="work-card">
+        <div class="card-bg">
+          <img src="{{ url_for('static', filename='img/slide-3-consultancy.jpg') }}" alt="PONDAE Housing" class="card-bg-img">
+          <div class="card-scrim"></div>
+        </div>
+        <div class="card-drawer">
+          <div class="drawer-peek">
+            <div class="drawer-header">
+              <span class="card-tag">Accommodation Tech</span>
+              <span class="card-index">04</span>
+            </div>
+            <h3 class="card-title">PONDAE</h3>
+            <p class="card-summary">Student housing accommodation, bed allocation &amp; tenancy management.</p>
+          </div>
+
+          <div class="drawer-expanded">
+            <p class="card-description">Centralized off-residence tenancy lifecycle platform with algorithmic bed matching, rent ledger reconciliation, and real-time occupancy reporting.</p>
+            <div class="card-specs">
+              <span class="specs-label">Key Capabilities</span>
+              <ul class="specs-list">
+                <li>Algorithmic bed allocation engine</li>
+                <li>Automated tenancy onboarding &amp; leasing</li>
+                <li>Multi-property occupancy &amp; financial ledger</li>
+              </ul>
+            </div>
+            <div class="card-meta-foot">
+              <span class="card-tech">Python · Flask · PostgreSQL · CI/CD</span>
+              <span class="card-action">Explore Platform <span class="arr">&rarr;</span></span>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
