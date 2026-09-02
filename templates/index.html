@@ -319,29 +319,36 @@
         </div>
       </div>
     </div>
-    <form id="contactForm">
+    <form id="contactForm" novalidate>
       <h2>Send your inquiry to us...</h2>
       <div class="field">
         <label for="name">Name / company</label>
-        <input id="name" type="text" placeholder="Your name or company" autocomplete="name" required>
+        <input id="name" type="text" placeholder="Your name or company" autocomplete="name">
       </div>
       <div class="field">
         <label for="email">Email</label>
-        <input id="email" type="email" placeholder="your@email.com" autocomplete="email" required>
+        <input id="email" type="email" placeholder="your@email.com" autocomplete="email">
       </div>
       <div class="field">
-        <label for="category">Category</label>
-        <select id="category" name="category">
-          <option value="system-development">System Development / Full-Stack</option>
-          <option value="devsecops">DevSecOps &amp; Security Automation</option>
-          <option value="cloud-infrastructure">Cloud &amp; Infrastructure</option>
-          <option value="consulting">Architecture &amp; Technical Consulting</option>
-          <option value="general">General Inquiry</option>
-        </select>
+        <label id="categoryLabel">Category</label>
+        <div class="custom-select" id="categorySelect">
+          <input type="hidden" name="category" id="categoryInput" value="system-development">
+          <button type="button" class="select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="categoryLabel">
+            <span class="select-val">System Development / Full-Stack</span>
+            <svg class="select-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <ul class="select-options" role="listbox" tabindex="-1">
+            <li class="select-option is-selected" data-value="system-development" role="option" aria-selected="true">System Development / Full-Stack</li>
+            <li class="select-option" data-value="devsecops" role="option" aria-selected="false">DevSecOps &amp; Security Automation</li>
+            <li class="select-option" data-value="cloud-infrastructure" role="option" aria-selected="false">Cloud &amp; Infrastructure</li>
+            <li class="select-option" data-value="consulting" role="option" aria-selected="false">Architecture &amp; Technical Consulting</li>
+            <li class="select-option" data-value="general" role="option" aria-selected="false">General Inquiry</li>
+          </ul>
+        </div>
       </div>
       <div class="field">
         <label for="details">Project details</label>
-        <textarea id="details" placeholder="Tell us about your project, timeline, and requirements..." required></textarea>
+        <textarea id="details" placeholder="Tell us about your project, timeline, and requirements..."></textarea>
       </div>
       <button type="submit" class="btn primary submit">Send inquiry</button>
     </form>

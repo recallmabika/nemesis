@@ -77,15 +77,72 @@
     frame.addEventListener('touchend', function(){ frame.classList.remove('active'); });
   })();
 
-  // contact form — no backend wired up in this concept, confirm locally
+  // contact form with custom JS validation
   var form = document.getElementById('contactForm');
-  form.addEventListener('submit', function(ev){
-    ev.preventDefault();
-    var btn = form.querySelector('.submit');
-    var original = btn.textContent;
-    btn.textContent = 'Logged — we\'ll reply by email';
-    setTimeout(function(){ btn.textContent = original; }, 2600);
-  });
+  if(form){
+    var nameInput = document.getElementById('name');
+    var emailInput = document.getElementById('email');
+    var detailsInput = document.getElementById('details');
+
+    // Remove error as soon as person starts typing
+    [nameInput, emailInput, detailsInput].forEach(function(input){
+      if(!input) return;
+      input.addEventListener('input', function(){
+        var field = input.closest('.field');
+        if(field) field.classList.remove('has-error');
+      });
+    });
+
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var isValid = true;
+      var firstInvalid = null;
+
+      // Validate Name
+      if(!nameInput.value.trim()){
+        nameInput.closest('.field').classList.add('has-error');
+        isValid = false;
+        if(!firstInvalid) firstInvalid = nameInput;
+      } else {
+        nameInput.closest('.field').classList.remove('has-error');
+      }
+
+      // Validate Email
+      var emailVal = emailInput.value.trim();
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!emailVal || !emailRegex.test(emailVal)){
+        emailInput.closest('.field').classList.add('has-error');
+        isValid = false;
+        if(!firstInvalid) firstInvalid = emailInput;
+      } else {
+        emailInput.closest('.field').classList.remove('has-error');
+      }
+
+      // Validate Project Details
+      if(!detailsInput.value.trim()){
+        detailsInput.closest('.field').classList.add('has-error');
+        isValid = false;
+        if(!firstInvalid) firstInvalid = detailsInput;
+      } else {
+        detailsInput.closest('.field').classList.remove('has-error');
+      }
+
+      if(!isValid){
+        if(firstInvalid) firstInvalid.focus();
+        return;
+      }
+
+      var btn = form.querySelector('.submit');
+      var original = btn.textContent;
+      btn.textContent = 'Inquiry sent — we\'ll reply by email';
+      btn.disabled = true;
+      form.reset();
+      setTimeout(function(){
+        btn.textContent = original;
+        btn.disabled = false;
+      }, 3500);
+    });
+  }
 
   // keep hero height in sync with actual header height
   (function(){
@@ -261,4 +318,51 @@
     document.addEventListener('scroll', setActive, {passive:true});
     setActive();
   })();
+  // custom select dropdown
+  (function(){
+    var customSelect = document.getElementById('categorySelect');
+    if(!customSelect) return;
+    var trigger = customSelect.querySelector('.select-trigger');
+    var valSpan = customSelect.querySelector('.select-val');
+    var hiddenInput = customSelect.querySelector('#categoryInput');
+    var options = customSelect.querySelectorAll('.select-option');
 
+    function closeSelect(){
+      customSelect.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    trigger.addEventListener('click', function(e){
+      e.stopPropagation();
+      var isOpen = customSelect.classList.toggle('is-open');
+      trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    options.forEach(function(opt){
+      opt.addEventListener('click', function(e){
+        e.stopPropagation();
+        options.forEach(function(o){
+          o.classList.remove('is-selected');
+          o.setAttribute('aria-selected', 'false');
+        });
+        opt.classList.add('is-selected');
+        opt.setAttribute('aria-selected', 'true');
+        valSpan.textContent = opt.textContent;
+        hiddenInput.value = opt.getAttribute('data-value');
+        closeSelect();
+      });
+    });
+
+    document.addEventListener('click', function(e){
+      if(!customSelect.contains(e.target)){
+        closeSelect();
+      }
+    });
+
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && customSelect.classList.contains('is-open')){
+        closeSelect();
+        trigger.focus();
+      }
+    });
+  })();
