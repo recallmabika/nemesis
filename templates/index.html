@@ -147,26 +147,33 @@
       <!-- Left: Image with hover panels -->
       <div class="devsec-visual">
         <div class="devsec-image-wrap">
-          <img src="{{ url_for('static', filename='img/slide-3-consultancy.jpg') }}" alt="Engineering environment" class="devsec-img" />
-          <div class="devsec-panel active" data-index="01">
-            <span class="panel-index">01</span>
-            <h4 class="panel-title">Hermetic Builds</h4>
-            <p class="panel-desc">Deterministic pipelines with locked dependency trees and cryptographic hash verification. No ambient environment leaks.</p>
+          <div class="devsec-panel active" data-index="01" style="background-image:url('{{ url_for('static', filename='img/slide.jpg') }}')">
+            <div class="panel-content">
+              <span class="panel-index">01</span>
+              <h4 class="panel-title">Hermetic Builds</h4>
+              <p class="panel-desc">Deterministic pipelines with locked dependency trees and cryptographic hash verification. No ambient environment leaks.</p>
+            </div>
           </div>
-          <div class="devsec-panel" data-index="02">
-            <span class="panel-index">02</span>
-            <h4 class="panel-title">AST Auditing</h4>
-            <p class="panel-desc">Automated syntax tree inspection, taint tracking, and endpoint fuzzing on every branch prior to merge.</p>
+          <div class="devsec-panel" data-index="02" style="background-image:url('{{ url_for('static', filename='img/slide-3-consultancy.jpg') }}')">
+            <div class="panel-content">
+              <span class="panel-index">02</span>
+              <h4 class="panel-title">AST Auditing</h4>
+              <p class="panel-desc">Automated syntax tree inspection, taint tracking, and endpoint fuzzing on every branch prior to merge.</p>
+            </div>
           </div>
-          <div class="devsec-panel" data-index="03">
-            <span class="panel-index">03</span>
-            <h4 class="panel-title">Ephemeral Secrets</h4>
-            <p class="panel-desc">Zero hardcoded credentials. Dynamic workload identity federation with vault-backed auto-rotation.</p>
+          <div class="devsec-panel" data-index="03" style="background-image:url('{{ url_for('static', filename='img/slide-2-building.png') }}')">
+            <div class="panel-content">
+              <span class="panel-index">03</span>
+              <h4 class="panel-title">Ephemeral Secrets</h4>
+              <p class="panel-desc">Zero hardcoded credentials. Dynamic workload identity federation with vault-backed auto-rotation.</p>
+            </div>
           </div>
-          <div class="devsec-panel" data-index="04">
-            <span class="panel-index">04</span>
-            <h4 class="panel-title">Kernel Telemetry</h4>
-            <p class="panel-desc">eBPF probes monitoring anomalous network calls, memory boundaries, and non-root container sandboxes in real time.</p>
+          <div class="devsec-panel" data-index="04" style="background-image:url('{{ url_for('static', filename='img/slide-4-ai-agents.jpg') }}')">
+            <div class="panel-content">
+              <span class="panel-index">04</span>
+              <h4 class="panel-title">Kernel Telemetry</h4>
+              <p class="panel-desc">eBPF probes monitoring anomalous network calls, memory boundaries, and non-root container sandboxes in real time.</p>
+            </div>
           </div>
           <div class="devsec-panel-strip">
             <button class="strip-tab active" data-panel="01">01</button>
@@ -599,8 +606,76 @@
     </div>
   </div>
 </section>
+<section class="faq reveal" id="faq">
+  <div class="wrap">
+    <div class="head">
+      <span class="sq"></span>
+      <h2>FAQ</h2>
+      <span class="n">common questions</span>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-col-label">
+        <p class="faq-side-note">Questions we get asked before engagements begin. If yours isn't here, <a href="#contact">write to us directly</a>.</p>
+      </div>
+
+      <div class="faq-col-items">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Where is NEMESIS based and do you work remotely?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>We are headquartered in Harare, Zimbabwe. Every engagement is run remotely — we operate across African, European, and US time zones and have delivered systems for clients in multiple countries without requiring an on-site presence.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>What is the typical timeline from scoping to first deployment?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Most engagements move from a signed scope to a staging deployment in 6 to 10 weeks. Discovery and architecture take 2 – 4 weeks, the first build sprint runs 4 – 6 weeks, and hardening is woven into every sprint — not bolted on at the end.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Do you take on maintenance contracts or project-only work?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Both. We offer fixed-scope project engagements and ongoing retainer agreements that cover monitoring, incident response, and continuous delivery. Most clients start with a project and transition into a retainer once the system is live.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>What stack do you build on by default?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Our defaults are Python (FastAPI / Django) or Node.js on the backend, PostgreSQL or Redis for data, and React or Next.js on the frontend. We adapt to your existing stack when required — the choice of tools follows the constraints of the problem, not personal preference.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>How is security integrated into the build process?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Security is not a separate audit phase. Static analysis, dependency scanning, secret detection, and container hardening run automatically on every pull request via our CI pipeline. Nothing reaches production without passing those gates. We also provide a threat model document as part of every Discovery deliverable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="contact reveal" id="contact" style="position: relative; overflow: hidden;">
+
   <div class="africa-map-wrap">
     <img src="{{ url_for('static', filename='img/africa-dots-light.png') }}" class="africa-map-img africa-map-light"
       alt="Africa dotted map">
