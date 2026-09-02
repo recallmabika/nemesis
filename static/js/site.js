@@ -111,6 +111,29 @@
       });
     }
 
+    // 5-second automatic sliding timer
+    var autoTimer = null;
+    var isHovered = false;
+
+    function startAutoTimer(){
+      stopAutoTimer();
+      autoTimer = setInterval(function(){
+        if(isHovered) return;
+        var nextStep = (currentStep % 4) + 1;
+        setStep(nextStep);
+      }, 5000);
+    }
+
+    function stopAutoTimer(){
+      if(autoTimer){
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    }
+
+    processTrack.addEventListener('mouseenter', function(){ isHovered = true; });
+    processTrack.addEventListener('mouseleave', function(){ isHovered = false; });
+
     function onScroll(){
       var rect = processTrack.getBoundingClientRect();
       var trackH = processTrack.offsetHeight - window.innerHeight;
@@ -135,32 +158,26 @@
       }
     }
 
-    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('scroll', function(){
+      onScroll();
+      startAutoTimer();
+    }, {passive: true});
     onScroll();
+    startAutoTimer();
 
     // Click to jump to stage directly
     nodes.forEach(function(n, idx){
       if(!n) return;
       n.addEventListener('click', function(){
-        var trackTop = processTrack.offsetTop;
-        var trackH = processTrack.offsetHeight - window.innerHeight;
-        var targetProgress = idx / 3;
-        window.scrollTo({
-          top: trackTop + (targetProgress * trackH) + 5,
-          behavior: 'smooth'
-        });
+        setStep(idx + 1);
+        startAutoTimer();
       });
     });
 
     pills.forEach(function(p, idx){
       p.addEventListener('click', function(){
-        var trackTop = processTrack.offsetTop;
-        var trackH = processTrack.offsetHeight - window.innerHeight;
-        var targetProgress = idx / 3;
-        window.scrollTo({
-          top: trackTop + (targetProgress * trackH) + 5,
-          behavior: 'smooth'
-        });
+        setStep(idx + 1);
+        startAutoTimer();
       });
     });
   })();

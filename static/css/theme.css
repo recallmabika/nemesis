@@ -219,6 +219,28 @@
     transition:stroke-dashoffset .4s cubic-bezier(.2,.7,.2,1);
     filter:drop-shadow(0 0 6px var(--gold));
   }
+  .orbit-tracer{
+    fill:none;
+    stroke:var(--ink);
+    stroke-width:3;
+    stroke-dasharray:110 706;
+    stroke-linecap:round;
+    transform-origin:175px 175px;
+    animation:orbitSweep 8s cubic-bezier(.45, 0, .55, 1) infinite;
+    pointer-events:none;
+    filter:drop-shadow(0 0 6px var(--gold));
+  }
+  [data-theme="dark"] .orbit-tracer{
+    stroke:var(--gold);
+    filter:drop-shadow(0 0 10px var(--gold));
+  }
+  @keyframes orbitSweep{
+    0%{transform:rotate(0deg);}
+    45%{transform:rotate(360deg);}
+    55%{transform:rotate(360deg);}
+    95%{transform:rotate(-180deg);}
+    100%{transform:rotate(0deg);}
+  }
   .node-stem{
     stroke:var(--line-strong);
     stroke-width:1.5;
