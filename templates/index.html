@@ -431,111 +431,89 @@
       <span class="n">what we've built</span>
     </div>
 
+    <!-- Platform Stats Header Strip -->
+    <div class="work-header-strip">
+      <div class="work-stats-row">
+        <div class="stat-pill"><span class="val">08</span><span class="lbl">Platforms</span></div>
+        <div class="stat-pill"><span class="val">07 Live</span><span class="lbl">In Production</span></div>
+        <div class="stat-pill"><span class="val">ZW</span><span class="lbl">Built &amp; Deployed From</span></div>
+      </div>
+      <a href="{{ url_for('our_work') }}" class="work-all-link">
+        Read In-Depth Case Studies &rarr;
+      </a>
+    </div>
+
     <div class="work-cards-grid">
 
-      <!-- Card 01: FINDit -->
+      <!-- Card 01: Savora -->
       <div class="work-card">
         <div class="card-bg">
-          <img src="{{ url_for('static', filename='img/fiind-banner.png') }}" alt="FINDit Platform" class="card-bg-img">
+          <img src="{{ url_for('static', filename='img/slide.jpg') }}" alt="Savora Platform" class="card-bg-img">
           <div class="card-scrim"></div>
         </div>
         <div class="card-drawer">
           <div class="drawer-peek">
             <div class="drawer-header">
-              <span class="card-tag">Marketplace</span>
+              <span class="card-tag">Restaurant Tech · Live Demo</span>
               <span class="card-index">01</span>
             </div>
-            <h3 class="card-title">FINDit</h3>
-            <p class="card-summary">Multi-vendor discovery platform built for resilient commerce at scale.</p>
+            <h3 class="card-title">Savora</h3>
+            <p class="card-summary">Hospitality front-of-house OS with interactive floor plan &amp; guest CRM.</p>
           </div>
 
           <div class="drawer-expanded">
-            <p class="card-description">Engineered high-concurrency merchant onboarding, structured geo-indexed catalog queries, and automated escrow settlement pipelines for high-volume transactions.</p>
+            <p class="card-description">Replaced paper diaries and WhatsApp booking threads with real-time reservation conflict detection, color-coded floor plan seating, and waitlist management.</p>
             <div class="card-specs">
               <span class="specs-label">Key Capabilities</span>
               <ul class="specs-list">
-                <li>Smart search &amp; geo-indexed discovery</li>
-                <li>Automated merchant KYC &amp; verification</li>
-                <li>Sub-50ms query response latency</li>
+                <li>Live reservation dashboard with conflict checks</li>
+                <li>Interactive zone-mapped floor plan &amp; walk-in queue</li>
+                <li>Guest CRM with VIP visit &amp; spend history</li>
               </ul>
             </div>
             <div class="card-meta-foot">
-              <span class="card-tech">Python · FastAPI · PostgreSQL · Redis</span>
-              <span class="card-action">Explore Platform <span class="arr">&rarr;</span></span>
+              <span class="card-tech">HTML5 · Bootstrap 5.3 · JS · Chart.js</span>
+              <a href="https://savora-reservation-demo.nemesis.co.zw/" target="_blank" rel="noopener noreferrer" class="card-action">Launch Live Demo <span class="arr">&rarr;</span></a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Card 02: MINOPAR EDR -->
+      <!-- Card 02: Aurelia -->
       <div class="work-card">
         <div class="card-bg">
-          <img src="{{ url_for('static', filename='img/slide-4-ai-agents.jpg') }}" alt="MINOPAR EDR" class="card-bg-img">
+          <img src="{{ url_for('static', filename='img/slide2.jpg') }}" alt="Aurelia Hotel PMS" class="card-bg-img">
           <div class="card-scrim"></div>
         </div>
         <div class="card-drawer">
           <div class="drawer-peek">
             <div class="drawer-header">
-              <span class="card-tag">Security / EDR</span>
+              <span class="card-tag">Hospitality PMS · Live Demo</span>
               <span class="card-index">02</span>
             </div>
-            <h3 class="card-title">MINOPAR EDR</h3>
-            <p class="card-summary">Endpoint detection &amp; response platform with real-time threat telemetry.</p>
+            <h3 class="card-title">Aurelia</h3>
+            <p class="card-summary">Full hotel operating system with check-in wizards, housekeeping &amp; analytics.</p>
           </div>
 
           <div class="drawer-expanded">
-            <p class="card-description">Autonomous telemetry collectors and behavioral anomaly engines designed to detect, quarantine, and forensic-trace network intrusion vectors in real time.</p>
+            <p class="card-description">Unifies front desk, housekeeping assignments, maintenance kanban tickets, and finance reporting into a single high-availability interface.</p>
             <div class="card-specs">
               <span class="specs-label">Key Capabilities</span>
               <ul class="specs-list">
-                <li>Kernel-level runtime telemetry sensors</li>
-                <li>Behavioral anomaly detection engines</li>
-                <li>Automated threat isolation &amp; incident forensics</li>
+                <li>ADR, RevPAR &amp; occupancy analytics dashboard</li>
+                <li>Multi-step check-in/out with digital signature</li>
+                <li>Housekeeping board &amp; maintenance ticket kanban</li>
               </ul>
             </div>
             <div class="card-meta-foot">
-              <span class="card-tech">Linux Kernel eBPF · Rust · DevSecOps</span>
-              <span class="card-action">Explore Platform <span class="arr">&rarr;</span></span>
+              <span class="card-tech">HTML5 · Bootstrap 5.3 · Vanilla JS · Chart.js</span>
+              <a href="https://aurelia-hotel-ms-demo.nemesis.co.zw/" target="_blank" rel="noopener noreferrer" class="card-action">Launch Live Demo <span class="arr">&rarr;</span></a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Card 03: MUSHA -->
-      <div class="work-card">
-        <div class="card-bg">
-          <img src="{{ url_for('static', filename='img/slide-2-building.png') }}" alt="MUSHA Property Valuation" class="card-bg-img">
-          <div class="card-scrim"></div>
-        </div>
-        <div class="card-drawer">
-          <div class="drawer-peek">
-            <div class="drawer-header">
-              <span class="card-tag">Real Estate / PropTech</span>
-              <span class="card-index">03</span>
-            </div>
-            <h3 class="card-title">MUSHA</h3>
-            <p class="card-summary">Property valuation tool with deeds registry integration &amp; due diligence.</p>
-          </div>
-
-          <div class="drawer-expanded">
-            <p class="card-description">Computes precision valuation benchmarks through historical transaction registry data, geospatial comparables, and automated cadastral title deed verification.</p>
-            <div class="card-specs">
-              <span class="specs-label">Key Capabilities</span>
-              <ul class="specs-list">
-                <li>Automated comparative valuation model</li>
-                <li>Title deed &amp; cadastral registry validation</li>
-                <li>Zoning &amp; encumbrance risk auditing</li>
-              </ul>
-            </div>
-            <div class="card-meta-foot">
-              <span class="card-tech">Geospatial GIS · Python · PostgreSQL</span>
-              <span class="card-action">Explore Platform <span class="arr">&rarr;</span></span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 04: PONDAE -->
+      <!-- Card 03: PONDAE -->
       <div class="work-card">
         <div class="card-bg">
           <img src="{{ url_for('static', filename='img/slide-3-consultancy.jpg') }}" alt="PONDAE Housing" class="card-bg-img">
@@ -544,26 +522,196 @@
         <div class="card-drawer">
           <div class="drawer-peek">
             <div class="drawer-header">
-              <span class="card-tag">Accommodation Tech</span>
-              <span class="card-index">04</span>
+              <span class="card-tag">PropTech · Live on Azure</span>
+              <span class="card-index">03</span>
             </div>
             <h3 class="card-title">PONDAE</h3>
-            <p class="card-summary">Student housing accommodation, bed allocation &amp; tenancy management.</p>
+            <p class="card-summary">Student housing accommodation platform serving Midlands State University.</p>
           </div>
 
           <div class="drawer-expanded">
-            <p class="card-description">Centralized off-residence tenancy lifecycle platform with algorithmic bed matching, rent ledger reconciliation, and real-time occupancy reporting.</p>
+            <p class="card-description">Eliminates scattered, unverified room listings with geolocated property maps, real-time tenant chat, bed allocation, and owner revenue reconciliation.</p>
             <div class="card-specs">
               <span class="specs-label">Key Capabilities</span>
               <ul class="specs-list">
-                <li>Algorithmic bed allocation engine</li>
-                <li>Automated tenancy onboarding &amp; leasing</li>
-                <li>Multi-property occupancy &amp; financial ledger</li>
+                <li>Interactive property map with proximity filtering</li>
+                <li>Real-time tenant-to-admin chat via Laravel Reverb</li>
+                <li>Automated leasing, bed allocation &amp; payment audit</li>
               </ul>
             </div>
             <div class="card-meta-foot">
-              <span class="card-tech">Python · Flask · PostgreSQL · CI/CD</span>
-              <span class="card-action">Explore Platform <span class="arr">&rarr;</span></span>
+              <span class="card-tech">Laravel 11 · React · PostgreSQL · Azure · Docker</span>
+              <a href="{{ url_for('our_work') }}#pondae" class="card-action">Case Study <span class="arr">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 04: PONDAE Watcher -->
+      <div class="work-card">
+        <div class="card-bg">
+          <img src="{{ url_for('static', filename='img/services_abstract.jpg') }}" alt="PONDAE Watcher" class="card-bg-img">
+          <div class="card-scrim"></div>
+        </div>
+        <div class="card-drawer">
+          <div class="drawer-peek">
+            <div class="drawer-header">
+              <span class="card-tag">Network Telemetry · In Production</span>
+              <span class="card-index">04</span>
+            </div>
+            <h3 class="card-title">PONDAE Watcher</h3>
+            <p class="card-summary">Tenant network visualization &amp; bandwidth monitoring for housing staff.</p>
+          </div>
+
+          <div class="drawer-expanded">
+            <p class="card-description">Gives accommodation managers real-time visibility into Wi-Fi activity and bandwidth abuse across student tenants without inspecting physical routers.</p>
+            <div class="card-specs">
+              <span class="specs-label">Key Capabilities</span>
+              <ul class="specs-list">
+                <li>Tenancy-wide network activity visualization</li>
+                <li>Per-device Wi-Fi tracking down to room assignee</li>
+                <li>Automated bandwidth limits &amp; anomaly alerts</li>
+              </ul>
+            </div>
+            <div class="card-meta-foot">
+              <span class="card-tech">Python · React · Network APIs · SIEM</span>
+              <a href="{{ url_for('our_work') }}#pondae-watcher" class="card-action">Case Study <span class="arr">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 05: MUSHA (INTELLI-FIND) -->
+      <div class="work-card">
+        <div class="card-bg">
+          <img src="{{ url_for('static', filename='img/slide-2-building.png') }}" alt="MUSHA Property Intelligence" class="card-bg-img">
+          <div class="card-scrim"></div>
+        </div>
+        <div class="card-drawer">
+          <div class="drawer-peek">
+            <div class="drawer-header">
+              <span class="card-tag">PropTech · In Production</span>
+              <span class="card-index">05</span>
+            </div>
+            <h3 class="card-title">MUSHA (INTELLI-FIND)</h3>
+            <p class="card-summary">Property valuation engine with deeds registry integration &amp; due diligence.</p>
+          </div>
+
+          <div class="drawer-expanded">
+            <p class="card-description">Accelerates property due diligence in Zimbabwe through automated comparative sales benchmarks, title deed registry API verification, and zoning risk auditing.</p>
+            <div class="card-specs">
+              <span class="specs-label">Key Capabilities</span>
+              <ul class="specs-list">
+                <li>Automated comparative sales valuation model</li>
+                <li>Title deeds &amp; cadastral registry validation</li>
+                <li>AI-assisted encumbrance &amp; zoning audit</li>
+              </ul>
+            </div>
+            <div class="card-meta-foot">
+              <span class="card-tech">React · Node.js · Registry API · PostgreSQL</span>
+              <a href="{{ url_for('our_work') }}#musha" class="card-action">Case Study <span class="arr">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 06: MINOPAR -->
+      <div class="work-card">
+        <div class="card-bg">
+          <img src="{{ url_for('static', filename='img/slide-4-ai-agents.jpg') }}" alt="MINOPAR EDR" class="card-bg-img">
+          <div class="card-scrim"></div>
+        </div>
+        <div class="card-drawer">
+          <div class="drawer-peek">
+            <div class="drawer-header">
+              <span class="card-tag">Security / EDR · In Production</span>
+              <span class="card-index">06</span>
+            </div>
+            <h3 class="card-title">MINOPAR EDR</h3>
+            <p class="card-summary">Endpoint detection &amp; response platform with real-time threat telemetry.</p>
+          </div>
+
+          <div class="drawer-expanded">
+            <p class="card-description">Engineered for mid-tier organizations lacking enterprise security budgets. Deploys real-time anomaly sensors, behavioral heuristics, and instant forensic isolation.</p>
+            <div class="card-specs">
+              <span class="specs-label">Key Capabilities</span>
+              <ul class="specs-list">
+                <li>Real-time endpoint threat detection &amp; quarantine</li>
+                <li>Behavioral anomaly &amp; lateral movement tracking</li>
+                <li>Forensic incident response &amp; audit telemetry</li>
+              </ul>
+            </div>
+            <div class="card-meta-foot">
+              <span class="card-tech">Python · SIEM Integration · PostgreSQL</span>
+              <a href="{{ url_for('our_work') }}#minopar" class="card-action">Case Study <span class="arr">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 07: FINDit -->
+      <div class="work-card">
+        <div class="card-bg">
+          <img src="{{ url_for('static', filename='img/fiind-banner.png') }}" alt="FINDit Marketplace" class="card-bg-img">
+          <div class="card-scrim"></div>
+        </div>
+        <div class="card-drawer">
+          <div class="drawer-peek">
+            <div class="drawer-header">
+              <span class="card-tag">Marketplace · Mobile In Review</span>
+              <span class="card-index">07</span>
+            </div>
+            <h3 class="card-title">FINDit</h3>
+            <p class="card-summary">Buyer, seller &amp; service discovery marketplace with verified merchants.</p>
+          </div>
+
+          <div class="drawer-expanded">
+            <p class="card-description">Brings trust and verified reputation to local commerce. Features multi-category search, merchant credential validation, and high-concurrency order discovery.</p>
+            <div class="card-specs">
+              <span class="specs-label">Key Capabilities</span>
+              <ul class="specs-list">
+                <li>Intelligent geo-filtered product discovery</li>
+                <li>Seller verification badges &amp; rating telemetry</li>
+                <li>Responsive web platform live; native app in review</li>
+              </ul>
+            </div>
+            <div class="card-meta-foot">
+              <span class="card-tech">React · Node.js · PostgreSQL · React Native</span>
+              <a href="{{ url_for('our_work') }}#findit" class="card-action">Case Study <span class="arr">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 08: Hotel Management System -->
+      <div class="work-card">
+        <div class="card-bg">
+          <img src="{{ url_for('static', filename='img/nemesis_logo_hero.png') }}" alt="Hotel Management System" class="card-bg-img" style="filter: brightness(0.4);">
+          <div class="card-scrim"></div>
+        </div>
+        <div class="card-drawer">
+          <div class="drawer-peek">
+            <div class="drawer-header">
+              <span class="card-tag">Hospitality · Under NDA</span>
+              <span class="card-index">08</span>
+            </div>
+            <h3 class="card-title">Hotel Operations Suite</h3>
+            <p class="card-summary">Production booking &amp; occupancy platform for a regional hospitality group.</p>
+          </div>
+
+          <div class="drawer-expanded">
+            <p class="card-description">Replaced manual WhatsApp phone bookings with real-time online reservations, room inventory control, payment gateway integration, and revenue analytics.</p>
+            <div class="card-specs">
+              <span class="specs-label">Key Capabilities</span>
+              <ul class="specs-list">
+                <li>Automated online reservations &amp; payment capture</li>
+                <li>Real-time room availability &amp; occupancy matrix</li>
+                <li>Historical revenue forecasting &amp; trend reports</li>
+              </ul>
+            </div>
+            <div class="card-meta-foot">
+              <span class="card-tech">Laravel 11 · Inertia.js · React · PostgreSQL</span>
+              <a href="{{ url_for('our_work') }}#hotel-system" class="card-action">Case Study (NDA) <span class="arr">&rarr;</span></a>
             </div>
           </div>
         </div>

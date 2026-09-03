@@ -178,6 +178,12 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/our-work")
+def our_work():
+    return render_template("our_work.html")
+
+
+
 @app.route("/api/inquiry", methods=["POST"])
 def submit_inquiry():
     """Receives, validates, and dispatches customer inquiries."""
@@ -239,6 +245,7 @@ def robots_txt():
 def sitemap_xml():
     pages = [
         {"loc": f"{SITE_URL}/", "priority": "1.0", "changefreq": "weekly"},
+        {"loc": f"{SITE_URL}/our-work", "priority": "0.9", "changefreq": "weekly"},
     ]
     xml_parts = ['<?xml version="1.0" encoding="UTF-8"?>',
                  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
