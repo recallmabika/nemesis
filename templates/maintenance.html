@@ -1,72 +1,289 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="refresh" content="120">
-  <title>Nemesis — Under Maintenance</title>
-  <link rel="icon" href="{{ url_for('static', filename='nemesis_logo.png') }}">
+  <title>NEMESIS — Under Maintenance</title>
+  <link rel="icon" href="{{ url_for('static', filename='img/nemesis_logo.png') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; }
+
+    :root {
+      --paper: #0a0b0d;
+      --surface: #111316;
+      --ink: #f5f5f3;
+      --ink-70: rgba(245,245,243,.7);
+      --ink-45: rgba(245,245,243,.45);
+      --gold: #c9a84c;
+      --line: rgba(245,245,243,.13);
+      --line-strong: rgba(245,245,243,.22);
+    }
+
+    html {
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+    }
+
     body {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #0d0d0d;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: #f0f0f0;
-      text-align: center;
-      padding: 24px;
+      background: var(--surface);
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--ink);
+      position: relative;
+      overflow: hidden;
     }
-    .card {
-      max-width: 480px;
+
+    /* ---- Background image exactly like Process section ---- */
+    .maint-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('/static/img/nemesis_logo.png');
+      background-size: cover;
+      background-position: center center;
+      opacity: 0.14;
+      pointer-events: none;
+      z-index: 0;
     }
-    .logo {
-      width: 160px;
-      height: 160px;
-      object-fit: contain;
+
+    /* Subtle grain texture overlay */
+    .maint-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 50%, transparent 30%, var(--paper) 100%);
+    }
+
+    /* Top & bottom edge hairlines */
+    .maint-frame-top,
+    .maint-frame-bottom {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--line-strong);
+      z-index: 2;
+    }
+    .maint-frame-top { top: 0; }
+    .maint-frame-bottom { bottom: 0; }
+
+    /* Corner registration marks */
+    .maint-corner {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      z-index: 2;
+    }
+    .maint-corner::before,
+    .maint-corner::after {
+      content: '';
+      position: absolute;
+      background: var(--line-strong);
+    }
+    .maint-corner::before { width: 1px; height: 100%; }
+    .maint-corner::after  { width: 100%; height: 1px; }
+
+    .maint-corner.tl { top: 28px; left: 28px; }
+    .maint-corner.tr { top: 28px; right: 28px; }
+    .maint-corner.tr::before { right: 0; }
+    .maint-corner.tr::after  { right: 0; }
+    .maint-corner.bl { bottom: 28px; left: 28px; }
+    .maint-corner.bl::before { bottom: 0; }
+    .maint-corner.bl::after  { bottom: 0; }
+    .maint-corner.br { bottom: 28px; right: 28px; }
+    .maint-corner.br::before { right: 0; bottom: 0; }
+    .maint-corner.br::after  { right: 0; bottom: 0; }
+
+    /* ---- Card ---- */
+    .maint-card {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      max-width: 560px;
+      width: 100%;
+      padding: 0 24px;
+    }
+
+    /* Eyebrow status line */
+    .maint-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       margin-bottom: 32px;
-      filter: drop-shadow(0 10px 30px rgba(255, 170, 0, 0.15));
-      animation: float 4s ease-in-out infinite;
     }
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+
+    .maint-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      animation: pulse-dot 2s ease-in-out infinite;
     }
-    h1 {
-      font-size: 1.8rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      margin-bottom: 12px;
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.7); }
     }
-    p {
-      font-size: 1rem;
-      color: #a0a0a0;
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
-    .badge {
-      display: inline-block;
-      margin-top: 24px;
-      padding: 6px 16px;
-      border-radius: 999px;
-      background: rgba(255, 170, 0, 0.1);
-      border: 1px solid rgba(255, 170, 0, 0.3);
-      color: #ffaa00;
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
+
+    .maint-status-text {
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* Logo */
+    .maint-logo {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      margin-bottom: 28px;
+      opacity: 0.9;
+    }
+
+    /* Headline */
+    .maint-headline {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(36px, 6vw, 62px);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+    }
+
+    .maint-headline i {
+      font-style: italic;
+      color: var(--ink-70);
+    }
+
+    /* Divider */
+    .maint-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 24px 0;
+      opacity: 0.7;
+    }
+
+    /* Body text */
+    .maint-body {
+      font-size: 13.5px;
+      line-height: 1.8;
+      color: var(--ink-70);
+      margin-bottom: 8px;
+      max-width: 42ch;
+    }
+
+    /* Meta ledger row */
+    .maint-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 32px;
+      width: 100%;
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .meta-k {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-45);
+    }
+
+    .meta-v {
+      font-size: 11.5px;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* Auto-refresh notice */
+    .maint-refresh-note {
+      margin-top: 28px;
+      font-size: 10.5px;
+      letter-spacing: 0.06em;
+      color: var(--ink-45);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .maint-card { padding: 0 20px; }
+      .maint-corner { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <img class="logo" src="{{ url_for('static', filename='nemesis_logo.png') }}" alt="Nemesis logo">
-    <h1>We're upgrading things</h1>
-    <p>Nemesis is currently undergoing scheduled maintenance.</p>
-    <p>We'll be back online shortly — thanks for your patience.</p>
-    <span class="badge">Under Maintenance</span>
+
+  <!-- Background image layer (same as Process section) -->
+  <div class="maint-bg" aria-hidden="true"></div>
+
+  <!-- Frame -->
+  <div class="maint-frame-top" aria-hidden="true"></div>
+  <div class="maint-frame-bottom" aria-hidden="true"></div>
+  <div class="maint-corner tl" aria-hidden="true"></div>
+  <div class="maint-corner tr" aria-hidden="true"></div>
+  <div class="maint-corner bl" aria-hidden="true"></div>
+  <div class="maint-corner br" aria-hidden="true"></div>
+
+  <!-- Content Card -->
+  <div class="maint-card">
+
+    <div class="maint-eyebrow">
+      <span class="maint-dot"></span>
+      <span class="maint-status-text">Under Maintenance</span>
+    </div>
+
+    <img class="maint-logo"
+         src="{{ url_for('static', filename='img/nemesis_logo.png') }}"
+         alt="NEMESIS logo">
+
+    <h1 class="maint-headline">We're upgrading<br><i>things.</i></h1>
+
+    <div class="maint-divider"></div>
+
+    <p class="maint-body">NEMESIS is currently undergoing scheduled maintenance.</p>
+    <p class="maint-body">We'll be back online shortly — thanks for your patience.</p>
+
+    <div class="maint-meta">
+      <div class="meta-row">
+        <span class="meta-k">Status</span>
+        <span class="meta-v">Scheduled Maintenance</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-k">Scope</span>
+        <span class="meta-v">Platform Upgrade</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-k">ETA</span>
+        <span class="meta-v">Shortly</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-k">Contact</span>
+        <span class="meta-v">info@nemesis.co.zw</span>
+      </div>
+    </div>
+
+    <p class="maint-refresh-note">This page refreshes automatically every 2 minutes.</p>
+
   </div>
+
 </body>
 </html>

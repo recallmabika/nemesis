@@ -35,7 +35,9 @@ DEFAULT_DESCRIPTION = (
 
 # SMTP / Email Configuration
 SMTP_HOST = os.environ.get("SMTP_HOST", "")
-SMTP_PORT = int(os.environ.get("SMTP_PORT", 465))
+_port_raw = os.environ.get("SMTP_PORT", "465")
+_port_match = re.search(r"\d+", str(_port_raw))
+SMTP_PORT = int(_port_match.group(0)) if _port_match else 465
 SMTP_USER = os.environ.get("SMTP_USER", "")
 SMTP_PASSWORD = os.environ.get("SMTP_PASSWORD", "")
 SMTP_USE_SSL = os.environ.get("SMTP_USE_SSL", "True").lower() in ("true", "1", "yes")
@@ -181,6 +183,11 @@ def index():
 @app.route("/our-work")
 def our_work():
     return render_template("our_work.html")
+
+
+@app.route("/maintenance")
+def maintenance():
+    return render_template("maintenance.html")
 
 
 

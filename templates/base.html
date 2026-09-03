@@ -94,11 +94,16 @@
     <div class="header-right">
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">Menu</button>
       <nav id="siteNav">
-        <a href="{% if request.path != '/' %}{{ url_for('index') }}{% endif %}#services">Services</a>
-        <a href="{% if request.path != '/' %}{{ url_for('index') }}{% endif %}#devsecops">DevSecOps</a>
-        <a href="{% if request.path != '/' %}{{ url_for('index') }}{% endif %}#process">Process</a>
-        <a href="{% if request.path != '/' %}{{ url_for('index') }}{% endif %}#work">Work</a>
-        <a href="{% if request.path != '/' %}{{ url_for('index') }}{% endif %}#contact">Contact</a>
+        {% if request.endpoint == 'our_work' or request.path == '/our-work' %}
+          <a href="{{ url_for('index') }}">Home</a>
+          <a href="{{ url_for('our_work') }}" class="active">Our Work</a>
+        {% else %}
+          <a href="#services">Services</a>
+          <a href="#devsecops">DevSecOps</a>
+          <a href="#process">Process</a>
+          <a href="#work">Work</a>
+          <a href="#contact">Contact</a>
+        {% endif %}
       </nav>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
         <span class="tt-light">Light mode</span>
@@ -145,7 +150,7 @@
     </div>
   </div>
   
-  <a href="#top" class="btn footer-btn" style="position: absolute; right: 40px; bottom: 20px; padding: 10px 20px; z-index: 2;">Scroll to top</a>
+  <a href="#top" class="scroll-top-btn" aria-label="Scroll to top">&#8593;</a>
 </footer>
 
 <script src="{{ url_for('static', filename='js/site.js') }}"></script>

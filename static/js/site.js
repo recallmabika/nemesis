@@ -633,30 +633,70 @@ if (form) {
   var fieldEmail = document.getElementById('fieldEmail');
   var fieldDetails = document.getElementById('fieldDetails');
 
+  var feedbackTimer = null;
+
+  function hideFeedback() {
+    if (feedbackTimer) {
+      clearTimeout(feedbackTimer);
+      feedbackTimer = null;
+    }
+    if (!feedback) return;
+    feedback.style.opacity = '0';
+    setTimeout(function () {
+      feedback.style.display = 'none';
+      feedback.textContent = '';
+      feedback.className = 'form-feedback';
+    }, 400);
+  }
+
   function showFeedback(msg, isSuccess) {
     if (!feedback) return;
+    if (feedbackTimer) {
+      clearTimeout(feedbackTimer);
+      feedbackTimer = null;
+    }
     feedback.textContent = msg;
     feedback.className = 'form-feedback ' + (isSuccess ? 'is-success' : 'is-error');
+    feedback.style.display = 'block';
+    feedback.style.opacity = '1';
     feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    // Automatically make the message disappear after 5 seconds
+    feedbackTimer = setTimeout(function () {
+      hideFeedback();
+      if (!isSuccess) {
+        if (fieldName) fieldName.classList.remove('has-error');
+        if (fieldEmail) fieldEmail.classList.remove('has-error');
+        if (fieldDetails) fieldDetails.classList.remove('has-error');
+      }
+    }, 5000);
   }
 
   function clearErrors() {
+    if (feedbackTimer) {
+      clearTimeout(feedbackTimer);
+      feedbackTimer = null;
+    }
     if (fieldName) fieldName.classList.remove('has-error');
     if (fieldEmail) fieldEmail.classList.remove('has-error');
     if (fieldDetails) fieldDetails.classList.remove('has-error');
     if (feedback) {
-      feedback.className = 'form-feedback';
+      feedback.style.opacity = '0';
       feedback.style.display = 'none';
       feedback.textContent = '';
+      feedback.className = 'form-feedback';
     }
   }
 
-  // Clear error on user typing
+  // Clear error on user typing and hide error banner
   [nameInput, emailInput, detailsInput].forEach(function (input) {
     if (!input) return;
     input.addEventListener('input', function () {
       var parent = input.closest('.field');
       if (parent) parent.classList.remove('has-error');
+      if (feedback && feedback.classList.contains('is-error')) {
+        hideFeedback();
+      }
     });
   });
 
