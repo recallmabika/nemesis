@@ -13,8 +13,8 @@
     <div class="hero-bg-slide"
       style="background-image:url('{{ url_for('static', filename='img/slide-4-ai-agents.jpg') }}')"></div>
   </div>
-  <div class="wrap">
-    <div>
+  <div class="wrap hero-wrap">
+    <div class="hero-left">
       <h1>Software tuned to hold its <i>line</i> under real load.</h1>
       <p class="dek">Full-stack development and DevSecOps, built and run out of Harare. We take a system from its
         noisiest state to a steady one — and keep it there through every deploy after.</p>
@@ -23,10 +23,26 @@
         <a href="#process" class="btn">See the method</a>
       </div>
     </div>
-    <div class="status">
-      <div class="row"><span class="k">System</span><span class="v"><span class="led"></span>Stable</span></div>
-      <div class="row"><span class="k">Watching</span><span class="v">24 / 7</span></div>
-      <div class="row"><span class="k">Based</span><span class="v">Harare, ZW</span></div>
+    <div class="hero-right">
+      <div class="hero-cube-scene" id="heroCubeScene">
+        <div class="hero-photo-cube" id="heroCube">
+          <div class="cube-face cube-front"  style="background-image:url('{{ url_for('static', filename='img/slide.jpg') }}')"></div>
+          <div class="cube-face cube-back"   style="background-image:url('{{ url_for('static', filename='img/slide-3-consultancy.jpg') }}')"></div>
+          <div class="cube-face cube-right"  style="background-image:url('{{ url_for('static', filename='img/slide-4-ai-agents.jpg') }}')"></div>
+          <div class="cube-face cube-left"   style="background-image:url('{{ url_for('static', filename='img/slide2.jpg') }}')"></div>
+          <div class="cube-face cube-top"    style="background-image:url('{{ url_for('static', filename='img/slide-2-building.png') }}')"></div>
+          <div class="cube-face cube-bottom" style="background-image:url('{{ url_for('static', filename='img/services_abstract.jpg') }}')"></div>
+        </div>
+        <div class="cube-hud">
+          <span class="hud-tag">Our Work · 3D</span>
+          <span class="hud-hint">drag to explore</span>
+        </div>
+      </div>
+      <div class="status">
+        <div class="row"><span class="k">System</span><span class="v"><span class="led"></span>Stable</span></div>
+        <div class="row"><span class="k">Watching</span><span class="v">24 / 7</span></div>
+        <div class="row"><span class="k">Based</span><span class="v">Harare, ZW</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -82,14 +98,14 @@
 </section>
 
 <section class="disciplines reveal" id="services">
-  <div class="head"><span class="sq"></span>
+  <div class="head">
     <h2>Services</h2><span class="n">what we do</span>
   </div>
   <div class="disc-list">
     <div class="disc">
       <span class="num">01</span>
       <div>
-        <div class="tag"><span class="sq"></span>Build</div>
+        <div class="tag">Build</div>
         <h3>Full-stack engineering</h3>
       </div>
       <div>
@@ -104,7 +120,7 @@
     <div class="disc">
       <span class="num">02</span>
       <div>
-        <div class="tag"><span class="sq"></span>Secure</div>
+        <div class="tag">Secure</div>
         <h3>DevSecOps</h3>
       </div>
       <div>
@@ -119,7 +135,7 @@
     <div class="disc">
       <span class="num">03</span>
       <div>
-        <div class="tag"><span class="sq"></span>Scale</div>
+        <div class="tag">Scale</div>
         <h3>Cloud &amp; infrastructure</h3>
       </div>
       <div>
@@ -136,19 +152,100 @@
 
 <section class="devsecops reveal" id="devsecops">
   <div class="wrap">
-    <div class="head"><span class="sq"></span>
-      <h2>DevSecOps</h2><span class="n">built in, not bolted on</span>
+    <div class="head">
+      <h2>DevSecOps</h2>
+      <span class="n">security &amp; reliability protocols</span>
     </div>
-    <p class="lede">Shipping isn't the finish line. We set up automated pipelines that test and scan for vulnerabilities
-      on every change, so security keeps pace with development instead of trailing behind it.</p>
-    <div class="chips">
-      <span class="chip">SAST / DAST</span>
-      <span class="chip">Dependency scanning</span>
-      <span class="chip">Secrets detection</span>
-      <span class="chip">Penetration testing</span>
+
+    <div class="devsec-body">
+
+      <!-- Left: Image with hover panels -->
+      <div class="devsec-visual">
+        <div class="devsec-image-wrap">
+          <div class="devsec-panel active" data-index="01" style="background-image:url('{{ url_for('static', filename='img/slide.jpg') }}')">
+            <div class="panel-content">
+              <span class="panel-index">01</span>
+              <h4 class="panel-title">Hermetic Builds</h4>
+              <p class="panel-desc">Deterministic pipelines with locked dependency trees and cryptographic hash verification. No ambient environment leaks.</p>
+            </div>
+          </div>
+          <div class="devsec-panel" data-index="02" style="background-image:url('{{ url_for('static', filename='img/slide-3-consultancy.jpg') }}')">
+            <div class="panel-content">
+              <span class="panel-index">02</span>
+              <h4 class="panel-title">AST Auditing</h4>
+              <p class="panel-desc">Automated syntax tree inspection, taint tracking, and endpoint fuzzing on every branch prior to merge.</p>
+            </div>
+          </div>
+          <div class="devsec-panel" data-index="03" style="background-image:url('{{ url_for('static', filename='img/slide-2-building.png') }}')">
+            <div class="panel-content">
+              <span class="panel-index">03</span>
+              <h4 class="panel-title">Ephemeral Secrets</h4>
+              <p class="panel-desc">Zero hardcoded credentials. Dynamic workload identity federation with vault-backed auto-rotation.</p>
+            </div>
+          </div>
+          <div class="devsec-panel" data-index="04" style="background-image:url('{{ url_for('static', filename='img/slide-4-ai-agents.jpg') }}')">
+            <div class="panel-content">
+              <span class="panel-index">04</span>
+              <h4 class="panel-title">Kernel Telemetry</h4>
+              <p class="panel-desc">eBPF probes monitoring anomalous network calls, memory boundaries, and non-root container sandboxes in real time.</p>
+            </div>
+          </div>
+          <div class="devsec-panel-strip">
+            <button class="strip-tab active" data-panel="01">01</button>
+            <button class="strip-tab" data-panel="02">02</button>
+            <button class="strip-tab" data-panel="03">03</button>
+            <button class="strip-tab" data-panel="04">04</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Manifesto + Ledger -->
+      <div class="devsec-editorial">
+        <div class="devsecops-lead-block">
+          <h3 class="devsecops-headline">Security is an engineering property, not a compliance footnote.</h3>
+          <p class="devsecops-subtext">Every codebase we deliver ships with automated guardrails embedded directly into the continuous delivery pipeline. If a change introduces an architectural vulnerability, an untrusted package, or credential leakage, it never reaches production.</p>
+        </div>
+
+        <div class="sec-ledger-wrap">
+          <div class="sec-ledger-header">
+            <span class="ledger-label">Verification Ledger</span>
+            <span class="ledger-meta">Enforced at repository root</span>
+          </div>
+          <div class="sec-ledger-table" role="table" aria-label="DevSecOps Specification Ledger">
+            <div class="ledger-row ledger-head" role="row">
+              <span class="l-cell col-scope" role="columnheader">Scope</span>
+              <span class="l-cell col-tech" role="columnheader">Tooling</span>
+              <span class="l-cell col-cadence" role="columnheader">Cadence</span>
+            </div>
+            <div class="ledger-row" role="row">
+              <span class="l-cell col-scope" role="cell">Source Integrity</span>
+              <span class="l-cell col-tech" role="cell">Semgrep · SonarQube</span>
+              <span class="l-cell col-cadence" role="cell">100% PR</span>
+            </div>
+            <div class="ledger-row" role="row">
+              <span class="l-cell col-scope" role="cell">Supply Chain</span>
+              <span class="l-cell col-tech" role="cell">Syft SBOM · Trivy</span>
+              <span class="l-cell col-cadence" role="cell">Continuous CVE</span>
+            </div>
+            <div class="ledger-row" role="row">
+              <span class="l-cell col-scope" role="cell">Secrets &amp; IAM</span>
+              <span class="l-cell col-tech" role="cell">TruffleHog · Vault</span>
+              <span class="l-cell col-cadence" role="cell">Zero-Trust</span>
+            </div>
+            <div class="ledger-row" role="row">
+              <span class="l-cell col-scope" role="cell">Runtime Isolation</span>
+              <span class="l-cell col-tech" role="cell">eBPF · Falco · OCI</span>
+              <span class="l-cell col-cadence" role="cell">Real-time</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
+
 
 <section class="process-section" id="process">
   <div class="process-bg-image" aria-hidden="true"></div>
@@ -156,7 +253,6 @@
     <div class="process-sticky-viewport">
       <div class="wrap">
         <div class="head">
-          <span class="sq"></span>
           <h2>Process</h2>
           <span class="n">4-stage engineering delivery</span>
         </div>
@@ -165,13 +261,6 @@
           <!-- Left: 4-Node Nemesis Orbital Graphic -->
           <div class="process-diagram-wrap">
             <svg class="process-orbital-svg" viewBox="0 0 350 350" id="orbitalSvg">
-              <defs>
-                <filter id="glowGold" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="5" result="blur" />
-                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
-              </defs>
-
               <!-- Precision Technical Background Calibration -->
               <circle cx="175" cy="175" r="145" class="orbit-outer-guide" />
               <g class="orbit-ticks">
@@ -218,10 +307,11 @@
                 </g>
               </g>
 
-              <!-- Center Hub (Stationary clean core — no text labels) -->
+              <!-- Center Hub (Stationary clean core — logo inside) -->
               <circle cx="175" cy="175" r="54" class="hub-base" />
               <circle cx="175" cy="175" r="54" class="hub-ring" />
               <circle cx="175" cy="175" r="48" class="hub-inner-ring" />
+              <image href="{{ url_for('static', filename='img/nemesis_logo.png') }}" x="121" y="121" width="108" height="108" preserveAspectRatio="xMidYMid meet" class="hub-logo" />
             </svg>
           </div>
 
@@ -336,45 +426,295 @@
 
 <section class="work reveal" id="work">
   <div class="wrap">
-    <div class="head"><span class="sq"></span>
-      <h2>Work</h2><span class="n">what we've built</span>
+    <div class="head">
+      <h2>Work</h2>
+      <span class="n">what we've built</span>
     </div>
-    <div class="cards">
 
-      <div class="card">
-        <div class="card-cover"
-          style="margin: -34px -34px 24px -34px; height: 180px; overflow: hidden; border-bottom: 1px solid var(--line-strong);">
-          <img src="{{ url_for('static', filename='img/fiind-banner.png') }}" alt="FINDit Marketplace"
-            style="width: 100%; height: 100%; object-fit: cover; object-position: center 35%; transition: transform .4s cubic-bezier(.2,.7,.2,1);">
+    <!-- Platform Stats Header Strip -->
+    <div class="work-header-strip">
+      <div class="work-stats-row">
+        <div class="stat-pill"><span class="val">08</span><span class="lbl">Platforms</span></div>
+        <div class="stat-pill"><span class="val">07 Live</span><span class="lbl">In Production</span></div>
+        <div class="stat-pill"><span class="val">ZW</span><span class="lbl">Built &amp; Deployed From</span></div>
+      </div>
+      <a href="{{ url_for('our_work') }}" class="work-all-link">
+        Read In-Depth Case Studies &rarr;
+      </a>
+    </div>
+
+    <div class="work-cards-grid">
+
+      <!-- Card 01: Savora -->
+      <div class="work-card">
+        <div class="card-bg">
+          <img src="{{ url_for('static', filename='img/slide.jpg') }}" alt="Savora Platform" class="card-bg-img">
+          <div class="card-scrim"></div>
         </div>
-        <div class="top"><span class="kind">Marketplace</span></div>
-        <h3>FINDit</h3>
-        <p>A marketplace platform connecting buyers, sellers, and service providers, built for discovery at scale.</p>
-        <div class="facts"><span>Smart search &amp; discovery</span><span>Seller verification</span></div>
+        <div class="card-drawer">
+          <div class="drawer-peek">
+            <div class="drawer-header">
+              <span class="card-tag">Restaurant Tech · Live Demo</span>
+              <span class="card-index">01</span>
+            </div>
+            <h3 class="card-title">Savora</h3>
+            <p class="card-summary">Hospitality front-of-house OS with interactive floor plan &amp; guest CRM.</p>
+          </div>
+
+          <div class="drawer-expanded">
+            <p class="card-description">Replaced paper diaries and WhatsApp booking threads with real-time reservation conflict detection, color-coded floor plan seating, and waitlist management.</p>
+            <div class="card-specs">
+              <span class="specs-label">Key Capabilities</span>
+              <ul class="specs-list">
+                <li>Live reservation dashboard with conflict checks</li>
+                <li>Interactive zone-mapped floor plan &amp; walk-in queue</li>
+                <li>Guest CRM with VIP visit &amp; spend history</li>
+              </ul>
+            </div>
+            <div class="card-meta-foot">
+              <span class="card-tech">HTML5 · Bootstrap 5.3 · JS · Chart.js</span>
+              <a href="https://savora-reservation-demo.nemesis.co.zw/" target="_blank" rel="noopener noreferrer" class="card-action">Launch Live Demo <span class="arr">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="card">
-        <div class="top"><span class="kind">Security</span></div>
-        <h3>MINOPAR EDR</h3>
-        <p>An endpoint detection and response platform for network security — real-time threat monitoring and forensic
-          telemetry.</p>
-        <div class="facts"><span>Real-time threat detection</span><span>Behavioral anomaly detection</span></div>
+      <!-- Card 02: Aurelia -->
+      <div class="work-card">
+        <div class="card-bg">
+          <img src="{{ url_for('static', filename='img/slide2.jpg') }}" alt="Aurelia Hotel PMS" class="card-bg-img">
+          <div class="card-scrim"></div>
+        </div>
+        <div class="card-drawer">
+          <div class="drawer-peek">
+            <div class="drawer-header">
+              <span class="card-tag">Hospitality PMS · Live Demo</span>
+              <span class="card-index">02</span>
+            </div>
+            <h3 class="card-title">Aurelia</h3>
+            <p class="card-summary">Full hotel operating system with check-in wizards, housekeeping &amp; analytics.</p>
+          </div>
+
+          <div class="drawer-expanded">
+            <p class="card-description">Unifies front desk, housekeeping assignments, maintenance kanban tickets, and finance reporting into a single high-availability interface.</p>
+            <div class="card-specs">
+              <span class="specs-label">Key Capabilities</span>
+              <ul class="specs-list">
+                <li>ADR, RevPAR &amp; occupancy analytics dashboard</li>
+                <li>Multi-step check-in/out with digital signature</li>
+                <li>Housekeeping board &amp; maintenance ticket kanban</li>
+              </ul>
+            </div>
+            <div class="card-meta-foot">
+              <span class="card-tech">HTML5 · Bootstrap 5.3 · Vanilla JS · Chart.js</span>
+              <a href="https://aurelia-hotel-ms-demo.nemesis.co.zw/" target="_blank" rel="noopener noreferrer" class="card-action">Launch Live Demo <span class="arr">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="card">
-        <div class="top"><span class="kind">Real estate</span></div>
-        <h3>MUSHA</h3>
-        <p>A property evaluation tool combining comparable sales analysis, AI-assisted due diligence, and title deed
-          verification.</p>
-        <div class="facts"><span>Valuation engine</span><span>Title deeds integration</span></div>
+      <!-- Card 03: PONDAE -->
+      <div class="work-card">
+        <div class="card-bg">
+          <img src="{{ url_for('static', filename='img/slide-3-consultancy.jpg') }}" alt="PONDAE Housing" class="card-bg-img">
+          <div class="card-scrim"></div>
+        </div>
+        <div class="card-drawer">
+          <div class="drawer-peek">
+            <div class="drawer-header">
+              <span class="card-tag">PropTech · Live on Azure</span>
+              <span class="card-index">03</span>
+            </div>
+            <h3 class="card-title">PONDAE</h3>
+            <p class="card-summary">Student housing accommodation platform serving Midlands State University.</p>
+          </div>
+
+          <div class="drawer-expanded">
+            <p class="card-description">Eliminates scattered, unverified room listings with geolocated property maps, real-time tenant chat, bed allocation, and owner revenue reconciliation.</p>
+            <div class="card-specs">
+              <span class="specs-label">Key Capabilities</span>
+              <ul class="specs-list">
+                <li>Interactive property map with proximity filtering</li>
+                <li>Real-time tenant-to-admin chat via Laravel Reverb</li>
+                <li>Automated leasing, bed allocation &amp; payment audit</li>
+              </ul>
+            </div>
+            <div class="card-meta-foot">
+              <span class="card-tech">Laravel 11 · React · PostgreSQL · Azure · Docker</span>
+              <a href="{{ url_for('our_work') }}#pondae" class="card-action">Case Study <span class="arr">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="card">
-        <div class="top"><span class="kind">PropTech</span></div>
-        <h3>PONDAE</h3>
-        <p>An accommodation management platform for off-residence student housing — tenancy, allocation, and occupancy
-          reporting.</p>
-        <div class="facts"><span>Tenant lifecycle management</span><span>Allocation tracking</span></div>
+      <!-- Card 04: PONDAE Watcher -->
+      <div class="work-card">
+        <div class="card-bg">
+          <img src="{{ url_for('static', filename='img/services_abstract.jpg') }}" alt="PONDAE Watcher" class="card-bg-img">
+          <div class="card-scrim"></div>
+        </div>
+        <div class="card-drawer">
+          <div class="drawer-peek">
+            <div class="drawer-header">
+              <span class="card-tag">Network Telemetry · In Production</span>
+              <span class="card-index">04</span>
+            </div>
+            <h3 class="card-title">PONDAE Watcher</h3>
+            <p class="card-summary">Tenant network visualization &amp; bandwidth monitoring for housing staff.</p>
+          </div>
+
+          <div class="drawer-expanded">
+            <p class="card-description">Gives accommodation managers real-time visibility into Wi-Fi activity and bandwidth abuse across student tenants without inspecting physical routers.</p>
+            <div class="card-specs">
+              <span class="specs-label">Key Capabilities</span>
+              <ul class="specs-list">
+                <li>Tenancy-wide network activity visualization</li>
+                <li>Per-device Wi-Fi tracking down to room assignee</li>
+                <li>Automated bandwidth limits &amp; anomaly alerts</li>
+              </ul>
+            </div>
+            <div class="card-meta-foot">
+              <span class="card-tech">Python · React · Network APIs · SIEM</span>
+              <a href="{{ url_for('our_work') }}#pondae-watcher" class="card-action">Case Study <span class="arr">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 05: MUSHA (INTELLI-FIND) -->
+      <div class="work-card">
+        <div class="card-bg">
+          <img src="{{ url_for('static', filename='img/slide-2-building.png') }}" alt="MUSHA Property Intelligence" class="card-bg-img">
+          <div class="card-scrim"></div>
+        </div>
+        <div class="card-drawer">
+          <div class="drawer-peek">
+            <div class="drawer-header">
+              <span class="card-tag">PropTech · In Production</span>
+              <span class="card-index">05</span>
+            </div>
+            <h3 class="card-title">MUSHA (INTELLI-FIND)</h3>
+            <p class="card-summary">Property valuation engine with deeds registry integration &amp; due diligence.</p>
+          </div>
+
+          <div class="drawer-expanded">
+            <p class="card-description">Accelerates property due diligence in Zimbabwe through automated comparative sales benchmarks, title deed registry API verification, and zoning risk auditing.</p>
+            <div class="card-specs">
+              <span class="specs-label">Key Capabilities</span>
+              <ul class="specs-list">
+                <li>Automated comparative sales valuation model</li>
+                <li>Title deeds &amp; cadastral registry validation</li>
+                <li>AI-assisted encumbrance &amp; zoning audit</li>
+              </ul>
+            </div>
+            <div class="card-meta-foot">
+              <span class="card-tech">React · Node.js · Registry API · PostgreSQL</span>
+              <a href="{{ url_for('our_work') }}#musha" class="card-action">Case Study <span class="arr">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 06: MINOPAR -->
+      <div class="work-card">
+        <div class="card-bg">
+          <img src="{{ url_for('static', filename='img/slide-4-ai-agents.jpg') }}" alt="MINOPAR EDR" class="card-bg-img">
+          <div class="card-scrim"></div>
+        </div>
+        <div class="card-drawer">
+          <div class="drawer-peek">
+            <div class="drawer-header">
+              <span class="card-tag">Security / EDR · In Production</span>
+              <span class="card-index">06</span>
+            </div>
+            <h3 class="card-title">MINOPAR EDR</h3>
+            <p class="card-summary">Endpoint detection &amp; response platform with real-time threat telemetry.</p>
+          </div>
+
+          <div class="drawer-expanded">
+            <p class="card-description">Engineered for mid-tier organizations lacking enterprise security budgets. Deploys real-time anomaly sensors, behavioral heuristics, and instant forensic isolation.</p>
+            <div class="card-specs">
+              <span class="specs-label">Key Capabilities</span>
+              <ul class="specs-list">
+                <li>Real-time endpoint threat detection &amp; quarantine</li>
+                <li>Behavioral anomaly &amp; lateral movement tracking</li>
+                <li>Forensic incident response &amp; audit telemetry</li>
+              </ul>
+            </div>
+            <div class="card-meta-foot">
+              <span class="card-tech">Python · SIEM Integration · PostgreSQL</span>
+              <a href="{{ url_for('our_work') }}#minopar" class="card-action">Case Study <span class="arr">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 07: FINDit -->
+      <div class="work-card">
+        <div class="card-bg">
+          <img src="{{ url_for('static', filename='img/fiind-banner.png') }}" alt="FINDit Marketplace" class="card-bg-img">
+          <div class="card-scrim"></div>
+        </div>
+        <div class="card-drawer">
+          <div class="drawer-peek">
+            <div class="drawer-header">
+              <span class="card-tag">Marketplace · Mobile In Review</span>
+              <span class="card-index">07</span>
+            </div>
+            <h3 class="card-title">FINDit</h3>
+            <p class="card-summary">Buyer, seller &amp; service discovery marketplace with verified merchants.</p>
+          </div>
+
+          <div class="drawer-expanded">
+            <p class="card-description">Brings trust and verified reputation to local commerce. Features multi-category search, merchant credential validation, and high-concurrency order discovery.</p>
+            <div class="card-specs">
+              <span class="specs-label">Key Capabilities</span>
+              <ul class="specs-list">
+                <li>Intelligent geo-filtered product discovery</li>
+                <li>Seller verification badges &amp; rating telemetry</li>
+                <li>Responsive web platform live; native app in review</li>
+              </ul>
+            </div>
+            <div class="card-meta-foot">
+              <span class="card-tech">React · Node.js · PostgreSQL · React Native</span>
+              <a href="{{ url_for('our_work') }}#findit" class="card-action">Case Study <span class="arr">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 08: Hotel Management System -->
+      <div class="work-card">
+        <div class="card-bg">
+          <img src="{{ url_for('static', filename='img/nemesis_logo_hero.png') }}" alt="Hotel Management System" class="card-bg-img" style="filter: brightness(0.4);">
+          <div class="card-scrim"></div>
+        </div>
+        <div class="card-drawer">
+          <div class="drawer-peek">
+            <div class="drawer-header">
+              <span class="card-tag">Hospitality · Under NDA</span>
+              <span class="card-index">08</span>
+            </div>
+            <h3 class="card-title">Hotel Operations Suite</h3>
+            <p class="card-summary">Production booking &amp; occupancy platform for a regional hospitality group.</p>
+          </div>
+
+          <div class="drawer-expanded">
+            <p class="card-description">Replaced manual WhatsApp phone bookings with real-time online reservations, room inventory control, payment gateway integration, and revenue analytics.</p>
+            <div class="card-specs">
+              <span class="specs-label">Key Capabilities</span>
+              <ul class="specs-list">
+                <li>Automated online reservations &amp; payment capture</li>
+                <li>Real-time room availability &amp; occupancy matrix</li>
+                <li>Historical revenue forecasting &amp; trend reports</li>
+              </ul>
+            </div>
+            <div class="card-meta-foot">
+              <span class="card-tech">Laravel 11 · Inertia.js · React · PostgreSQL</span>
+              <a href="{{ url_for('our_work') }}#hotel-system" class="card-action">Case Study (NDA) <span class="arr">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -427,8 +767,75 @@
     </div>
   </div>
 </section>
+<section class="faq reveal" id="faq">
+  <div class="wrap">
+    <div class="head">
+      <h2>FAQ</h2>
+      <span class="n">common questions</span>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-col-label">
+        <p class="faq-side-note">Questions we get asked before engagements begin. If yours isn't here, <a href="#contact">write to us directly</a>.</p>
+      </div>
+
+      <div class="faq-col-items">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Where is NEMESIS based and do you work remotely?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>We are headquartered in Harare, Zimbabwe. Every engagement is run remotely — we operate across African, European, and US time zones and have delivered systems for clients in multiple countries without requiring an on-site presence.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>What is the typical timeline from scoping to first deployment?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Most engagements move from a signed scope to a staging deployment in 6 to 10 weeks. Discovery and architecture take 2 – 4 weeks, the first build sprint runs 4 – 6 weeks, and hardening is woven into every sprint — not bolted on at the end.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Do you take on maintenance contracts or project-only work?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Both. We offer fixed-scope project engagements and ongoing retainer agreements that cover monitoring, incident response, and continuous delivery. Most clients start with a project and transition into a retainer once the system is live.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>What stack do you build on by default?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Our defaults are Python (FastAPI / Django) or Node.js on the backend, PostgreSQL or Redis for data, and React or Next.js on the frontend. We adapt to your existing stack when required — the choice of tools follows the constraints of the problem, not personal preference.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>How is security integrated into the build process?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Security is not a separate audit phase. Static analysis, dependency scanning, secret detection, and container hardening run automatically on every pull request via our CI pipeline. Nothing reaches production without passing those gates. We also provide a threat model document as part of every Discovery deliverable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="contact reveal" id="contact" style="position: relative; overflow: hidden;">
+
   <div class="africa-map-wrap">
     <img src="{{ url_for('static', filename='img/africa-dots-light.png') }}" class="africa-map-img africa-map-light"
       alt="Africa dotted map">
@@ -437,7 +844,11 @@
   </div>
   <div class="wrap contact-grid" style="position: relative; z-index: 1;">
     <div>
-      <h2>Ready to build?</h2>
+      <div class="head">
+        <h2>Contact</h2>
+        <span class="n">get in touch</span>
+      </div>
+      <h3 class="contact-headline">Ready to build?</h3>
       <p class="dek">Whether you need a full-stack product from scratch or DevSecOps automation for your existing
         infrastructure, we're ready to engineer the solution.</p>
 
@@ -462,18 +873,25 @@
     </div>
     <form id="contactForm" novalidate>
       <h2>Send your inquiry to us...</h2>
-      <div class="field">
+      <div id="contactFeedback" class="form-feedback" aria-live="polite" style="display:none;"></div>
+      
+      <!-- Anti-bot honeypot -->
+      <div style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+        <input type="text" name="website" id="formHoneypot" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="field" id="fieldName">
         <label for="name">Name / company</label>
-        <input id="name" type="text" placeholder="Your name or company" autocomplete="name">
+        <input id="name" name="name" type="text" placeholder="Your name or company" autocomplete="name" required>
       </div>
-      <div class="field">
+      <div class="field" id="fieldEmail">
         <label for="email">Email</label>
-        <input id="email" type="email" placeholder="your@email.com" autocomplete="email">
+        <input id="email" name="email" type="email" placeholder="your@email.com" autocomplete="email" required>
       </div>
-      <div class="field">
+      <div class="field" id="fieldCategory">
         <label id="categoryLabel">Category</label>
         <div class="custom-select" id="categorySelect">
-          <input type="hidden" name="category" id="categoryInput" value="system-development">
+          <input type="hidden" name="category" id="categoryInput" value="System Development / Full-Stack">
           <button type="button" class="select-trigger" aria-haspopup="listbox" aria-expanded="false"
             aria-labelledby="categoryLabel">
             <span class="select-val">System Development / Full-Stack</span>
@@ -483,24 +901,28 @@
             </svg>
           </button>
           <ul class="select-options" role="listbox" tabindex="-1">
-            <li class="select-option is-selected" data-value="system-development" role="option" aria-selected="true">
+            <li class="select-option is-selected" data-value="System Development / Full-Stack" role="option" aria-selected="true">
               System Development / Full-Stack</li>
-            <li class="select-option" data-value="devsecops" role="option" aria-selected="false">DevSecOps &amp;
+            <li class="select-option" data-value="DevSecOps & Security Automation" role="option" aria-selected="false">DevSecOps &amp;
               Security Automation</li>
-            <li class="select-option" data-value="cloud-infrastructure" role="option" aria-selected="false">Cloud &amp;
+            <li class="select-option" data-value="Cloud & Infrastructure" role="option" aria-selected="false">Cloud &amp;
               Infrastructure</li>
-            <li class="select-option" data-value="consulting" role="option" aria-selected="false">Architecture &amp;
+            <li class="select-option" data-value="Architecture & Technical Consulting" role="option" aria-selected="false">Architecture &amp;
               Technical Consulting</li>
-            <li class="select-option" data-value="general" role="option" aria-selected="false">General Inquiry</li>
+            <li class="select-option" data-value="General Inquiry" role="option" aria-selected="false">General Inquiry</li>
           </ul>
         </div>
       </div>
-      <div class="field">
+      <div class="field" id="fieldDetails">
         <label for="details">Project details</label>
-        <textarea id="details" placeholder="Tell us about your project, timeline, and requirements..."></textarea>
+        <textarea id="details" name="details" placeholder="Tell us about your project, timeline, and requirements..." required></textarea>
       </div>
-      <button type="submit" class="btn primary submit">Send inquiry</button>
+      <button type="submit" id="submitBtn" class="btn primary submit">Send inquiry</button>
     </form>
   </div>
 </section>
 {% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/hero_photo_cube.js') }}"></script>
+{% endblock %}
