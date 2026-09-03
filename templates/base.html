@@ -92,7 +92,6 @@
       <span class="word">NEMESIS</span>
     </a>
     <div class="header-right">
-      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">Menu</button>
       <nav id="siteNav">
         {% if request.endpoint == 'our_work' or request.path == '/our-work' %}
           <a href="{{ url_for('index') }}">Home</a>
@@ -104,10 +103,28 @@
           <a href="#work">Work</a>
           <a href="#contact">Contact</a>
         {% endif %}
+
+        {% if request.endpoint != 'our_work' and request.path != '/our-work' %}
+        <div class="mobile-nav-theme">
+          <button class="theme-toggle" aria-label="Toggle color theme">
+            <span class="tt-light">Light mode</span>
+            <span class="tt-dark">Dark mode</span>
+          </button>
+        </div>
+        {% endif %}
       </nav>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
+
+      {% if request.endpoint != 'our_work' and request.path != '/our-work' %}
+      <button class="theme-toggle desktop-theme-toggle" id="themeToggle" aria-label="Toggle color theme">
         <span class="tt-light">Light mode</span>
         <span class="tt-dark">Dark mode</span>
+      </button>
+      {% endif %}
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle navigation menu">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
       </button>
     </div>
   </div>
@@ -144,7 +161,7 @@
   </div>
 
   <div class="wrap" style="position: relative; z-index: 1; width: 100%; display: flex; justify-content: flex-start; align-items: flex-end; font-size: 11px; color: #ffffff; font-weight: 500; padding-bottom: 26px;">
-    <div style="margin-left: 280px;">
+    <div class="footer-copy">
       <span>Harare, Zimbabwe</span><br>
       <span>Nemesis Software, {{ current_year }}</span>
     </div>

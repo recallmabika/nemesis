@@ -42,9 +42,9 @@
   position: absolute;
   top: 20%;
   left: 50%;
-  width: 420px;
-  height: 420px;
-  margin-left: -210px;
+  width: min(420px, 90vw);
+  height: min(420px, 90vw);
+  transform: translateX(-50%);
   background: #C9A84C;
   opacity: 0.08;
   border-radius: 9999px;

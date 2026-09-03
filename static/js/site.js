@@ -305,72 +305,6 @@ document.querySelectorAll('.dial').forEach(function (d) {
   frame.addEventListener('touchend', function () { frame.classList.remove('active'); });
 })();
 
-// contact form with custom JS validation
-var form = document.getElementById('contactForm');
-if (form) {
-  var nameInput = document.getElementById('name');
-  var emailInput = document.getElementById('email');
-  var detailsInput = document.getElementById('details');
-
-  // Remove error as soon as person starts typing
-  [nameInput, emailInput, detailsInput].forEach(function (input) {
-    if (!input) return;
-    input.addEventListener('input', function () {
-      var field = input.closest('.field');
-      if (field) field.classList.remove('has-error');
-    });
-  });
-
-  form.addEventListener('submit', function (ev) {
-    ev.preventDefault();
-    var isValid = true;
-    var firstInvalid = null;
-
-    // Validate Name
-    if (!nameInput.value.trim()) {
-      nameInput.closest('.field').classList.add('has-error');
-      isValid = false;
-      if (!firstInvalid) firstInvalid = nameInput;
-    } else {
-      nameInput.closest('.field').classList.remove('has-error');
-    }
-
-    // Validate Email
-    var emailVal = emailInput.value.trim();
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailVal || !emailRegex.test(emailVal)) {
-      emailInput.closest('.field').classList.add('has-error');
-      isValid = false;
-      if (!firstInvalid) firstInvalid = emailInput;
-    } else {
-      emailInput.closest('.field').classList.remove('has-error');
-    }
-
-    // Validate Project Details
-    if (!detailsInput.value.trim()) {
-      detailsInput.closest('.field').classList.add('has-error');
-      isValid = false;
-      if (!firstInvalid) firstInvalid = detailsInput;
-    } else {
-      detailsInput.closest('.field').classList.remove('has-error');
-    }
-
-    if (!isValid) {
-      if (firstInvalid) firstInvalid.focus();
-      return;
-    }
-
-    var btn = form.querySelector('.submit');
-    var original = btn.textContent;
-    btn.textContent = 'Inquiry sent — we\'ll reply by email';
-    btn.disabled = true;
-    form.reset();
-    setTimeout(function () {
-      btn.textContent = original;
-      btn.disabled = false;
-    }, 3500);
-  });
-}
 
 // keep hero height in sync with actual header height
 (function () {
@@ -499,21 +433,25 @@ if (form) {
 })();
 
 // theme toggle — manual override persists; otherwise follows system setting
+// handles both desktop (#themeToggle) and mobile (.mobile-nav-theme .theme-toggle)
 (function () {
-  var btn = document.getElementById('themeToggle');
   var mq = window.matchMedia('(prefers-color-scheme: dark)');
 
   function apply(theme) {
     document.documentElement.setAttribute('data-theme', theme);
+    try { localStorage.setItem('nemesis-theme', theme); } catch (e) { }
   }
-  if (btn) {
-    btn.addEventListener('click', function () {
-      var current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-      var next = current === 'dark' ? 'light' : 'dark';
-      apply(next);
-      try { localStorage.setItem('nemesis-theme', next); } catch (e) { }
-    });
+
+  function onToggleClick() {
+    var current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    apply(current === 'dark' ? 'light' : 'dark');
   }
+
+  // Attach to all .theme-toggle buttons (desktop + mobile inside nav)
+  document.querySelectorAll('.theme-toggle').forEach(function (btn) {
+    btn.addEventListener('click', onToggleClick);
+  });
+
   mq.addEventListener('change', function (ev) {
     var stored = null;
     try { stored = localStorage.getItem('nemesis-theme'); } catch (e) { }
