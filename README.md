@@ -88,7 +88,28 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 2. Install Node dependencies
+### 2. Configure Environment (`.env`)
+
+Copy the template and adjust SMTP / secret credentials:
+
+```bash
+cp .env.example .env
+```
+
+| Key | Description | Example |
+|---|---|---|
+| `SECRET_KEY` | Flask session secret | `random-secure-string` |
+| `SMTP_HOST` | Outgoing mail server | `mail.nemesis.co.zw` or `smtp.gmail.com` |
+| `SMTP_PORT` | Port (465 for SSL, 587 for TLS) | `465` |
+| `SMTP_USER` | Email username | `info@nemesis.co.zw` |
+| `SMTP_PASSWORD` | Mail password or App Password | `your_secret_password` |
+| `SMTP_USE_SSL` | Connect via SSL | `True` |
+| `SMTP_USE_TLS` | Connect via STARTTLS | `False` |
+| `CONTACT_RECIPIENT_EMAIL` | Inbox to receive inquiries | `info@nemesis.co.zw` |
+
+> **Offline / Local Fallback**: If SMTP is not yet configured or credentials are blank, the inquiry endpoint automatically saves every submission to `inquiries.log` in JSON format so no client message is ever lost.
+
+### 3. Install Node dependencies
 
 ```bash
 npm install

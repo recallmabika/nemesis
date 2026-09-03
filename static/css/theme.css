@@ -280,9 +280,9 @@ nav a:focus-visible {
   z-index: 2;
   width: 100%;
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 64px;
-  align-items: end;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
 }
 
 h1 {
@@ -354,6 +354,101 @@ h1 i {
   color: var(--paper);
   border-color: var(--ink);
   transform: translateY(-2px);
+}
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+  width: 100%;
+}
+
+.hero-cube-scene {
+  --cube-size: 210px;
+  --cube-half: 105px;
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  height: 330px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 900px;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.hero-cube-scene:active {
+  cursor: grabbing;
+}
+
+.hero-photo-cube {
+  width: var(--cube-size);
+  height: var(--cube-size);
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transform: rotateX(-18deg) rotateY(32deg);
+}
+
+.cube-face {
+  position: absolute;
+  width: var(--cube-size);
+  height: var(--cube-size);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(201, 168, 76, 0.45);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.45), 0 8px 32px rgba(0, 0, 0, 0.35);
+  backface-visibility: visible;
+}
+
+.cube-face::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 12, 16, 0.15);
+  pointer-events: none;
+}
+
+.dark .cube-face {
+  border-color: rgba(201, 168, 76, 0.6);
+}
+
+.cube-front  { transform: rotateY(0deg) translateZ(var(--cube-half)); }
+.cube-back   { transform: rotateY(180deg) translateZ(var(--cube-half)); }
+.cube-right  { transform: rotateY(90deg) translateZ(var(--cube-half)); }
+.cube-left   { transform: rotateY(-90deg) translateZ(var(--cube-half)); }
+.cube-top    { transform: rotateX(90deg) translateZ(var(--cube-half)); }
+.cube-bottom { transform: rotateX(-90deg) translateZ(var(--cube-half)); }
+
+.cube-hud {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  color: var(--ink-45);
+  pointer-events: none;
+  padding: 0 4px;
+}
+
+.cube-hud .hud-tag {
+  color: var(--gold);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.cube-hud .hud-hint {
+  opacity: 0.6;
 }
 
 .status {
@@ -1960,6 +2055,37 @@ form h2 {
   border-color: var(--ink);
 }
 
+/* form feedback alert banner */
+.form-feedback {
+  padding: 14px 18px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  border: 1px solid var(--line-strong);
+  margin-bottom: 8px;
+  display: none;
+}
+
+.form-feedback.is-success {
+  display: block !important;
+  background: rgba(201, 168, 76, 0.08);
+  border-color: var(--gold);
+  color: var(--ink);
+}
+
+.form-feedback.is-error {
+  display: block !important;
+  background: rgba(239, 68, 68, 0.08);
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.btn.submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
 /* field error state */
 .field.has-error label {
   color: #ef4444 !important;
@@ -2089,7 +2215,18 @@ footer a:hover {
 @media (max-width:900px) {
   .hero .wrap {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 36px;
+  }
+
+  .hero-right {
+    align-items: stretch;
+  }
+
+  .hero-cube-scene {
+    --cube-size: 170px;
+    --cube-half: 85px;
+    max-width: 100%;
+    height: 270px;
   }
 
   .status {

@@ -13,8 +13,8 @@
     <div class="hero-bg-slide"
       style="background-image:url('{{ url_for('static', filename='img/slide-4-ai-agents.jpg') }}')"></div>
   </div>
-  <div class="wrap">
-    <div>
+  <div class="wrap hero-wrap">
+    <div class="hero-left">
       <h1>Software tuned to hold its <i>line</i> under real load.</h1>
       <p class="dek">Full-stack development and DevSecOps, built and run out of Harare. We take a system from its
         noisiest state to a steady one — and keep it there through every deploy after.</p>
@@ -23,10 +23,26 @@
         <a href="#process" class="btn">See the method</a>
       </div>
     </div>
-    <div class="status">
-      <div class="row"><span class="k">System</span><span class="v"><span class="led"></span>Stable</span></div>
-      <div class="row"><span class="k">Watching</span><span class="v">24 / 7</span></div>
-      <div class="row"><span class="k">Based</span><span class="v">Harare, ZW</span></div>
+    <div class="hero-right">
+      <div class="hero-cube-scene" id="heroCubeScene">
+        <div class="hero-photo-cube" id="heroCube">
+          <div class="cube-face cube-front"  style="background-image:url('{{ url_for('static', filename='img/slide.jpg') }}')"></div>
+          <div class="cube-face cube-back"   style="background-image:url('{{ url_for('static', filename='img/slide-3-consultancy.jpg') }}')"></div>
+          <div class="cube-face cube-right"  style="background-image:url('{{ url_for('static', filename='img/slide-4-ai-agents.jpg') }}')"></div>
+          <div class="cube-face cube-left"   style="background-image:url('{{ url_for('static', filename='img/slide2.jpg') }}')"></div>
+          <div class="cube-face cube-top"    style="background-image:url('{{ url_for('static', filename='img/slide-2-building.png') }}')"></div>
+          <div class="cube-face cube-bottom" style="background-image:url('{{ url_for('static', filename='img/services_abstract.jpg') }}')"></div>
+        </div>
+        <div class="cube-hud">
+          <span class="hud-tag">Our Work · 3D</span>
+          <span class="hud-hint">drag to explore</span>
+        </div>
+      </div>
+      <div class="status">
+        <div class="row"><span class="k">System</span><span class="v"><span class="led"></span>Stable</span></div>
+        <div class="row"><span class="k">Watching</span><span class="v">24 / 7</span></div>
+        <div class="row"><span class="k">Based</span><span class="v">Harare, ZW</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -709,18 +725,25 @@
     </div>
     <form id="contactForm" novalidate>
       <h2>Send your inquiry to us...</h2>
-      <div class="field">
+      <div id="contactFeedback" class="form-feedback" aria-live="polite" style="display:none;"></div>
+      
+      <!-- Anti-bot honeypot -->
+      <div style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+        <input type="text" name="website" id="formHoneypot" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="field" id="fieldName">
         <label for="name">Name / company</label>
-        <input id="name" type="text" placeholder="Your name or company" autocomplete="name">
+        <input id="name" name="name" type="text" placeholder="Your name or company" autocomplete="name" required>
       </div>
-      <div class="field">
+      <div class="field" id="fieldEmail">
         <label for="email">Email</label>
-        <input id="email" type="email" placeholder="your@email.com" autocomplete="email">
+        <input id="email" name="email" type="email" placeholder="your@email.com" autocomplete="email" required>
       </div>
-      <div class="field">
+      <div class="field" id="fieldCategory">
         <label id="categoryLabel">Category</label>
         <div class="custom-select" id="categorySelect">
-          <input type="hidden" name="category" id="categoryInput" value="system-development">
+          <input type="hidden" name="category" id="categoryInput" value="System Development / Full-Stack">
           <button type="button" class="select-trigger" aria-haspopup="listbox" aria-expanded="false"
             aria-labelledby="categoryLabel">
             <span class="select-val">System Development / Full-Stack</span>
@@ -730,24 +753,28 @@
             </svg>
           </button>
           <ul class="select-options" role="listbox" tabindex="-1">
-            <li class="select-option is-selected" data-value="system-development" role="option" aria-selected="true">
+            <li class="select-option is-selected" data-value="System Development / Full-Stack" role="option" aria-selected="true">
               System Development / Full-Stack</li>
-            <li class="select-option" data-value="devsecops" role="option" aria-selected="false">DevSecOps &amp;
+            <li class="select-option" data-value="DevSecOps & Security Automation" role="option" aria-selected="false">DevSecOps &amp;
               Security Automation</li>
-            <li class="select-option" data-value="cloud-infrastructure" role="option" aria-selected="false">Cloud &amp;
+            <li class="select-option" data-value="Cloud & Infrastructure" role="option" aria-selected="false">Cloud &amp;
               Infrastructure</li>
-            <li class="select-option" data-value="consulting" role="option" aria-selected="false">Architecture &amp;
+            <li class="select-option" data-value="Architecture & Technical Consulting" role="option" aria-selected="false">Architecture &amp;
               Technical Consulting</li>
-            <li class="select-option" data-value="general" role="option" aria-selected="false">General Inquiry</li>
+            <li class="select-option" data-value="General Inquiry" role="option" aria-selected="false">General Inquiry</li>
           </ul>
         </div>
       </div>
-      <div class="field">
+      <div class="field" id="fieldDetails">
         <label for="details">Project details</label>
-        <textarea id="details" placeholder="Tell us about your project, timeline, and requirements..."></textarea>
+        <textarea id="details" name="details" placeholder="Tell us about your project, timeline, and requirements..." required></textarea>
       </div>
-      <button type="submit" class="btn primary submit">Send inquiry</button>
+      <button type="submit" id="submitBtn" class="btn primary submit">Send inquiry</button>
     </form>
   </div>
 </section>
 {% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/hero_photo_cube.js') }}"></script>
+{% endblock %}
