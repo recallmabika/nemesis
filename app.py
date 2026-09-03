@@ -259,25 +259,33 @@ def robots_txt():
     lines = [
         "User-agent: *",
         "Allow: /",
+        "Disallow: /api/",
         "",
         f"Sitemap: {SITE_URL}/sitemap.xml",
+        f"Host: {SITE_URL.replace('https://', '').replace('http://', '')}",
     ]
     return Response("\n".join(lines), mimetype="text/plain")
 
 
 @app.route("/sitemap.xml")
 def sitemap_xml():
+    today = datetime.utcnow().strftime("%Y-%m-%d")
     pages = [
-        {"loc": f"{SITE_URL}/", "priority": "1.0", "changefreq": "weekly"},
-        {"loc": f"{SITE_URL}/our-work", "priority": "0.9", "changefreq": "weekly"},
+        {"loc": f"{SITE_URL}/", "priority": "1.0", "changefreq": "weekly", "lastmod": today},
+        {"loc": f"{SITE_URL}/our-work", "priority": "0.9", "changefreq": "weekly", "lastmod": today},
     ]
-    xml_parts = ['<?xml version="1.0" encoding="UTF-8"?>',
-                 '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    xml_parts = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+    ]
     for p in pages:
         xml_parts.append(
-            f"<url><loc>{p['loc']}</loc>"
+            f"<url>"
+            f"<loc>{p['loc']}</loc>"
+            f"<lastmod>{p['lastmod']}</lastmod>"
             f"<changefreq>{p['changefreq']}</changefreq>"
-            f"<priority>{p['priority']}</priority></url>"
+            f"<priority>{p['priority']}</priority>"
+            f"</url>"
         )
     xml_parts.append("</urlset>")
     return Response("\n".join(xml_parts), mimetype="application/xml")

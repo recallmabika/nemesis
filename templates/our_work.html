@@ -1,5 +1,91 @@
 {% extends "base.html" %}
-{% block title %}NEMESIS — Our Work &amp; Case Studies{% endblock %}
+{% block title %}Case Studies &amp; Production Software Portfolio — NEMESIS Harare{% endblock %}
+{% block meta_description %}Explore 8 production software platforms engineered by NEMESIS: student housing management, real estate AI, network telemetry, marketplace engines, and EDR systems.{% endblock %}
+{% block meta_keywords %}software portfolio Zimbabwe, PONDAE housing platform, MUSHA property intelligence, MINOPAR EDR, FINDit marketplace, custom software case studies Harare{% endblock %}
+
+{% block structured_data %}
+{{ super() }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "NEMESIS Software Engineering Portfolio",
+  "description": "Production platforms and case studies engineered and deployed by NEMESIS.",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "Savora Restaurant Front-of-House OS",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "Aurelia Hospitality Management System",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "PONDAE Student Accommodation Platform",
+        "applicationCategory": "RealEstateApplication",
+        "operatingSystem": "Web, Cloud"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "PONDAE Watcher Network Activity Monitor",
+        "applicationCategory": "NetworkMonitoringApplication",
+        "operatingSystem": "Web, Server"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "MUSHA INTELLI-FIND Real Estate Intelligence",
+        "applicationCategory": "RealEstateApplication",
+        "operatingSystem": "Web, GIS"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "MINOPAR Network Security & EDR",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Linux, Cloud"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "FINDit Multi-Vendor Marketplace Platform",
+        "applicationCategory": "ECommerceApplication",
+        "operatingSystem": "Web, Mobile"
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
 
 {% block content %}
 <!-- Subpage Hero -->

@@ -563,7 +563,6 @@ document.querySelectorAll('.dial').forEach(function (d) {
   var emailInput = document.getElementById('email');
   var categoryInput = document.getElementById('categoryInput');
   var detailsInput = document.getElementById('details');
-  var honeypotInput = document.getElementById('formHoneypot');
   var submitBtn = document.getElementById('submitBtn');
   var feedback = document.getElementById('contactFeedback');
 
@@ -648,7 +647,6 @@ document.querySelectorAll('.dial').forEach(function (d) {
     var email = (emailInput ? emailInput.value : '').trim();
     var category = categoryInput ? categoryInput.value : 'System Development / Full-Stack';
     var details = (detailsInput ? detailsInput.value : '').trim();
-    var honeypot = honeypotInput ? honeypotInput.value : '';
 
     var hasError = false;
 
@@ -669,13 +667,6 @@ document.querySelectorAll('.dial').forEach(function (d) {
 
     if (hasError) {
       showFeedback('Please fill out all required fields with a valid email address.', false);
-      return;
-    }
-
-    // If bot honeypot is triggered, pretend success silently
-    if (honeypot) {
-      showFeedback("Inquiry received. Thank you — our team will be in touch shortly.", true);
-      form.reset();
       return;
     }
 

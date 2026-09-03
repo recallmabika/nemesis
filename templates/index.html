@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-{% block title %}NEMESIS — Software. Security. Scale.{% endblock %}
+{% block title %}NEMESIS — Custom Software Development &amp; DevSecOps | Harare, Zimbabwe{% endblock %}
+{% block meta_description %}NEMESIS engineers high-performance web platforms, real estate intelligence, marketplace backends, and DevSecOps automation pipelines out of Harare, Zimbabwe.{% endblock %}
+{% block meta_keywords %}custom software development Harare, DevSecOps Zimbabwe, web application engineering, Python FastAPI backend, Laravel React PostgreSQL, network security Harare, software consultancy Zimbabwe{% endblock %}
 
 {% block content %}
 <section class="hero" id="top">
@@ -26,12 +28,18 @@
     <div class="hero-right">
       <div class="hero-cube-scene" id="heroCubeScene">
         <div class="hero-photo-cube" id="heroCube">
-          <div class="cube-face cube-front"  style="background-image:url('{{ url_for('static', filename='img/minopar-1.png') }}')"></div>
-          <div class="cube-face cube-back"   style="background-image:url('{{ url_for('static', filename='img/pondae-8.png') }}')"></div>
-          <div class="cube-face cube-right"  style="background-image:url('{{ url_for('static', filename='img/musha-1.jpeg') }}')"></div>
-          <div class="cube-face cube-left"   style="background-image:url('{{ url_for('static', filename='img/pondai-dashboard.png') }}')"></div>
-          <div class="cube-face cube-top"    style="background-image:url('{{ url_for('static', filename='img/minopar-2.png') }}')"></div>
-          <div class="cube-face cube-bottom" style="background-image:url('{{ url_for('static', filename='img/find1.jpeg') }}')"></div>
+          <div class="cube-face cube-front"
+            style="background-image:url('{{ url_for('static', filename='img/minopar-1.png') }}')"></div>
+          <div class="cube-face cube-back"
+            style="background-image:url('{{ url_for('static', filename='img/nemesis_logo.png') }}')"></div>
+          <div class="cube-face cube-right"
+            style="background-image:url('{{ url_for('static', filename='img/musha-1.jpeg') }}')"></div>
+          <div class="cube-face cube-left"
+            style="background-image:url('{{ url_for('static', filename='img/pondai-dashboard.png') }}')"></div>
+          <div class="cube-face cube-top"
+            style="background-image:url('{{ url_for('static', filename='img/nemesis_logo_hero.png') }}')"></div>
+          <div class="cube-face cube-bottom"
+            style="background-image:url('{{ url_for('static', filename='img/find1.jpeg') }}')"></div>
         </div>
         <div class="cube-hud">
           <span class="hud-tag">Our Work · 3D</span>
@@ -162,32 +170,40 @@
       <!-- Left: Image with hover panels -->
       <div class="devsec-visual">
         <div class="devsec-image-wrap">
-          <div class="devsec-panel active" data-index="01" style="background-image:url('{{ url_for('static', filename='img/devsec-01.jpg') }}')">
+          <div class="devsec-panel active" data-index="01"
+            style="background-image:url('{{ url_for('static', filename='img/devsec-01.jpg') }}')">
             <div class="panel-content">
               <span class="panel-index">01</span>
               <h4 class="panel-title">Hermetic Builds</h4>
-              <p class="panel-desc">Deterministic pipelines with locked dependency trees and cryptographic hash verification. No ambient environment leaks.</p>
+              <p class="panel-desc">Deterministic pipelines with locked dependency trees and cryptographic hash
+                verification. No ambient environment leaks.</p>
             </div>
           </div>
-          <div class="devsec-panel" data-index="02" style="background-image:url('{{ url_for('static', filename='img/devsec-02.png') }}')">
+          <div class="devsec-panel" data-index="02"
+            style="background-image:url('{{ url_for('static', filename='img/devsec-02.png') }}')">
             <div class="panel-content">
               <span class="panel-index">02</span>
               <h4 class="panel-title">AST Auditing</h4>
-              <p class="panel-desc">Automated syntax tree inspection, taint tracking, and endpoint fuzzing on every branch prior to merge.</p>
+              <p class="panel-desc">Automated syntax tree inspection, taint tracking, and endpoint fuzzing on every
+                branch prior to merge.</p>
             </div>
           </div>
-          <div class="devsec-panel" data-index="03" style="background-image:url('{{ url_for('static', filename='img/devsec-03.png') }}')">
+          <div class="devsec-panel" data-index="03"
+            style="background-image:url('{{ url_for('static', filename='img/devsec-03.png') }}')">
             <div class="panel-content">
               <span class="panel-index">03</span>
               <h4 class="panel-title">Ephemeral Secrets</h4>
-              <p class="panel-desc">Zero hardcoded credentials. Dynamic workload identity federation with vault-backed auto-rotation.</p>
+              <p class="panel-desc">Zero hardcoded credentials. Dynamic workload identity federation with vault-backed
+                auto-rotation.</p>
             </div>
           </div>
-          <div class="devsec-panel" data-index="04" style="background-image:url('{{ url_for('static', filename='img/devsec-04.png') }}')">
+          <div class="devsec-panel" data-index="04"
+            style="background-image:url('{{ url_for('static', filename='img/devsec-04.png') }}')">
             <div class="panel-content">
               <span class="panel-index">04</span>
               <h4 class="panel-title">Kernel Telemetry</h4>
-              <p class="panel-desc">eBPF probes monitoring anomalous network calls, memory boundaries, and non-root container sandboxes in real time.</p>
+              <p class="panel-desc">eBPF probes monitoring anomalous network calls, memory boundaries, and non-root
+                container sandboxes in real time.</p>
             </div>
           </div>
           <div class="devsec-panel-strip">
@@ -203,7 +219,9 @@
       <div class="devsec-editorial">
         <div class="devsecops-lead-block">
           <h3 class="devsecops-headline">Security is an engineering property, not a compliance footnote.</h3>
-          <p class="devsecops-subtext">Every codebase we deliver ships with automated guardrails embedded directly into the continuous delivery pipeline. If a change introduces an architectural vulnerability, an untrusted package, or credential leakage, it never reaches production.</p>
+          <p class="devsecops-subtext">Every codebase we deliver ships with automated guardrails embedded directly into
+            the continuous delivery pipeline. If a change introduces an architectural vulnerability, an untrusted
+            package, or credential leakage, it never reaches production.</p>
         </div>
 
         <div class="sec-ledger-wrap">
@@ -311,17 +329,22 @@
               <circle cx="175" cy="175" r="54" class="hub-base" />
               <circle cx="175" cy="175" r="54" class="hub-ring" />
               <circle cx="175" cy="175" r="48" class="hub-inner-ring" />
-              <image href="{{ url_for('static', filename='img/nemesis_logo.png') }}" x="121" y="121" width="108" height="108" preserveAspectRatio="xMidYMid meet" class="hub-logo" />
+              <image href="{{ url_for('static', filename='img/nemesis_logo.png') }}" x="121" y="121" width="108"
+                height="108" preserveAspectRatio="xMidYMid meet" class="hub-logo" />
             </svg>
           </div>
 
           <!-- Right: Editorial Phase Display -->
           <div class="process-editorial-display">
             <div class="stage-nav-tabs">
-              <button type="button" class="stage-tab is-active" data-tab="1"><span class="tab-num">01</span><span class="tab-txt">Discover</span></button>
-              <button type="button" class="stage-tab" data-tab="2"><span class="tab-num">02</span><span class="tab-txt">Architect</span></button>
-              <button type="button" class="stage-tab" data-tab="3"><span class="tab-num">03</span><span class="tab-txt">Build</span></button>
-              <button type="button" class="stage-tab" data-tab="4"><span class="tab-num">04</span><span class="tab-txt">Harden</span></button>
+              <button type="button" class="stage-tab is-active" data-tab="1"><span class="tab-num">01</span><span
+                  class="tab-txt">Discover</span></button>
+              <button type="button" class="stage-tab" data-tab="2"><span class="tab-num">02</span><span
+                  class="tab-txt">Architect</span></button>
+              <button type="button" class="stage-tab" data-tab="3"><span class="tab-num">03</span><span
+                  class="tab-txt">Build</span></button>
+              <button type="button" class="stage-tab" data-tab="4"><span class="tab-num">04</span><span
+                  class="tab-txt">Harden</span></button>
             </div>
 
             <div class="process-phases-track">
@@ -331,7 +354,8 @@
                   <span class="phase-cadence">Weeks 1 – 2</span>
                 </div>
                 <h3>Discover &amp; scope the problem.</h3>
-                <p class="phase-lead">We map the system boundary, operational constraints, and clear acceptance criteria before a single line of production code is written.</p>
+                <p class="phase-lead">We map the system boundary, operational constraints, and clear acceptance criteria
+                  before a single line of production code is written.</p>
                 <div class="phase-grid-deliverables">
                   <div class="deliv-col">
                     <span class="deliv-heading">Key Deliverables</span>
@@ -354,7 +378,8 @@
                   <span class="phase-cadence">Weeks 2 – 4</span>
                 </div>
                 <h3>Design &amp; architect deliberately.</h3>
-                <p class="phase-lead">Data schemas, API boundaries, infrastructure blueprints, and security policies get modeled and validated on paper first.</p>
+                <p class="phase-lead">Data schemas, API boundaries, infrastructure blueprints, and security policies get
+                  modeled and validated on paper first.</p>
                 <div class="phase-grid-deliverables">
                   <div class="deliv-col">
                     <span class="deliv-heading">Key Deliverables</span>
@@ -377,7 +402,8 @@
                   <span class="phase-cadence">Weeks 4 – 8</span>
                 </div>
                 <h3>Build &amp; automate concurrently.</h3>
-                <p class="phase-lead">Product codebase and CI/CD pipelines are engineered together, ensuring every commit moves through automated security gates and rigorous testing.</p>
+                <p class="phase-lead">Product codebase and CI/CD pipelines are engineered together, ensuring every
+                  commit moves through automated security gates and rigorous testing.</p>
                 <div class="phase-grid-deliverables">
                   <div class="deliv-col">
                     <span class="deliv-heading">Key Deliverables</span>
@@ -400,7 +426,8 @@
                   <span class="phase-cadence">Continuous</span>
                 </div>
                 <h3>Deploy, monitor &amp; harden.</h3>
-                <p class="phase-lead">Live traffic carrying real workloads. Telemetry, vulnerability checks, and uptime health scans run continuously to preserve steady-state reliability.</p>
+                <p class="phase-lead">Live traffic carrying real workloads. Telemetry, vulnerability checks, and uptime
+                  health scans run continuously to preserve steady-state reliability.</p>
                 <div class="phase-grid-deliverables">
                   <div class="deliv-col">
                     <span class="deliv-heading">Key Deliverables</span>
@@ -412,7 +439,8 @@
                   </div>
                   <div class="deliv-col">
                     <span class="deliv-heading">Milestone Output</span>
-                    <p class="deliv-note">Hardened production environment running under continuous active surveillance.</p>
+                    <p class="deliv-note">Hardened production environment running under continuous active surveillance.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -448,7 +476,8 @@
       <!-- Card 01: Savora -->
       <div class="work-card">
         <div class="card-bg">
-          <img src="{{ url_for('static', filename='img/nemesis_logo_hero.png') }}" alt="Savora Platform" class="card-bg-img" style="object-position: center; filter: brightness(0.65);">
+          <img src="{{ url_for('static', filename='img/nemesis_logo_hero.png') }}" alt="Savora Platform"
+            class="card-bg-img" style="object-position: center; filter: brightness(0.65);">
           <div class="card-scrim"></div>
         </div>
         <div class="card-drawer">
@@ -462,7 +491,8 @@
           </div>
 
           <div class="drawer-expanded">
-            <p class="card-description">Replaced paper diaries and WhatsApp booking threads with real-time reservation conflict detection, color-coded floor plan seating, and waitlist management.</p>
+            <p class="card-description">Replaced paper diaries and WhatsApp booking threads with real-time reservation
+              conflict detection, color-coded floor plan seating, and waitlist management.</p>
             <div class="card-specs">
               <span class="specs-label">Key Capabilities</span>
               <ul class="specs-list">
@@ -473,7 +503,8 @@
             </div>
             <div class="card-meta-foot">
               <span class="card-tech">HTML5 · Bootstrap 5.3 · JS · Chart.js</span>
-              <a href="https://savora-reservation-demo.nemesis.co.zw/" target="_blank" rel="noopener noreferrer" class="card-action">Launch Live Demo <span class="arr">&rarr;</span></a>
+              <a href="https://savora-reservation-demo.nemesis.co.zw/" target="_blank" rel="noopener noreferrer"
+                class="card-action">Launch Live Demo <span class="arr">&rarr;</span></a>
             </div>
           </div>
         </div>
@@ -482,7 +513,8 @@
       <!-- Card 02: Aurelia -->
       <div class="work-card">
         <div class="card-bg">
-          <img src="{{ url_for('static', filename='img/nemesis_logo_hero.png') }}" alt="Aurelia Hotel PMS" class="card-bg-img" style="object-position: center; filter: brightness(0.65);">
+          <img src="{{ url_for('static', filename='img/nemesis_logo_hero.png') }}" alt="Aurelia Hotel PMS"
+            class="card-bg-img" style="object-position: center; filter: brightness(0.65);">
           <div class="card-scrim"></div>
         </div>
         <div class="card-drawer">
@@ -496,7 +528,8 @@
           </div>
 
           <div class="drawer-expanded">
-            <p class="card-description">Unifies front desk, housekeeping assignments, maintenance kanban tickets, and finance reporting into a single high-availability interface.</p>
+            <p class="card-description">Unifies front desk, housekeeping assignments, maintenance kanban tickets, and
+              finance reporting into a single high-availability interface.</p>
             <div class="card-specs">
               <span class="specs-label">Key Capabilities</span>
               <ul class="specs-list">
@@ -507,7 +540,8 @@
             </div>
             <div class="card-meta-foot">
               <span class="card-tech">HTML5 · Bootstrap 5.3 · Vanilla JS · Chart.js</span>
-              <a href="https://aurelia-hotel-ms-demo.nemesis.co.zw/" target="_blank" rel="noopener noreferrer" class="card-action">Launch Live Demo <span class="arr">&rarr;</span></a>
+              <a href="https://aurelia-hotel-ms-demo.nemesis.co.zw/" target="_blank" rel="noopener noreferrer"
+                class="card-action">Launch Live Demo <span class="arr">&rarr;</span></a>
             </div>
           </div>
         </div>
@@ -530,7 +564,8 @@
           </div>
 
           <div class="drawer-expanded">
-            <p class="card-description">Eliminates scattered, unverified room listings with geolocated property maps, real-time tenant chat, bed allocation, and owner revenue reconciliation.</p>
+            <p class="card-description">Eliminates scattered, unverified room listings with geolocated property maps,
+              real-time tenant chat, bed allocation, and owner revenue reconciliation.</p>
             <div class="card-specs">
               <span class="specs-label">Key Capabilities</span>
               <ul class="specs-list">
@@ -541,7 +576,8 @@
             </div>
             <div class="card-meta-foot">
               <span class="card-tech">Laravel 11 · React · PostgreSQL · Azure · Docker</span>
-              <a href="{{ url_for('our_work') }}#pondae" class="card-action">Case Study <span class="arr">&rarr;</span></a>
+              <a href="{{ url_for('our_work') }}#pondae" class="card-action">Case Study <span
+                  class="arr">&rarr;</span></a>
             </div>
           </div>
         </div>
@@ -550,7 +586,8 @@
       <!-- Card 04: PONDAE Watcher -->
       <div class="work-card">
         <div class="card-bg">
-          <img src="{{ url_for('static', filename='img/pondai-dashboard.png') }}" alt="PONDAE Watcher" class="card-bg-img">
+          <img src="{{ url_for('static', filename='img/pondai-dashboard.png') }}" alt="PONDAE Watcher"
+            class="card-bg-img">
           <div class="card-scrim"></div>
         </div>
         <div class="card-drawer">
@@ -564,7 +601,8 @@
           </div>
 
           <div class="drawer-expanded">
-            <p class="card-description">Gives accommodation managers real-time visibility into Wi-Fi activity and bandwidth abuse across student tenants without inspecting physical routers.</p>
+            <p class="card-description">Gives accommodation managers real-time visibility into Wi-Fi activity and
+              bandwidth abuse across student tenants without inspecting physical routers.</p>
             <div class="card-specs">
               <span class="specs-label">Key Capabilities</span>
               <ul class="specs-list">
@@ -575,7 +613,8 @@
             </div>
             <div class="card-meta-foot">
               <span class="card-tech">Python · React · Network APIs · SIEM</span>
-              <a href="{{ url_for('our_work') }}#pondae-watcher" class="card-action">Case Study <span class="arr">&rarr;</span></a>
+              <a href="{{ url_for('our_work') }}#pondae-watcher" class="card-action">Case Study <span
+                  class="arr">&rarr;</span></a>
             </div>
           </div>
         </div>
@@ -584,7 +623,8 @@
       <!-- Card 05: MUSHA (INTELLI-FIND) -->
       <div class="work-card">
         <div class="card-bg">
-          <img src="{{ url_for('static', filename='img/musha-1.jpeg') }}" alt="MUSHA Property Intelligence" class="card-bg-img">
+          <img src="{{ url_for('static', filename='img/musha-1.jpeg') }}" alt="MUSHA Property Intelligence"
+            class="card-bg-img">
           <div class="card-scrim"></div>
         </div>
         <div class="card-drawer">
@@ -598,7 +638,8 @@
           </div>
 
           <div class="drawer-expanded">
-            <p class="card-description">Accelerates property due diligence in Zimbabwe through automated comparative sales benchmarks, title deed registry API verification, and zoning risk auditing.</p>
+            <p class="card-description">Accelerates property due diligence in Zimbabwe through automated comparative
+              sales benchmarks, title deed registry API verification, and zoning risk auditing.</p>
             <div class="card-specs">
               <span class="specs-label">Key Capabilities</span>
               <ul class="specs-list">
@@ -609,7 +650,8 @@
             </div>
             <div class="card-meta-foot">
               <span class="card-tech">React · Node.js · Registry API · PostgreSQL</span>
-              <a href="{{ url_for('our_work') }}#musha" class="card-action">Case Study <span class="arr">&rarr;</span></a>
+              <a href="{{ url_for('our_work') }}#musha" class="card-action">Case Study <span
+                  class="arr">&rarr;</span></a>
             </div>
           </div>
         </div>
@@ -632,7 +674,8 @@
           </div>
 
           <div class="drawer-expanded">
-            <p class="card-description">Engineered for mid-tier organizations lacking enterprise security budgets. Deploys real-time anomaly sensors, behavioral heuristics, and instant forensic isolation.</p>
+            <p class="card-description">Engineered for mid-tier organizations lacking enterprise security budgets.
+              Deploys real-time anomaly sensors, behavioral heuristics, and instant forensic isolation.</p>
             <div class="card-specs">
               <span class="specs-label">Key Capabilities</span>
               <ul class="specs-list">
@@ -643,7 +686,8 @@
             </div>
             <div class="card-meta-foot">
               <span class="card-tech">Python · SIEM Integration · PostgreSQL</span>
-              <a href="{{ url_for('our_work') }}#minopar" class="card-action">Case Study <span class="arr">&rarr;</span></a>
+              <a href="{{ url_for('our_work') }}#minopar" class="card-action">Case Study <span
+                  class="arr">&rarr;</span></a>
             </div>
           </div>
         </div>
@@ -655,7 +699,8 @@
     <div class="work-view-all-bar">
       <div class="work-view-all-text">
         <span class="count-tag">Showing 6 of 8 Platforms</span>
-        <span class="view-note">FINDit Marketplace, Hotel Operations Suite, and full architectural breakdowns are available in our portfolio.</span>
+        <span class="view-note">FINDit Marketplace, Hotel Operations Suite, and full architectural breakdowns are
+          available in our portfolio.</span>
       </div>
       <a href="{{ url_for('our_work') }}" class="btn primary">
         View All 8 Platforms &rarr;
@@ -719,7 +764,8 @@
 
     <div class="faq-grid">
       <div class="faq-col-label">
-        <p class="faq-side-note">Questions we get asked before engagements begin. If yours isn't here, <a href="#contact">write to us directly</a>.</p>
+        <p class="faq-side-note">Questions we get asked before engagements begin. If yours isn't here, <a
+            href="#contact">write to us directly</a>.</p>
       </div>
 
       <div class="faq-col-items">
@@ -729,7 +775,9 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-a">
-            <p>We are headquartered in Harare, Zimbabwe. Every engagement is run remotely — we operate across African, European, and US time zones and have delivered systems for clients in multiple countries without requiring an on-site presence.</p>
+            <p>We are headquartered in Harare, Zimbabwe. Every engagement is run remotely — we operate across African,
+              European, and US time zones and have delivered systems for clients in multiple countries without requiring
+              an on-site presence.</p>
           </div>
         </div>
 
@@ -739,7 +787,9 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-a">
-            <p>Most engagements move from a signed scope to a staging deployment in 6 to 10 weeks. Discovery and architecture take 2 – 4 weeks, the first build sprint runs 4 – 6 weeks, and hardening is woven into every sprint — not bolted on at the end.</p>
+            <p>Most engagements move from a signed scope to a staging deployment in 6 to 10 weeks. Discovery and
+              architecture take 2 – 4 weeks, the first build sprint runs 4 – 6 weeks, and hardening is woven into every
+              sprint — not bolted on at the end.</p>
           </div>
         </div>
 
@@ -749,7 +799,9 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-a">
-            <p>Both. We offer fixed-scope project engagements and ongoing retainer agreements that cover monitoring, incident response, and continuous delivery. Most clients start with a project and transition into a retainer once the system is live.</p>
+            <p>Both. We offer fixed-scope project engagements and ongoing retainer agreements that cover monitoring,
+              incident response, and continuous delivery. Most clients start with a project and transition into a
+              retainer once the system is live.</p>
           </div>
         </div>
 
@@ -759,7 +811,9 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-a">
-            <p>Our defaults are Python (FastAPI / Django) or Node.js on the backend, PostgreSQL or Redis for data, and React or Next.js on the frontend. We adapt to your existing stack when required — the choice of tools follows the constraints of the problem, not personal preference.</p>
+            <p>Our defaults are Python (FastAPI / Django) or Node.js on the backend, PostgreSQL or Redis for data, and
+              React or Next.js on the frontend. We adapt to your existing stack when required — the choice of tools
+              follows the constraints of the problem, not personal preference.</p>
           </div>
         </div>
 
@@ -769,7 +823,10 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-a">
-            <p>Security is not a separate audit phase. Static analysis, dependency scanning, secret detection, and container hardening run automatically on every pull request via our CI pipeline. Nothing reaches production without passing those gates. We also provide a threat model document as part of every Discovery deliverable.</p>
+            <p>Security is not a separate audit phase. Static analysis, dependency scanning, secret detection, and
+              container hardening run automatically on every pull request via our CI pipeline. Nothing reaches
+              production without passing those gates. We also provide a threat model document as part of every Discovery
+              deliverable.</p>
           </div>
         </div>
       </div>
@@ -817,11 +874,6 @@
     <form id="contactForm" novalidate>
       <h2>Send your inquiry to us...</h2>
       <div id="contactFeedback" class="form-feedback" aria-live="polite" style="display:none;"></div>
-      
-      <!-- Anti-bot honeypot -->
-      <div style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
-        <input type="text" name="website" id="formHoneypot" tabindex="-1" autocomplete="off">
-      </div>
 
       <div class="field" id="fieldName">
         <label for="name">Name / company</label>
@@ -844,21 +896,27 @@
             </svg>
           </button>
           <ul class="select-options" role="listbox" tabindex="-1">
-            <li class="select-option is-selected" data-value="System Development / Full-Stack" role="option" aria-selected="true">
+            <li class="select-option is-selected" data-value="System Development / Full-Stack" role="option"
+              aria-selected="true">
               System Development / Full-Stack</li>
-            <li class="select-option" data-value="DevSecOps & Security Automation" role="option" aria-selected="false">DevSecOps &amp;
+            <li class="select-option" data-value="DevSecOps & Security Automation" role="option" aria-selected="false">
+              DevSecOps &amp;
               Security Automation</li>
-            <li class="select-option" data-value="Cloud & Infrastructure" role="option" aria-selected="false">Cloud &amp;
+            <li class="select-option" data-value="Cloud & Infrastructure" role="option" aria-selected="false">Cloud
+              &amp;
               Infrastructure</li>
-            <li class="select-option" data-value="Architecture & Technical Consulting" role="option" aria-selected="false">Architecture &amp;
+            <li class="select-option" data-value="Architecture & Technical Consulting" role="option"
+              aria-selected="false">Architecture &amp;
               Technical Consulting</li>
-            <li class="select-option" data-value="General Inquiry" role="option" aria-selected="false">General Inquiry</li>
+            <li class="select-option" data-value="General Inquiry" role="option" aria-selected="false">General Inquiry
+            </li>
           </ul>
         </div>
       </div>
       <div class="field" id="fieldDetails">
         <label for="details">Project details</label>
-        <textarea id="details" name="details" placeholder="Tell us about your project, timeline, and requirements..." required></textarea>
+        <textarea id="details" name="details" placeholder="Tell us about your project, timeline, and requirements..."
+          required></textarea>
       </div>
       <button type="submit" id="submitBtn" class="btn primary submit">Send inquiry</button>
     </form>
@@ -868,4 +926,4 @@
 
 {% block extra_js %}
 <script src="{{ url_for('static', filename='js/hero_photo_cube.js') }}"></script>
-{% endblock %}
+{% endblock %}
