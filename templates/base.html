@@ -94,11 +94,11 @@
     <div class="header-right">
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">Menu</button>
       <nav id="siteNav">
-        <a href="{{ url_for('index') }}#services">Services</a>
-        <a href="{{ url_for('index') }}#devsecops">DevSecOps</a>
-        <a href="{{ url_for('index') }}#process">Process</a>
-        <a href="{{ url_for('our_work') }}">Our Work</a>
-        <a href="{{ url_for('index') }}#contact">Contact</a>
+        <a href="{% if request.path != '/' %}{{ url_for('index') }}{% endif %}#services">Services</a>
+        <a href="{% if request.path != '/' %}{{ url_for('index') }}{% endif %}#devsecops">DevSecOps</a>
+        <a href="{% if request.path != '/' %}{{ url_for('index') }}{% endif %}#process">Process</a>
+        <a href="{% if request.path != '/' %}{{ url_for('index') }}{% endif %}#work">Work</a>
+        <a href="{% if request.path != '/' %}{{ url_for('index') }}{% endif %}#contact">Contact</a>
       </nav>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">
         <span class="tt-light">Light mode</span>

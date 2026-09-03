@@ -524,26 +524,47 @@ if (form) {
 // nav active link on scroll
 (function () {
   var links = document.querySelectorAll('#siteNav a');
-  var sections = Array.prototype.map.call(links, function (a) {
-    return document.querySelector(a.getAttribute('href'));
-  }).filter(Boolean);
-  if (!sections.length) return;
+  if (!links.length) return;
+
+  var navMap = [];
+  links.forEach(function (a) {
+    var href = a.getAttribute('href') || '';
+    var hashIndex = href.indexOf('#');
+    if (hashIndex !== -1) {
+      var hash = href.substring(hashIndex);
+      try {
+        var sec = document.querySelector(hash);
+        if (sec) {
+          navMap.push({ link: a, section: sec, id: sec.id });
+        }
+      } catch (_) {}
+    }
+  });
+
+  if (!navMap.length) return;
 
   function setActive() {
-    var pos = window.scrollY + 120;
-    var current = sections[0];
-    sections.forEach(function (sec) { if (sec.offsetTop <= pos) current = sec; });
+    var pos = window.scrollY + 140;
+    var current = null;
 
-    // If we are at the bottom of the page, force the last section to be active
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
-      current = sections[sections.length - 1];
+    navMap.forEach(function (item) {
+      if (item.section.offsetTop <= pos) {
+        current = item;
+      }
+    });
+
+    // If near the bottom of the page, force the last nav item active (e.g. Contact)
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 80) {
+      current = navMap[navMap.length - 1];
     }
 
-    links.forEach(function (a) {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
+    navMap.forEach(function (item) {
+      item.link.classList.toggle('active', item === current);
     });
   }
-  document.addEventListener('scroll', setActive, { passive: true });
+
+  window.addEventListener('scroll', setActive, { passive: true });
+  window.addEventListener('resize', setActive, { passive: true });
   setActive();
 })();
 // custom select dropdown
