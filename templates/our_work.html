@@ -17,7 +17,7 @@
       <p class="dek">Every product on nemesis.co.zw, in detail — the problem it solves, what we built, the stack behind it, and how it looks in production.</p>
     </div>
 
-    <!-- Platform Telemetry Banner -->
+    <!-- Platform Telemetry Banner (Refined hairline dividers) -->
     <div class="work-telemetry-banner">
       <div class="telemetry-item">
         <span class="telemetry-num">08</span>
@@ -39,76 +39,83 @@
   </div>
 </section>
 
-<!-- In-Depth Case Studies -->
+<!-- In-Depth Case Studies with Pictures -->
 <section class="case-studies-section" id="studies">
   <div class="wrap">
     <div class="case-studies-list">
 
       <!-- Case Study 01: Savora -->
       <article class="case-study-card" id="savora">
-        <div class="study-meta-top">
-          <div class="study-id">Case Study 01</div>
-          <div class="study-status-badge status-live">Live Demo · Demo-Ready</div>
+        <div class="study-media">
+          <img src="{{ url_for('static', filename='img/slide.jpg') }}" alt="Savora Restaurant Tech" class="study-img">
+          <div class="study-img-overlay"></div>
+          <span class="study-media-badge">Interactive Demo</span>
         </div>
-        
-        <div class="study-header">
-          <h2>Savora — Restaurant Reservation &amp; Floor Management</h2>
-          <span class="study-subtitle">Hospitality Front-of-House Operating System</span>
-        </div>
-
-        <div class="study-grid-details">
-          <div class="study-specs-col">
-            <div class="spec-row">
-              <span class="spec-k">Role</span>
-              <span class="spec-v">Solo Full-Stack Build</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Timeline</span>
-              <span class="spec-v">Live, fully interactive demo</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Category</span>
-              <span class="spec-v">Restaurant Tech</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Status</span>
-              <span class="spec-v">Demo-Ready · No Signup Required</span>
-            </div>
+        <div class="study-body">
+          <div class="study-meta-top">
+            <span class="study-id">Case Study 01</span>
+            <span class="study-status-badge status-live">Live Demo · Demo-Ready</span>
+          </div>
+          
+          <div class="study-header">
+            <h2>Savora — Restaurant Reservation &amp; Floor Management</h2>
+            <span class="study-subtitle">Hospitality Front-of-House Operating System</span>
           </div>
 
-          <div class="study-narrative-col">
-            <div class="narrative-block">
-              <h3>The Problem</h3>
-              <p>Independent restaurants were running bookings by hand — paper diaries, WhatsApp threads, and spreadsheets — leading to double-bookings, no guest history, and zero visibility into table turnover or revenue.</p>
-            </div>
-
-            <div class="narrative-block">
-              <h3>What We Built</h3>
-              <ul class="built-list">
-                <li><strong>Live reservation dashboard:</strong> Real-time bookings with automatic conflict detection</li>
-                <li><strong>Interactive floor plan:</strong> Color-coded tables by zone with quick-seat and walk-in actions</li>
-                <li><strong>Guest CRM:</strong> VIP flagging, diner preferences, visit &amp; spend history</li>
-                <li><strong>Waitlist management:</strong> Real-time queueing with one-click table seating</li>
-                <li><strong>Revenue analytics:</strong> Peak-hours forecasting with role-based access (Host / Manager / Owner)</li>
-              </ul>
-            </div>
-
-            <div class="study-stack-block">
-              <span class="stack-label">Stack</span>
-              <div class="stack-pills">
-                <span class="pill">HTML5</span>
-                <span class="pill">Bootstrap 5.3</span>
-                <span class="pill">Vanilla JS</span>
-                <span class="pill">Chart.js</span>
-                <span class="pill">EmailJS</span>
+          <div class="study-grid-details">
+            <div class="study-specs-col">
+              <div class="spec-row">
+                <span class="spec-k">Role</span>
+                <span class="spec-v">Solo Full-Stack Build</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Timeline</span>
+                <span class="spec-v">Live, interactive demo</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Category</span>
+                <span class="spec-v">Restaurant Tech</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Status</span>
+                <span class="spec-v">Demo-Ready · No Signup Required</span>
               </div>
             </div>
 
-            <div class="study-action-bar">
-              <a href="https://savora-reservation-demo.nemesis.co.zw/" target="_blank" rel="noopener noreferrer" class="btn primary">
-                Launch Live Demo &rarr;
-              </a>
-              <span class="demo-note">Fully interactive · Zero backend signup needed</span>
+            <div class="study-narrative-col">
+              <div class="narrative-block">
+                <h3>The Problem</h3>
+                <p>Independent restaurants were running bookings by hand — paper diaries, WhatsApp threads, and spreadsheets — leading to double-bookings, no guest history, and zero visibility into table turnover or revenue.</p>
+              </div>
+
+              <div class="narrative-block">
+                <h3>What We Built</h3>
+                <ul class="built-list">
+                  <li><strong>Live reservation dashboard:</strong> Real-time bookings with automatic conflict detection</li>
+                  <li><strong>Interactive floor plan:</strong> Color-coded tables by zone with quick-seat and walk-in actions</li>
+                  <li><strong>Guest CRM:</strong> VIP flagging, diner preferences, visit &amp; spend history</li>
+                  <li><strong>Waitlist management:</strong> Real-time queueing with one-click table seating</li>
+                  <li><strong>Revenue analytics:</strong> Peak-hours forecasting with role-based access (Host / Manager / Owner)</li>
+                </ul>
+              </div>
+
+              <div class="study-stack-block">
+                <span class="stack-label">Stack</span>
+                <div class="stack-pills">
+                  <span class="pill">HTML5</span>
+                  <span class="pill">Bootstrap 5.3</span>
+                  <span class="pill">Vanilla JS</span>
+                  <span class="pill">Chart.js</span>
+                  <span class="pill">EmailJS</span>
+                </div>
+              </div>
+
+              <div class="study-action-bar">
+                <a href="https://savora-reservation-demo.nemesis.co.zw/" target="_blank" rel="noopener noreferrer" class="btn primary">
+                  Launch Live Demo &rarr;
+                </a>
+                <span class="demo-note">Fully interactive · Zero backend signup needed</span>
+              </div>
             </div>
           </div>
         </div>
@@ -116,69 +123,76 @@
 
       <!-- Case Study 02: Aurelia -->
       <article class="case-study-card" id="aurelia">
-        <div class="study-meta-top">
-          <div class="study-id">Case Study 02</div>
-          <div class="study-status-badge status-live">Live Demo · Demo-Ready</div>
+        <div class="study-media">
+          <img src="{{ url_for('static', filename='img/slide2.jpg') }}" alt="Aurelia Hotel PMS" class="study-img">
+          <div class="study-img-overlay"></div>
+          <span class="study-media-badge">Interactive Demo</span>
         </div>
-        
-        <div class="study-header">
-          <h2>Aurelia — Hotel Property Management System</h2>
-          <span class="study-subtitle">Full Hotel Operating System</span>
-        </div>
-
-        <div class="study-grid-details">
-          <div class="study-specs-col">
-            <div class="spec-row">
-              <span class="spec-k">Role</span>
-              <span class="spec-v">Solo Full-Stack Build</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Timeline</span>
-              <span class="spec-v">Live, fully interactive demo</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Category</span>
-              <span class="spec-v">Hospitality PMS</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Status</span>
-              <span class="spec-v">Demo-Ready · No Signup Required</span>
-            </div>
+        <div class="study-body">
+          <div class="study-meta-top">
+            <span class="study-id">Case Study 02</span>
+            <span class="study-status-badge status-live">Live Demo · Demo-Ready</span>
+          </div>
+          
+          <div class="study-header">
+            <h2>Aurelia — Hotel Property Management System</h2>
+            <span class="study-subtitle">Full Hotel Operating System</span>
           </div>
 
-          <div class="study-narrative-col">
-            <div class="narrative-block">
-              <h3>The Problem</h3>
-              <p>Hotels typically run front desk, housekeeping, maintenance, and revenue reporting through disconnected tools — leading to overbookings, delayed repairs, and no unified view of guest history or property performance.</p>
-            </div>
-
-            <div class="narrative-block">
-              <h3>What We Built</h3>
-              <ul class="built-list">
-                <li><strong>Live operations dashboard:</strong> Occupancy, ADR, RevPAR, arrivals, and revenue trends at a glance</li>
-                <li><strong>Multi-step check-in / check-out:</strong> ID capture, digital deposits, room inspection, digital signature</li>
-                <li><strong>Housekeeping board:</strong> Grouped by staff assignments with priority-coded tickets</li>
-                <li><strong>Maintenance kanban:</strong> Room-issue reporting, dispatch workflow, and resolution tracking</li>
-                <li><strong>Finance &amp; analytics:</strong> Invoicing, payments, revenue by room type, and exportable financial reports</li>
-                <li><strong>Booking calendar:</strong> Month/week schedule views linked directly to active guest folios</li>
-              </ul>
-            </div>
-
-            <div class="study-stack-block">
-              <span class="stack-label">Stack</span>
-              <div class="stack-pills">
-                <span class="pill">HTML5</span>
-                <span class="pill">Bootstrap 5.3</span>
-                <span class="pill">Vanilla JS</span>
-                <span class="pill">Chart.js</span>
+          <div class="study-grid-details">
+            <div class="study-specs-col">
+              <div class="spec-row">
+                <span class="spec-k">Role</span>
+                <span class="spec-v">Solo Full-Stack Build</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Timeline</span>
+                <span class="spec-v">Live, interactive demo</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Category</span>
+                <span class="spec-v">Hospitality PMS</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Status</span>
+                <span class="spec-v">Demo-Ready · No Signup Required</span>
               </div>
             </div>
 
-            <div class="study-action-bar">
-              <a href="https://aurelia-hotel-ms-demo.nemesis.co.zw/" target="_blank" rel="noopener noreferrer" class="btn primary">
-                Launch Live Demo &rarr;
-              </a>
-              <span class="demo-note">Walk through rooms, reservations, housekeeping &amp; analytics</span>
+            <div class="study-narrative-col">
+              <div class="narrative-block">
+                <h3>The Problem</h3>
+                <p>Hotels typically run front desk, housekeeping, maintenance, and revenue reporting through disconnected tools — leading to overbookings, delayed repairs, and no unified view of guest history or property performance.</p>
+              </div>
+
+              <div class="narrative-block">
+                <h3>What We Built</h3>
+                <ul class="built-list">
+                  <li><strong>Live operations dashboard:</strong> Occupancy, ADR, RevPAR, arrivals, and revenue trends at a glance</li>
+                  <li><strong>Multi-step check-in / check-out:</strong> ID capture, digital deposits, room inspection, digital signature</li>
+                  <li><strong>Housekeeping board:</strong> Grouped by staff assignments with priority-coded tickets</li>
+                  <li><strong>Maintenance kanban:</strong> Room-issue reporting, dispatch workflow, and resolution tracking</li>
+                  <li><strong>Finance &amp; analytics:</strong> Invoicing, payments, revenue by room type, and exportable financial reports</li>
+                  <li><strong>Booking calendar:</strong> Month/week schedule views linked directly to active guest folios</li>
+                </ul>
+              </div>
+
+              <div class="study-stack-block">
+                <span class="stack-label">Stack</span>
+                <div class="stack-pills">
+                  <span class="pill">HTML5</span>
+                  <span class="pill">Bootstrap 5.3</span>
+                  <span class="pill">Vanilla JS</span>
+                  <span class="pill">Chart.js</span>
+                </div>
+              </div>
+
+              <div class="study-action-bar">
+                <a href="https://aurelia-hotel-ms-demo.nemesis.co.zw/" target="_blank" rel="noopener noreferrer" class="btn primary">
+                  Launch Live Demo &rarr;
+                </a>
+                <span class="demo-note">Walk through rooms, reservations, housekeeping &amp; analytics</span>
+              </div>
             </div>
           </div>
         </div>
@@ -186,64 +200,71 @@
 
       <!-- Case Study 03: Hotel Management and Booking System -->
       <article class="case-study-card" id="hotel-system">
-        <div class="study-meta-top">
-          <div class="study-id">Case Study 03</div>
-          <div class="study-status-badge status-prod">Live &amp; In Production</div>
+        <div class="study-media">
+          <img src="{{ url_for('static', filename='img/nemesis_logo_hero.png') }}" alt="Hotel Management System" class="study-img" style="filter: brightness(0.35);">
+          <div class="study-img-overlay"></div>
+          <span class="study-media-badge">Client NDA</span>
         </div>
-        
-        <div class="study-header">
-          <h2>Hotel Management and Booking System</h2>
-          <span class="study-subtitle">Hospitality Operations Platform</span>
-        </div>
-
-        <div class="study-grid-details">
-          <div class="study-specs-col">
-            <div class="spec-row">
-              <span class="spec-k">Role</span>
-              <span class="spec-v">Dev Partner &amp; Technical Support</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Timeline</span>
-              <span class="spec-v">Live, in active use</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Built With</span>
-              <span class="spec-v">Partner development studio</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Status</span>
-              <span class="spec-v">Deployed &amp; Operational</span>
-            </div>
+        <div class="study-body">
+          <div class="study-meta-top">
+            <span class="study-id">Case Study 03</span>
+            <span class="study-status-badge status-prod">Live &amp; In Production</span>
+          </div>
+          
+          <div class="study-header">
+            <h2>Hotel Management and Booking System</h2>
+            <span class="study-subtitle">Hospitality Operations Platform</span>
           </div>
 
-          <div class="study-narrative-col">
-            <div class="narrative-block">
-              <h3>The Problem</h3>
-              <p>A local hospitality provider was running bookings entirely by hand — phone calls and WhatsApp messages, with no central record of availability, and zero real-time reporting on occupancy or revenue.</p>
-            </div>
-
-            <div class="narrative-block">
-              <h3>What We Built</h3>
-              <ul class="built-list">
-                <li><strong>Online reservations:</strong> Instant booking engine with automated confirmation &amp; deposit capture</li>
-                <li><strong>Room management:</strong> Live inventory availability, seasonal rates, and occupancy matrix</li>
-                <li><strong>Revenue dashboard:</strong> Real-time occupancy tracking, bookings telemetry, and trend analytics</li>
-              </ul>
-            </div>
-
-            <div class="study-stack-block">
-              <span class="stack-label">Stack</span>
-              <div class="stack-pills">
-                <span class="pill">Laravel 11</span>
-                <span class="pill">Inertia.js</span>
-                <span class="pill">React</span>
-                <span class="pill">PostgreSQL</span>
-                <span class="pill">Payment Gateway</span>
+          <div class="study-grid-details">
+            <div class="study-specs-col">
+              <div class="spec-row">
+                <span class="spec-k">Role</span>
+                <span class="spec-v">Dev Partner &amp; Technical Support</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Timeline</span>
+                <span class="spec-v">Live, in active use</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Built With</span>
+                <span class="spec-v">Partner development studio</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Status</span>
+                <span class="spec-v">Deployed &amp; Operational</span>
               </div>
             </div>
 
-            <div class="study-nda-note">
-              <strong>Under NDA:</strong> This system is live in production for our hospitality partner. Screenshots and client branding are withheld under confidentiality agreements. We are happy to walk qualified partners through the architecture on a call.
+            <div class="study-narrative-col">
+              <div class="narrative-block">
+                <h3>The Problem</h3>
+                <p>A local hospitality provider was running bookings entirely by hand — phone calls and WhatsApp messages, with no central record of availability, and zero real-time reporting on occupancy or revenue.</p>
+              </div>
+
+              <div class="narrative-block">
+                <h3>What We Built</h3>
+                <ul class="built-list">
+                  <li><strong>Online reservations:</strong> Instant booking engine with automated confirmation &amp; deposit capture</li>
+                  <li><strong>Room management:</strong> Live inventory availability, seasonal rates, and occupancy matrix</li>
+                  <li><strong>Revenue dashboard:</strong> Real-time occupancy tracking, bookings telemetry, and trend analytics</li>
+                </ul>
+              </div>
+
+              <div class="study-stack-block">
+                <span class="stack-label">Stack</span>
+                <div class="stack-pills">
+                  <span class="pill">Laravel 11</span>
+                  <span class="pill">Inertia.js</span>
+                  <span class="pill">React</span>
+                  <span class="pill">PostgreSQL</span>
+                  <span class="pill">Payment Gateway</span>
+                </div>
+              </div>
+
+              <div class="study-nda-note">
+                <strong>Under NDA:</strong> This system is live in production for our hospitality partner. Screenshots and client branding are withheld under confidentiality agreements. We are happy to walk qualified partners through the architecture on a call.
+              </div>
             </div>
           </div>
         </div>
@@ -251,62 +272,69 @@
 
       <!-- Case Study 04: PONDAE -->
       <article class="case-study-card" id="pondae">
-        <div class="study-meta-top">
-          <div class="study-id">Case Study 04</div>
-          <div class="study-status-badge status-prod">Live &amp; In Production</div>
+        <div class="study-media">
+          <img src="{{ url_for('static', filename='img/slide-3-consultancy.jpg') }}" alt="PONDAE Housing" class="study-img">
+          <div class="study-img-overlay"></div>
+          <span class="study-media-badge">Live on Azure</span>
         </div>
-        
-        <div class="study-header">
-          <h2>PONDAE — Accommodation Management</h2>
-          <span class="study-subtitle">Off-Campus Student Housing Platform</span>
-        </div>
-
-        <div class="study-grid-details">
-          <div class="study-specs-col">
-            <div class="spec-row">
-              <span class="spec-k">Role</span>
-              <span class="spec-v">Solo Full-Stack Build</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Timeline</span>
-              <span class="spec-v">6+ months, ongoing</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Category</span>
-              <span class="spec-v">PropTech</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Status</span>
-              <span class="spec-v">Deployed on Azure</span>
-            </div>
+        <div class="study-body">
+          <div class="study-meta-top">
+            <span class="study-id">Case Study 04</span>
+            <span class="study-status-badge status-prod">Live &amp; In Production</span>
+          </div>
+          
+          <div class="study-header">
+            <h2>PONDAE — Accommodation Management</h2>
+            <span class="study-subtitle">Off-Campus Student Housing Platform</span>
           </div>
 
-          <div class="study-narrative-col">
-            <div class="narrative-block">
-              <h3>The Problem</h3>
-              <p>Students looking for off-campus housing near Midlands State University had no reliable way to find verified rooms — listings were scattered across WhatsApp groups. Landlords tracked tenants, payments, and occupancy manually with no visibility into their own portfolio.</p>
+          <div class="study-grid-details">
+            <div class="study-specs-col">
+              <div class="spec-row">
+                <span class="spec-k">Role</span>
+                <span class="spec-v">Solo Full-Stack Build</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Timeline</span>
+                <span class="spec-v">6+ months, ongoing</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Category</span>
+                <span class="spec-v">PropTech</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Status</span>
+                <span class="spec-v">Deployed on Azure</span>
+              </div>
             </div>
 
-            <div class="narrative-block">
-              <h3>What We Built</h3>
-              <ul class="built-list">
-                <li><strong>Interactive property map:</strong> Geolocated housing listings with live filtering and distance-to-campus markers</li>
-                <li><strong>Real-time chat:</strong> Instant tenant-to-admin messaging via Laravel Reverb / WebSockets</li>
-                <li><strong>Analytics dashboard:</strong> Real-time tracking of revenue, occupancy rates, user growth, and conversion</li>
-                <li><strong>Full tenant lifecycle:</strong> Room listing, allocation, automated lease onboarding, and payment verification</li>
-              </ul>
-            </div>
+            <div class="study-narrative-col">
+              <div class="narrative-block">
+                <h3>The Problem</h3>
+                <p>Students looking for off-campus housing near Midlands State University had no reliable way to find verified rooms — listings were scattered across WhatsApp groups. Landlords tracked tenants, payments, and occupancy manually with no visibility into their own portfolio.</p>
+              </div>
 
-            <div class="study-stack-block">
-              <span class="stack-label">Stack</span>
-              <div class="stack-pills">
-                <span class="pill">Laravel 11</span>
-                <span class="pill">Inertia.js</span>
-                <span class="pill">React</span>
-                <span class="pill">PostgreSQL</span>
-                <span class="pill">Azure + Docker/Caddy</span>
-                <span class="pill">MapTiler API</span>
-                <span class="pill">Laravel Reverb</span>
+              <div class="narrative-block">
+                <h3>What We Built</h3>
+                <ul class="built-list">
+                  <li><strong>Interactive property map:</strong> Geolocated housing listings with live filtering and distance-to-campus markers</li>
+                  <li><strong>Real-time chat:</strong> Instant tenant-to-admin messaging via Laravel Reverb / WebSockets</li>
+                  <li><strong>Analytics dashboard:</strong> Real-time tracking of revenue, occupancy rates, user growth, and conversion</li>
+                  <li><strong>Full tenant lifecycle:</strong> Room listing, allocation, automated lease onboarding, and payment verification</li>
+                </ul>
+              </div>
+
+              <div class="study-stack-block">
+                <span class="stack-label">Stack</span>
+                <div class="stack-pills">
+                  <span class="pill">Laravel 11</span>
+                  <span class="pill">Inertia.js</span>
+                  <span class="pill">React</span>
+                  <span class="pill">PostgreSQL</span>
+                  <span class="pill">Azure + Docker/Caddy</span>
+                  <span class="pill">MapTiler API</span>
+                  <span class="pill">Laravel Reverb</span>
+                </div>
               </div>
             </div>
           </div>
@@ -315,59 +343,66 @@
 
       <!-- Case Study 05: PONDAE Watcher -->
       <article class="case-study-card" id="pondae-watcher">
-        <div class="study-meta-top">
-          <div class="study-id">Case Study 05</div>
-          <div class="study-status-badge status-prod">Live &amp; In Production</div>
+        <div class="study-media">
+          <img src="{{ url_for('static', filename='img/services_abstract.jpg') }}" alt="PONDAE Watcher" class="study-img">
+          <div class="study-img-overlay"></div>
+          <span class="study-media-badge">Network Monitor</span>
         </div>
-        
-        <div class="study-header">
-          <h2>PONDAE Watcher — Network Activity Monitor</h2>
-          <span class="study-subtitle">Tenant Network Visualization for Student Housing</span>
-        </div>
-
-        <div class="study-grid-details">
-          <div class="study-specs-col">
-            <div class="spec-row">
-              <span class="spec-k">Role</span>
-              <span class="spec-v">Solo Full-Stack Build</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Timeline</span>
-              <span class="spec-v">Live, in active use</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Category</span>
-              <span class="spec-v">Network Monitoring</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Status</span>
-              <span class="spec-v">Deployed &amp; Operational</span>
-            </div>
+        <div class="study-body">
+          <div class="study-meta-top">
+            <span class="study-id">Case Study 05</span>
+            <span class="study-status-badge status-prod">Live &amp; In Production</span>
+          </div>
+          
+          <div class="study-header">
+            <h2>PONDAE Watcher — Network Activity Monitor</h2>
+            <span class="study-subtitle">Tenant Network Visualization for Student Housing</span>
           </div>
 
-          <div class="study-narrative-col">
-            <div class="narrative-block">
-              <h3>The Problem</h3>
-              <p>PONDAE's accommodation team needed a way to see and manage network activity across every tenant and student on the property — who was connected, how bandwidth was being used, and when something looked off — without walking floor to floor to check physical routers.</p>
+          <div class="study-grid-details">
+            <div class="study-specs-col">
+              <div class="spec-row">
+                <span class="spec-k">Role</span>
+                <span class="spec-v">Solo Full-Stack Build</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Timeline</span>
+                <span class="spec-v">Live, in active use</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Category</span>
+                <span class="spec-v">Network Monitoring</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Status</span>
+                <span class="spec-v">Deployed &amp; Operational</span>
+              </div>
             </div>
 
-            <div class="narrative-block">
-              <h3>What We Built</h3>
-              <ul class="built-list">
-                <li><strong>Tenancy-wide network visualization:</strong> Every student's connected device activity rendered in a single unified view</li>
-                <li><strong>Per-device Wi-Fi monitoring:</strong> Granular usage tracked down to MAC address and assigned room</li>
-                <li><strong>Bandwidth limits &amp; alerts:</strong> Automated flagging and throttling of unusual or excessive network usage</li>
-                <li><strong>Intuitive owner dashboard:</strong> Purpose-built for property operations staff, avoiding complex networking jargon</li>
-              </ul>
-            </div>
+            <div class="study-narrative-col">
+              <div class="narrative-block">
+                <h3>The Problem</h3>
+                <p>PONDAE's accommodation team needed a way to see and manage network activity across every tenant and student on the property — who was connected, how bandwidth was being used, and when something looked off — without walking floor to floor to check physical routers.</p>
+              </div>
 
-            <div class="study-stack-block">
-              <span class="stack-label">Stack</span>
-              <div class="stack-pills">
-                <span class="pill">Python</span>
-                <span class="pill">React</span>
-                <span class="pill">Network APIs</span>
-                <span class="pill">FastAPI</span>
+              <div class="narrative-block">
+                <h3>What We Built</h3>
+                <ul class="built-list">
+                  <li><strong>Tenancy-wide network visualization:</strong> Every student's connected device activity rendered in a single unified view</li>
+                  <li><strong>Per-device Wi-Fi monitoring:</strong> Granular usage tracked down to MAC address and assigned room</li>
+                  <li><strong>Bandwidth limits &amp; alerts:</strong> Automated flagging and throttling of unusual or excessive network usage</li>
+                  <li><strong>Intuitive owner dashboard:</strong> Purpose-built for property operations staff, avoiding complex networking jargon</li>
+                </ul>
+              </div>
+
+              <div class="study-stack-block">
+                <span class="stack-label">Stack</span>
+                <div class="stack-pills">
+                  <span class="pill">Python</span>
+                  <span class="pill">React</span>
+                  <span class="pill">Network APIs</span>
+                  <span class="pill">FastAPI</span>
+                </div>
               </div>
             </div>
           </div>
@@ -376,58 +411,65 @@
 
       <!-- Case Study 06: MUSHA (INTELLI-FIND) -->
       <article class="case-study-card" id="musha">
-        <div class="study-meta-top">
-          <div class="study-id">Case Study 06</div>
-          <div class="study-status-badge status-prod">Live &amp; In Production</div>
+        <div class="study-media">
+          <img src="{{ url_for('static', filename='img/slide-2-building.png') }}" alt="MUSHA Property Intelligence" class="study-img">
+          <div class="study-img-overlay"></div>
+          <span class="study-media-badge">PropTech GIS</span>
         </div>
-        
-        <div class="study-header">
-          <h2>MUSHA (INTELLI-FIND) — Real Estate Intelligence</h2>
-          <span class="study-subtitle">Property Valuation &amp; Automated Due Diligence</span>
-        </div>
-
-        <div class="study-grid-details">
-          <div class="study-specs-col">
-            <div class="spec-row">
-              <span class="spec-k">Role</span>
-              <span class="spec-v">Solo Full-Stack Build</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Timeline</span>
-              <span class="spec-v">Live, in active use</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Category</span>
-              <span class="spec-v">Real Estate PropTech</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Status</span>
-              <span class="spec-v">Deployed &amp; Operational</span>
-            </div>
+        <div class="study-body">
+          <div class="study-meta-top">
+            <span class="study-id">Case Study 06</span>
+            <span class="study-status-badge status-prod">Live &amp; In Production</span>
+          </div>
+          
+          <div class="study-header">
+            <h2>MUSHA (INTELLI-FIND) — Real Estate Intelligence</h2>
+            <span class="study-subtitle">Property Valuation &amp; Automated Due Diligence</span>
           </div>
 
-          <div class="study-narrative-col">
-            <div class="narrative-block">
-              <h3>The Problem</h3>
-              <p>Buyers and investors evaluating property in Zimbabwe often lack easy access to comparable sales data and reliable title verification, making due diligence slow, opaque, and financially risky.</p>
+          <div class="study-grid-details">
+            <div class="study-specs-col">
+              <div class="spec-row">
+                <span class="spec-k">Role</span>
+                <span class="spec-v">Solo Full-Stack Build</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Timeline</span>
+                <span class="spec-v">Live, in active use</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Category</span>
+                <span class="spec-v">Real Estate PropTech</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Status</span>
+                <span class="spec-v">Deployed &amp; Operational</span>
+              </div>
             </div>
 
-            <div class="narrative-block">
-              <h3>What We Built</h3>
-              <ul class="built-list">
-                <li><strong>Valuation engine:</strong> Precision algorithms comparing historical market transactions and neighborhood appreciation</li>
-                <li><strong>Title deeds integration:</strong> Direct verification pipelines interfacing with deeds and cadastral registry records</li>
-                <li><strong>AI-assisted due diligence:</strong> Risk scoring for encumbrances, zoning restrictions, and title discrepancies</li>
-              </ul>
-            </div>
+            <div class="study-narrative-col">
+              <div class="narrative-block">
+                <h3>The Problem</h3>
+                <p>Buyers and investors evaluating property in Zimbabwe often lack easy access to comparable sales data and reliable title verification, making due diligence slow, opaque, and financially risky.</p>
+              </div>
 
-            <div class="study-stack-block">
-              <span class="stack-label">Stack</span>
-              <div class="stack-pills">
-                <span class="pill">React</span>
-                <span class="pill">Node.js</span>
-                <span class="pill">Registry API</span>
-                <span class="pill">PostgreSQL</span>
+              <div class="narrative-block">
+                <h3>What We Built</h3>
+                <ul class="built-list">
+                  <li><strong>Valuation engine:</strong> Precision algorithms comparing historical market transactions and neighborhood appreciation</li>
+                  <li><strong>Title deeds integration:</strong> Direct verification pipelines interfacing with deeds and cadastral registry records</li>
+                  <li><strong>AI-assisted due diligence:</strong> Risk scoring for encumbrances, zoning restrictions, and title discrepancies</li>
+                </ul>
+              </div>
+
+              <div class="study-stack-block">
+                <span class="stack-label">Stack</span>
+                <div class="stack-pills">
+                  <span class="pill">React</span>
+                  <span class="pill">Node.js</span>
+                  <span class="pill">Registry API</span>
+                  <span class="pill">PostgreSQL</span>
+                </div>
               </div>
             </div>
           </div>
@@ -436,58 +478,65 @@
 
       <!-- Case Study 07: MINOPAR -->
       <article class="case-study-card" id="minopar">
-        <div class="study-meta-top">
-          <div class="study-id">Case Study 07</div>
-          <div class="study-status-badge status-prod">Live &amp; In Production</div>
+        <div class="study-media">
+          <img src="{{ url_for('static', filename='img/slide-4-ai-agents.jpg') }}" alt="MINOPAR EDR Security" class="study-img">
+          <div class="study-img-overlay"></div>
+          <span class="study-media-badge">EDR / Security</span>
         </div>
-        
-        <div class="study-header">
-          <h2>MINOPAR — Network Security EDR</h2>
-          <span class="study-subtitle">Endpoint Detection &amp; Response Platform</span>
-        </div>
-
-        <div class="study-grid-details">
-          <div class="study-specs-col">
-            <div class="spec-row">
-              <span class="spec-k">Role</span>
-              <span class="spec-v">Solo Build — Security Engineering</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Timeline</span>
-              <span class="spec-v">Live, in active use</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Category</span>
-              <span class="spec-v">Security / EDR</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Status</span>
-              <span class="spec-v">Deployed &amp; Operational</span>
-            </div>
+        <div class="study-body">
+          <div class="study-meta-top">
+            <span class="study-id">Case Study 07</span>
+            <span class="study-status-badge status-prod">Live &amp; In Production</span>
+          </div>
+          
+          <div class="study-header">
+            <h2>MINOPAR — Network Security EDR</h2>
+            <span class="study-subtitle">Endpoint Detection &amp; Response Platform</span>
           </div>
 
-          <div class="study-narrative-col">
-            <div class="narrative-block">
-              <h3>The Problem</h3>
-              <p>Small and mid-sized organizations often lack real-time visibility into endpoint activity, leaving threats undetected until real damage is done — and enterprise EDR tools are usually priced out of reach.</p>
+          <div class="study-grid-details">
+            <div class="study-specs-col">
+              <div class="spec-row">
+                <span class="spec-k">Role</span>
+                <span class="spec-v">Solo Build — Security Engineering</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Timeline</span>
+                <span class="spec-v">Live, in active use</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Category</span>
+                <span class="spec-v">Security / EDR</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Status</span>
+                <span class="spec-v">Deployed &amp; Operational</span>
+              </div>
             </div>
 
-            <div class="narrative-block">
-              <h3>What We Built</h3>
-              <ul class="built-list">
-                <li><strong>Real-time threat detection:</strong> Low-footprint endpoint sensors streaming process and socket telemetry</li>
-                <li><strong>Behavioral anomaly detection:</strong> Heuristics targeting lateral movement, unauthorized privilege escalation, and payload drops</li>
-                <li><strong>Incident response telemetry:</strong> Instant endpoint isolation, audit-ready forensics logs, and alert dispatch</li>
-              </ul>
-            </div>
+            <div class="study-narrative-col">
+              <div class="narrative-block">
+                <h3>The Problem</h3>
+                <p>Small and mid-sized organizations often lack real-time visibility into endpoint activity, leaving threats undetected until real damage is done — and enterprise EDR tools are usually priced out of reach.</p>
+              </div>
 
-            <div class="study-stack-block">
-              <span class="stack-label">Stack</span>
-              <div class="stack-pills">
-                <span class="pill">Python</span>
-                <span class="pill">SIEM Integration</span>
-                <span class="pill">PostgreSQL</span>
-                <span class="pill">DevSecOps</span>
+              <div class="narrative-block">
+                <h3>What We Built</h3>
+                <ul class="built-list">
+                  <li><strong>Real-time threat detection:</strong> Low-footprint endpoint sensors streaming process and socket telemetry</li>
+                  <li><strong>Behavioral anomaly detection:</strong> Heuristics targeting lateral movement, unauthorized privilege escalation, and payload drops</li>
+                  <li><strong>Incident response telemetry:</strong> Instant endpoint isolation, audit-ready forensics logs, and alert dispatch</li>
+                </ul>
+              </div>
+
+              <div class="study-stack-block">
+                <span class="stack-label">Stack</span>
+                <div class="stack-pills">
+                  <span class="pill">Python</span>
+                  <span class="pill">SIEM Integration</span>
+                  <span class="pill">PostgreSQL</span>
+                  <span class="pill">DevSecOps</span>
+                </div>
               </div>
             </div>
           </div>
@@ -496,58 +545,65 @@
 
       <!-- Case Study 08: FINDit -->
       <article class="case-study-card" id="findit">
-        <div class="study-meta-top">
-          <div class="study-id">Case Study 08</div>
-          <div class="study-status-badge status-review">Web Live · Mobile In Review</div>
+        <div class="study-media">
+          <img src="{{ url_for('static', filename='img/fiind-banner.png') }}" alt="FINDit Marketplace" class="study-img">
+          <div class="study-img-overlay"></div>
+          <span class="study-media-badge">Marketplace</span>
         </div>
-        
-        <div class="study-header">
-          <h2>FINDit — Marketplace Platform</h2>
-          <span class="study-subtitle">Buyer, Seller &amp; Service Discovery</span>
-        </div>
-
-        <div class="study-grid-details">
-          <div class="study-specs-col">
-            <div class="spec-row">
-              <span class="spec-k">Role</span>
-              <span class="spec-v">Solo Full-Stack Build</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Timeline</span>
-              <span class="spec-v">Web live · mobile app in review</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Category</span>
-              <span class="spec-v">Marketplace</span>
-            </div>
-            <div class="spec-row">
-              <span class="spec-k">Status</span>
-              <span class="spec-v">Awaiting App Store Approval</span>
-            </div>
+        <div class="study-body">
+          <div class="study-meta-top">
+            <span class="study-id">Case Study 08</span>
+            <span class="study-status-badge status-review">Web Live · Mobile In Review</span>
+          </div>
+          
+          <div class="study-header">
+            <h2>FINDit — Marketplace Platform</h2>
+            <span class="study-subtitle">Buyer, Seller &amp; Service Discovery</span>
           </div>
 
-          <div class="study-narrative-col">
-            <div class="narrative-block">
-              <h3>The Problem</h3>
-              <p>Buyers and sellers in local markets lacked a trustworthy, mobile-first place to discover listings, verify sellers, and transact — most discovery happened through disconnected social posts with no verification layer.</p>
+          <div class="study-grid-details">
+            <div class="study-specs-col">
+              <div class="spec-row">
+                <span class="spec-k">Role</span>
+                <span class="spec-v">Solo Full-Stack Build</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Timeline</span>
+                <span class="spec-v">Web live · mobile app in review</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Category</span>
+                <span class="spec-v">Marketplace</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-k">Status</span>
+                <span class="spec-v">Awaiting App Store Approval</span>
+              </div>
             </div>
 
-            <div class="narrative-block">
-              <h3>What We Built</h3>
-              <ul class="built-list">
-                <li><strong>Smart search &amp; discovery:</strong> Multi-category filtering, geolocated proximity search, and intelligent product ranking</li>
-                <li><strong>Seller verification &amp; ratings:</strong> Identity validation tiers, merchant reputation metrics, and authenticated customer reviews</li>
-                <li><strong>Mobile-first platform:</strong> Responsive web platform is fully live in production; native companion app in review</li>
-              </ul>
-            </div>
+            <div class="study-narrative-col">
+              <div class="narrative-block">
+                <h3>The Problem</h3>
+                <p>Buyers and sellers in local markets lacked a trustworthy, mobile-first place to discover listings, verify sellers, and transact — most discovery happened through disconnected social posts with no verification layer.</p>
+              </div>
 
-            <div class="study-stack-block">
-              <span class="stack-label">Stack</span>
-              <div class="stack-pills">
-                <span class="pill">React</span>
-                <span class="pill">Node.js</span>
-                <span class="pill">PostgreSQL</span>
-                <span class="pill">React Native</span>
+              <div class="narrative-block">
+                <h3>What We Built</h3>
+                <ul class="built-list">
+                  <li><strong>Smart search &amp; discovery:</strong> Multi-category filtering, geolocated proximity search, and intelligent product ranking</li>
+                  <li><strong>Seller verification &amp; ratings:</strong> Identity validation tiers, merchant reputation metrics, and authenticated customer reviews</li>
+                  <li><strong>Mobile-first platform:</strong> Responsive web platform is fully live in production; native companion app in review</li>
+                </ul>
+              </div>
+
+              <div class="study-stack-block">
+                <span class="stack-label">Stack</span>
+                <div class="stack-pills">
+                  <span class="pill">React</span>
+                  <span class="pill">Node.js</span>
+                  <span class="pill">PostgreSQL</span>
+                  <span class="pill">React Native</span>
+                </div>
               </div>
             </div>
           </div>
