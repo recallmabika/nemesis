@@ -17,6 +17,7 @@ except ImportError:
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "nemesis-dev-secret-key-default")
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # Configure logging
 logging.basicConfig(
@@ -42,8 +43,8 @@ SMTP_USER = os.environ.get("SMTP_USER", "")
 SMTP_PASSWORD = os.environ.get("SMTP_PASSWORD", "")
 SMTP_USE_SSL = os.environ.get("SMTP_USE_SSL", "True").lower() in ("true", "1", "yes")
 SMTP_USE_TLS = os.environ.get("SMTP_USE_TLS", "False").lower() in ("true", "1", "yes")
-CONTACT_RECIPIENT_EMAIL = os.environ.get("CONTACT_RECIPIENT_EMAIL", "info@nemesis.co.zw")
-CONTACT_SENDER_EMAIL = os.environ.get("CONTACT_SENDER_EMAIL", SMTP_USER or "info@nemesis.co.zw")
+CONTACT_RECIPIENT_EMAIL = os.environ.get("CONTACT_RECIPIENT_EMAIL", "info@nemesis.co.zw,developers@nemesis.co.zw")
+CONTACT_SENDER_EMAIL = os.environ.get("CONTACT_SENDER_EMAIL", SMTP_USER or "developers@nemesis.co.zw")
 CONTACT_SENDER_NAME = os.environ.get("CONTACT_SENDER_NAME", "NEMESIS Client Inquiries")
 INQUIRIES_LOG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "inquiries.log")
 
@@ -138,26 +139,35 @@ def dispatch_email(name, email, category, details):
     </html>
     """
 
+    # Parse recipient list (supports comma-separated emails)
+    recipient_list = [r.strip() for r in CONTACT_RECIPIENT_EMAIL.split(",") if r.strip()]
+    if not recipient_list:
+        recipient_list = ["info@nemesis.co.zw"]
+
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
     msg["From"] = f"{CONTACT_SENDER_NAME} <{CONTACT_SENDER_EMAIL}>"
-    msg["To"] = CONTACT_RECIPIENT_EMAIL
+    msg["To"] = ", ".join(recipient_list)
     msg["Reply-To"] = email
 
     msg.attach(MIMEText(text_body, "plain", "utf-8"))
     msg.attach(MIMEText(html_body, "html", "utf-8"))
 
+    # The SMTP envelope sender must match the authenticated account on strict cPanel servers
+    envelope_from = SMTP_USER or CONTACT_SENDER_EMAIL
+
     try:
         if SMTP_USE_SSL:
             with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, timeout=12) as server:
                 server.login(SMTP_USER, SMTP_PASSWORD)
-                server.sendmail(CONTACT_SENDER_EMAIL, [CONTACT_RECIPIENT_EMAIL], msg.as_string())
+                server.sendmail(envelope_from, recipient_list, msg.as_string())
         else:
             with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=12) as server:
                 if SMTP_USE_TLS:
                     server.starttls()
                 server.login(SMTP_USER, SMTP_PASSWORD)
-                server.sendmail(CONTACT_SENDER_EMAIL, [CONTACT_RECIPIENT_EMAIL], msg.as_string())
+                server.sendmail(envelope_from, recipient_list, msg.as_string())
+        logger.info(f"Inquiry email successfully dispatched to {recipient_list}")
         return True, None
     except Exception as e:
         logger.error(f"Failed to send email via SMTP: {e}")
@@ -196,7 +206,7 @@ def submit_inquiry():
     """Receives, validates, and dispatches customer inquiries."""
     data = request.get_json(silent=True) or request.form.to_dict() or {}
 
-    # Anti-bot honeypot check (field named 'website')
+    # Anti-bot honeypot check
     if data.get("website"):
         logger.info("Bot honeypot triggered; discarding silently.")
         return jsonify({"success": True, "message": "Inquiry received."}), 200
@@ -230,6 +240,13 @@ def submit_inquiry():
 
     # Always log locally so no data is ever lost
     log_inquiry(payload, delivery_status="SENT" if sent else "LOGGED_LOCAL", error_msg=error)
+
+    if not sent:
+        logger.warning(f"Inquiry saved locally but email dispatch failed: {error}")
+        return jsonify({
+            "success": False,
+            "error": "We received your inquiry locally, but the mail delivery service encountered an issue. Please contact us directly at developers@nemesis.co.zw or +263 78 430 7902."
+        }), 500
 
     return jsonify({
         "success": True,
