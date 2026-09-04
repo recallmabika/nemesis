@@ -1,0 +1,31 @@
+# ==============================================================================
+# NEMESIS — cPanel / Apache Configuration (.htaccess)
+# ==============================================================================
+
+# Enable Rewrite Engine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Force HTTPS (optional, standard for production)
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Serve static assets directly if they exist
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^static/(.*)$ static/$1 [L]
+</IfModule>
+
+# Ensure correct MIME types for modern assets
+<IfModule mod_mime.c>
+    AddType text/css .css
+    AddType application/javascript .js
+    AddType image/svg+xml .svg
+    AddType image/webp .webp
+    AddType image/png .png
+    AddType image/jpeg .jpg .jpeg
+    AddType font/woff2 .woff2
+    AddType font/woff .woff
+</IfModule>
+
+# Prevent directory listings
+Options -Indexes
